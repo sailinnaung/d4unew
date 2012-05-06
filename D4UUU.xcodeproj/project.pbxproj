@@ -17,7 +17,7 @@
 		DB5CB8EF1554F5ED00D63FB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB8EE1554F5ED00D63FB0 /* CoreGraphics.framework */; };
 		DB5CB8F51554F5ED00D63FB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB8F31554F5ED00D63FB0 /* InfoPlist.strings */; };
 		DB5CB8F71554F5EE00D63FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB8F61554F5EE00D63FB0 /* main.m */; };
-		DB5CB8FB1554F5EE00D63FB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB8FA1554F5EE00D63FB0 /* AppDelegate.m */; };
+		DB5CB8FB1554F5EE00D63FB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB8FA1554F5EE00D63FB0 /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB5CB8FE1554F5EE00D63FB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB8FC1554F5EE00D63FB0 /* MainStoryboard.storyboard */; };
 		DB5CB91B1554F69D00D63FB0 /* WhatsAroundYouDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9151554F69D00D63FB0 /* WhatsAroundYouDetailController.m */; };
 		DB5CB91C1554F69D00D63FB0 /* WhatsAroundYouDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9161554F69D00D63FB0 /* WhatsAroundYouDetailController.xib */; };
