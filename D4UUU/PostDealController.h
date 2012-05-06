@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 #import <MessageUI/MFMailComposeViewController.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate,MFMailComposeViewControllerDelegate>{
+@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MKReverseGeocoderDelegate>{
     IBOutlet UITextField *txtTitle;
     IBOutlet UITextField *txtMerchant;
-    IBOutlet UITextView *txtCategory;
+    IBOutlet UITextField *txtCategory;
     IBOutlet UITextField *txtDescription;
-    IBOutlet UITextField *txtLocation;
+    IBOutlet UITextField *txtLocationLat;
+    IBOutlet UITextField *txtLocationLong;
     IBOutlet UITextField *txtStartDate;
     IBOutlet UITextField *txtEndDate;
     IBOutlet UITextField *txtRemarks;
