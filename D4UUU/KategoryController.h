@@ -12,6 +12,8 @@
     UITableView *uiTableView;
 }
 
+-(void)preselect;
+
 @property (nonatomic, retain) IBOutlet UITableView *uiTableView;
 
 @end

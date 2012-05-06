@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class DBManager;
 
 @interface DealsServiceManager : NSObject{
 
     //NSURLConnection *urlConnection;
     //NSMutableData *buffer;
+    DBManager* dbManager;
 }
 
 -(NSArray*) retrieveWhatsAroundWithLatitude: (NSString*) latitude andLongitude: (NSString*) longitude;

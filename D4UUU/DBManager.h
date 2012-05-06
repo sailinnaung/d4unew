@@ -20,6 +20,8 @@
 -(BOOL) executeSql: (NSString*) sSql;
 -(void) closeDB;
 +(DBManager*) sharedDBManager;
+-(NSString *)getDBFile;
+
 @property (strong, nonatomic) NSMutableString* categoriesSelected;
 @property (strong, nonatomic) NSMutableString* categoriesAvailable;
 @property (strong, nonatomic) NSMutableArray *arrAvailable;

@@ -2,7 +2,7 @@
 //  SearchController.m
 //  Deals4U
 //
-//  Created by Arun Manivannan on 29/4/12.
+//  Created by Sai Lin Naung on 29/4/12.
 //  Copyright (c) 2012 tech@arunma.com. All rights reserved.
 //
 
@@ -41,6 +41,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [searchBarObj resignFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -53,10 +54,14 @@
     NSLog(@"inside SearchController.numberOfRowsInSection method");
     NSInteger rows;
     
-    if(tableView == [[self searchDisplayController] searchResultsTableView])
+    if(self.deals.count>0){        
         rows = [[self deals] count];
-    else
+        NSLog(@"rows is %d",rows);
+    }        
+    else{
         rows = 1;
+    }
+        
     return rows;
 }
 
@@ -72,15 +77,21 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil) {
+        NSLog(@"cell is nill");
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;        
         
     }
     
-    if(deals == nil){
-         
+    if(self.deals == nil){
+        NSLog(@"Deal is nill");
         cell.textLabel.text = DEFAULT_SEARCH_RESULT_STRING;
+        NSLog(@"cell text label is %@",cell.textLabel.text);
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        NSLog(@"cell selection style: %@",cell.selectionStyle);
+        cell.accessoryType = UITableViewCellAccessoryNone;
         
+
     }else{
         
         dealObj = [deals objectAtIndex:indexPath.row];
@@ -98,16 +109,22 @@
         cell.detailTextLabel.text=[NSString stringWithString:dealObj.description];
         cell.imageView.image=image;
         NSLog(@"Cell image %@",cell.imageView.image.description );
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; 
+        [searchBarObj setText:nil];
     }
-        
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; 
-    
+            
     return cell;    
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"inside SearchController.didSelectRowAtIndexPath");
+    if(self.deals.count>0){
+        [searchBarObj resignFirstResponder];
+        [searchBarObj setShowsCancelButton:FALSE animated:NO];
+        NSLog(@"inside SearchController.didSelectRowAtIndexPath at %@",indexPath);
+    }else{
+         NSLog(@"inside SearchController.didSelectRowAtIndexPath No Deals");
+    }   
     
 }
 
@@ -122,6 +139,7 @@
 - (void) handleDealSearchbyText:(NSString *)SearchText
 {
     NSLog(@"inside SearchController.handleDealSearchText");
+    
     dealsManager=[DealsServiceManager sharedManager];
     self.deals = [dealsManager retrieveSearchDeals:SearchText];    
     
@@ -131,7 +149,37 @@
 {
     NSLog(@"inside SearchController.searchBarSearchButtonClicked");
     [self handleDealSearchbyText:[searchBar text]];
+        
+    [searchBar resignFirstResponder];
+    [searchBarObj setShowsCancelButton:FALSE animated:NO];
+    [self.resultTableView reloadData];
+    [searchBarObj setText:nil];
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"inside SearchController.searchBarCancelButtonClicked");
+    [searchBar resignFirstResponder];
+    [searchBar setShowsCancelButton:FALSE animated:NO];
+    [searchBar setText:nil];
+}
+
+-(void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView{
+    NSLog(@"inside SearchController.didLoadSearchResultTableView");
+    [searchBarObj resignFirstResponder];
+    [searchBarObj setShowsCancelButton:FALSE animated:NO];
+    [searchBarObj setText:nil];
+}
+
+-(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller{
+    NSLog(@"inside SearchController.searchDisplayControllerDidBeginSearch");
+    [searchBarObj resignFirstResponder];
+    [searchBarObj setShowsCancelButton:FALSE animated:NO];
+    [searchBarObj setText:nil];
+}
+
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+
+    [searchBar setShowsCancelButton:TRUE animated:YES];
+}
 
 @end
