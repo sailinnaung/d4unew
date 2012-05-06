@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DBManager.h"
+#import "Constants.h"
 #import "WhatsAroundYouMasterController.h"
 
 @implementation AppDelegate
@@ -18,7 +19,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Chen Lim: copy local database to Documents folder (on first run)
     [self createEditableCopyOfDatabaseIfNeeded];
+    // Chen Lim: load available categories from DB
+    [self loadAvailableFromDatabase];
+    // Chen Lim: load selected categories from DB
     [self loadSelectedFromDatabase];
     
     UITabBarController* mainTabController = (UITabBarController*)self.window.rootViewController;
@@ -68,14 +74,14 @@
     NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"CategoryList.db"];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:DB_NAME];
     success = [fileManager fileExistsAtPath:writableDBPath];
     if (success)
     {
         return;
     }
     // The writable database does not exist, so copy the default to the appropriate location.
-    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CategoryList.db"];
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DB_NAME];
     success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
     if (!success) {
         NSAssert1(0, @"Failed to create writable database file with message '%@'.", [error localizedDescription]);
@@ -84,11 +90,11 @@
 }
 
 
-
 - (void) loadSelectedFromDatabase {
     DBManager* dbManager=[DBManager sharedDBManager];
     if ([dbManager openDB] == true) {
-        int iTemp = sqlite3_exec([dbManager database], "SELECT selected_category FROM SelectedCategory", CBSelected, nil, NULL);
+        
+        int iTemp = sqlite3_exec([dbManager database], "SELECT selected_category FROM SelectedCategory", CBSelected, self, NULL);
         if (iTemp != SQLITE_OK) {
             NSLog(@"Error executing SQL: %s", sqlite3_errmsg([dbManager database]));
         }
@@ -104,29 +110,80 @@ static int CBSelected (void *context, int count, char **values, char **columns)
 {    
     NSString* tempString=[[NSMutableString alloc]initWithString:@""];
     
+    // chen lim: do we really need this? Seem like only 1 count per callback.
     for (int i=0; i < count; i++)
     {
         const char *nameCString = values[i];
         NSString *sCurr = [NSString stringWithUTF8String:nameCString];
      
-        NSLog(@"Current category string %@", sCurr);
-        
         tempString=[[tempString stringByAppendingString:sCurr] stringByAppendingString:@","];
-               
-
         tempString=[tempString substringToIndex:[tempString length]-1];
-        
-        NSLog(@"MUtable category string %@", tempString);
-
     }
-    //NSLog(@"MUtable category string %@", temp
-    [DBManager sharedDBManager].categories=[[NSMutableString alloc]initWithString:tempString];
     
-    
-    
+    // chen lim: if is only 1 count per call back, then we need to append to DBManager's categories string.
+    if ([DBManager sharedDBManager].categoriesSelected == nil)
+    {
+        [DBManager sharedDBManager].categoriesSelected = [[NSMutableString alloc]initWithString:tempString];
+    }
+    else
+    {
+        NSString *sFinal = [[[DBManager sharedDBManager].categoriesSelected stringByAppendingString:@","] stringByAppendingString:tempString];
+        [DBManager sharedDBManager].categoriesSelected = [[NSMutableString alloc]initWithString:sFinal];
+    }
+
     return SQLITE_OK;
 }
 
+
+
+// CallBack method to load Available Categories into arrAvailable
+static int CBAvailable (void *context, int count, char **values, char **columns)
+{
+    NSString* tempString=[[NSMutableString alloc]initWithString:@""];
+    
+    // chen lim: do we really need this? Seem like only 1 count per callback.
+    NSMutableArray *arrAvailable = (NSMutableArray *)context;
+    for (int i=0; i < count; i++)
+    {
+        const char *nameCString = values[i];
+        [arrAvailable addObject:[NSString stringWithUTF8String:nameCString]];
+        NSString *sCurr = [NSString stringWithUTF8String:nameCString];
+        
+        tempString=[[tempString stringByAppendingString:sCurr] stringByAppendingString:@","];
+        tempString=[tempString substringToIndex:[tempString length]-1];
+    }
+    
+    // chen lim: if is only 1 count per call back, then we need to append to DBManager's categories string.
+    if ([DBManager sharedDBManager].categoriesAvailable == nil)
+    {
+        [DBManager sharedDBManager].categoriesAvailable = [[NSMutableString alloc]initWithString:tempString];
+    }
+    else
+    {
+        NSString *sFinal = [[[DBManager sharedDBManager].categoriesAvailable stringByAppendingString:@","] stringByAppendingString:tempString];
+        [DBManager sharedDBManager].categoriesAvailable = [[NSMutableString alloc]initWithString:sFinal];
+    }
+
+    return SQLITE_OK;
+}
+
+- (void) loadAvailableFromDatabase {
+    DBManager* dbManager=[DBManager sharedDBManager];
+    if (dbManager.arrAvailable == nil)
+    {
+        dbManager.arrAvailable = [[[NSMutableArray alloc] init] autorelease];
+    }
+    
+    if ([dbManager openDB] == true) {
+        int iTemp = sqlite3_exec([dbManager database], "SELECT category_name FROM Category", CBAvailable, dbManager.arrAvailable, NULL);
+        if (iTemp != SQLITE_OK) {
+            NSLog(@"Error executing SQL: %s", sqlite3_errmsg([dbManager database]));
+        }
+        [dbManager closeDB];
+    } else {
+        // alert failed to connect to database?
+    }
+}
 
 -(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
 

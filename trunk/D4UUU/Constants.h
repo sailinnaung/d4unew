@@ -17,3 +17,6 @@
 #define SEARCH_LONGITUDE_KEYWORD @"&iLong="
 #define SEARCH_GET_NEAREST_KEYWORD @"get_nearest"
 #define CATEGORY_LIST @"&prmo_category="
+
+
+#define DB_NAME @"CategoryList.db"

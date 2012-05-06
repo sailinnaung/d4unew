@@ -1,18 +1,21 @@
 //
 //  DBManager.m
-//  CountryListAgain
+//  D4UUU
 //
-//  Created by Jakob Chong on 5/5/12.
-//  Copyright (c) 2012 L&Rui Concept Group. All rights reserved.
+//  Created by Toh Chen Lim on 5/5/12.
+//  Copyright (c) 2012 chenlim@ambracetech.com. All rights reserved.
 //
 
 #import "DBManager.h"
+#import "Constants.h"
 
 @implementation DBManager
 
 static DBManager *dbManager = nil;
 @synthesize database;
-@synthesize categories;
+@synthesize categoriesAvailable;
+@synthesize categoriesSelected;
+@synthesize arrAvailable;
 
 + (DBManager *)sharedDBManager{
     if (dbManager==nil){
@@ -67,7 +70,7 @@ static DBManager *dbManager = nil;
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *writableDBFile = [documentsDirectory stringByAppendingPathComponent:@"CategoryList.db"];
+    NSString *writableDBFile = [documentsDirectory stringByAppendingPathComponent:DB_NAME];
     return writableDBFile;
 }
 

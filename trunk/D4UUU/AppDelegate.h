@@ -10,6 +10,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 
+- (void) loadAvailableFromDatabase;
+- (void) loadSelectedFromDatabase;
 @property (strong, nonatomic) UIWindow *window;
 
 @end
