@@ -32,10 +32,10 @@
     [super viewDidLoad];
     [pvCategory setHidden:YES];
     arrayCategory =[[NSMutableArray alloc] init];
-	[arrayCategory addObject:@"OOAD"];
-	[arrayCategory addObject:@"CSCRUM"];
-	[arrayCategory addObject:@"Java EE"];
-	[arrayCategory addObject:@"PMIS"];
+	[arrayCategory addObject:@"Food"];
+	[arrayCategory addObject:@"Fashion"];
+	[arrayCategory addObject:@"Entertainment"];
+	[arrayCategory addObject:@"Lifestyle"];
     switchIsFeatured.on = NO;
 }
 
@@ -79,7 +79,56 @@
 	NSLog(@"%@ selected",[arrayCategory objectAtIndex:row]);
 }	
 
-- (IBAction) addDeal {
+- (IBAction) addDeal {    
+/*    NSString *urlString = [NSString stringWithFormat:@"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@&prmo_datetime_start=%@&prmo_datetime_end=%@&prmo_remarks=%@", */
+ /*   NSString *urlString = [NSString stringWithFormat:@"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=0&prmo_description=%@&prmo_lat=%@&prmo_long=%@",                            [txtTitle.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           [txtMerchant.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           [txtCategory.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                       //    [(NSString*)switchIsFeatured.isOn stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           [txtDescription.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           [@"1" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           [@"0" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ];//,
+                         //  [@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                           //[@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+                         //  [txtRemarks.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+  */ 
+
+/*  escape($_POST["prmo_title"]), escape($_POST["prmo_merchant"]), escape($_POST["prmo_category"]), escape($_POST["prmo_is_featured"]), escape($_POST["prmo_description"]), escape($_POST["prmo_lat"]), escape($_POST["prmo_long"]), 0, escape($_POST["prmo_datetime_start"]), escape($_POST["prmo_datetime_end"]), 
+  */  
+ //   NSString *myRequestString = @"action=create&prmo_title=a&prmo_merchant=b&prmo_category=c&prmo_is_featured=0&prmo_description=d&prmo_lat=1&prmo_long=2";
+    
+    
+    NSString *myRequestString = [NSString stringWithFormat: @"action=create&prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@",
+    txtTitle.text,
+    txtMerchant.text,
+    txtCategory.text,
+    switchIsFeatured.on ? @"1" : @"0",
+    txtDescription.text,
+    txtLocationLat.text,
+    txtLocationLong.text];//,
+    //  [@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+    //[@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
+    //  [txtRemarks.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];";
+    NSData *myRequestData = [NSData dataWithBytes: [myRequestString UTF8String] length: [myRequestString length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?"]];
+    [request setHTTPMethod: @"POST"];
+    [request setHTTPBody: myRequestData];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+
+    NSError *error;
+    NSURLResponse *response;
+    NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error:&error];
+  //  txtTitle.text = returnData.description;
+    
+    if(![returnData.description isEqualToString:@""]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Post Deal Result"
+                          message: @"Deal Posted Sucessfully!"
+                          delegate: self cancelButtonTitle:
+                          @"Close" otherButtonTitles: nil];
+    
+    [alert show];
+    }
+
 }
 
 - (IBAction) emailDeal {
@@ -90,13 +139,13 @@
     [emailViewController setSubject: @"Great Deal"] ;
   //  NSString *msg = @"Don't Miss It!\n";
    // *msg = msg + @"aaa";
-    NSString *msg = [NSString stringWithFormat:@"Great Deal!\n\nTitle: %@ \nMerchant: %@ \nCategory: %@ \nIs_Featured: %@ \nDescription: %@ \nLocation: %@ \nStart: %@ \nEnd: %@ \nRemarks: %@", 
+    NSString *msg = [NSString stringWithFormat:@"Great Deal!\n\nTitle: %@ \nMerchant: %@ \nCategory: %@ \nIs_Featured: %@ \nDescription: %@ \nLocation: %@, %@ \nStart: %@ \nEnd: %@ \nRemarks: %@", 
                      txtTitle.text, 
                      txtMerchant.text, 
                      txtCategory.text, 
                      switchIsFeatured.on ? @"YES" : @"NO", 
                      txtDescription.text, 
-                     txtLocation.text, 
+                     txtLocationLat.text, txtLocationLong.text, 
                      txtStartDate.text, 
                      txtEndDate.text, 
                      txtRemarks.text];
@@ -124,7 +173,7 @@
 
 - (BOOL) textFieldShouldBeginEditing:(UITextView *)textView
 {
-    if (textView.text == txtCategory.text) {
+    if (textView == txtCategory) {
         for (UIView *subview in [self.view subviews]) {
             if ([subview class] == [UITextField class]) {
                 [subview resignFirstResponder];
@@ -156,10 +205,20 @@
     locationManager.distanceFilter = kCLDistanceFilterNone; // whenever we move
     locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; // 100 m
     [locationManager startUpdatingLocation];
-    txtLocation.text  = [NSString stringWithFormat:@"%f", locationManager.location.coordinate];
+    txtLocationLat.text  = [NSString stringWithFormat:@"%f", locationManager.location.coordinate.latitude];
+    txtLocationLong.text  = [NSString stringWithFormat:@"%f", locationManager.location.coordinate.longitude];
+    
+  /*  MKReverseGeocoder *reverseGeocoder = [[MKReverseGeocoder alloc] initWithCoordinate:locationManager.location.coordinate];
+    reverseGeocoder.delegate = self;
+    [reverseGeocoder start];
+    */
     
 }
 
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark {
+    txtLocationLat.text  = [NSString stringWithFormat:@"%@", placemark.description ]; 
+    
+}
 
 - (IBAction)startDateEditDidBegin:(id)sender{
     [txtStartDate resignFirstResponder];
