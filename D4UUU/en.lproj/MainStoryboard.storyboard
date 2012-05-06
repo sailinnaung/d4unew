@@ -49,32 +49,6 @@
             </objects>
             <point key="canvasLocation" x="-639" y="-1314"/>
         </scene>
-        <!--Search Controller - Root View Controller-->
-        <scene sceneID="ZsU-kJ-PP7">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ett-ez-cc2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="1yJ-bI-esb" customClass="SearchController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EFI-au-DOW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KPS-2G-4F2">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="wBP-aO-XQI"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="117" y="-63"/>
-        </scene>
         <!--Post Deal Controller - Post Deal-->
         <scene sceneID="TSd-ir-Qud">
             <objects>
@@ -359,21 +333,54 @@
             </objects>
             <point key="canvasLocation" x="-614" y="1866"/>
         </scene>
-        <!--Navigation Controller - Search-->
-        <scene sceneID="WPA-W6-QKG">
+        <!--Search Controller - Search-->
+        <scene sceneID="0QC-3y-4I5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zad-uh-x51" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="QwZ-nx-15i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="VCq-BJ-noi"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5qw-5f-ful">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wQc-o6-NOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="bLy-0P-3LH" customClass="SearchController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jRN-9e-7ih">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="p4g-C0-ySa">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="bLy-0P-3LH" id="fyd-Bb-36U"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="aQQ-v9-as2">
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bLy-0P-3LH" id="xNM-9f-Ge4"/>
+                            <outlet property="delegate" destination="bLy-0P-3LH" id="iBX-Wm-oq8"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Search" id="azz-oC-7cy"/>
                     <connections>
-                        <segue destination="1yJ-bI-esb" kind="relationship" relationship="rootViewController" id="YFV-fR-HXn"/>
+                        <outlet property="resultTableView" destination="jRN-9e-7ih" id="nBo-Yd-gPA"/>
+                        <outlet property="searchBarObj" destination="p4g-C0-ySa" id="Jed-Hk-bcd"/>
+                        <outlet property="searchDisplayController" destination="y9m-OL-H6M" id="4Hl-7W-4CI"/>
                     </connections>
-                </navigationController>
+                </tableViewController>
+                <searchDisplayController id="y9m-OL-H6M">
+                    <connections>
+                        <outlet property="delegate" destination="bLy-0P-3LH" id="RH5-dU-KQb"/>
+                        <outlet property="searchContentsController" destination="bLy-0P-3LH" id="LFb-ao-Z4l"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-648" y="-63"/>
+            <point key="canvasLocation" x="-846" y="122"/>
         </scene>
         <!--Post Deal Controller - Post Deal-->
         <scene sceneID="xbv-Jz-5zy">
@@ -404,14 +411,14 @@
                     <connections>
                         <outlet property="delegate" destination="14" id="lY0-wT-cdo"/>
                         <segue destination="UM7-f2-GQX" kind="relationship" relationship="viewControllers" id="SWy-vx-5qo"/>
-                        <segue destination="QwZ-nx-15i" kind="relationship" relationship="viewControllers" id="cLE-ak-fKo"/>
                         <segue destination="XcM-Jm-sZf" kind="relationship" relationship="viewControllers" id="uED-kP-0gw"/>
                         <segue destination="gsT-51-30v" kind="relationship" relationship="viewControllers" id="eeQ-tc-3CU"/>
                         <segue destination="xaj-HD-mea" kind="relationship" relationship="viewControllers" id="88c-Ja-iCH"/>
+                        <segue destination="bLy-0P-3LH" kind="relationship" relationship="viewControllers" id="WCe-kL-4rB"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-2024" y="31"/>
+            <point key="canvasLocation" x="-2156" y="53"/>
         </scene>
         <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="ML1-Kg-lEf">
