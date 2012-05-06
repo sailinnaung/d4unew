@@ -75,6 +75,7 @@ static int CBSelected (void *context, int count, char **values, char **columns)
 {
     KategoryController *self = (KategoryController *)context;
     
+    NSString* tempString=[[[NSMutableString alloc] initWithString:@""]autorelease];
     for (int i=0; i < count; i++)
     {
         const char *nameCString = values[i];
@@ -93,18 +94,19 @@ static int CBSelected (void *context, int count, char **values, char **columns)
             {                
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:0];
                 [self.uiTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-                
+                tempString=[[tempString stringByAppendingString:sTemp] stringByAppendingString:@","];
+                [self.arrSelected addObject:sTemp];  
             }
         }
     }
     
     //id object=[constructCategoryString:self.arrAvailable];
     
-    NSString* tempString=[[[NSMutableString alloc] initWithString:@""]autorelease];
-    if (self.arrAvailable){
+    /*NSString* tempString=[[[NSMutableString alloc] initWithString:@""]autorelease];
+    if (self.arrSelected){
         
         
-        for (NSString* eachCategory in self.arrAvailable){
+        for (NSString* eachCategory in self.arrSelected){
             
             tempString=[[tempString stringByAppendingString:eachCategory] stringByAppendingString:@","];
             
@@ -112,7 +114,8 @@ static int CBSelected (void *context, int count, char **values, char **columns)
         
         tempString=[tempString substringToIndex:[tempString length]-1];
     }
-    NSLog(@"MUtable category string %@", tempString);
+     */
+    NSLog(@"Temp Category String %@", tempString);
     
     [DBManager sharedDBManager].categories=[[NSMutableString alloc]initWithString:tempString];
     

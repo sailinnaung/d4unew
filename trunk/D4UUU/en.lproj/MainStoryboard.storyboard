@@ -31,7 +31,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="iLA-cq-VZO"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="997" y="-441"/>
+            <point key="canvasLocation" x="955" y="-441"/>
         </scene>
         <!--Table View Controller - Item-->
         <scene sceneID="soo-2H-INj">
@@ -61,7 +61,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="4Kf-UN-9UA"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="-94" y="-329"/>
+            <point key="canvasLocation" x="1534" y="-417"/>
         </scene>
         <!--Navigation Controller - Around You-->
         <scene sceneID="UHF-aE-Ycx">
@@ -163,6 +163,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="delegate" destination="14" id="lY0-wT-cdo"/>
                         <segue destination="UM7-f2-GQX" kind="relationship" relationship="viewControllers" id="SWy-vx-5qo"/>
                         <segue destination="69y-aW-D0W" kind="relationship" relationship="viewControllers" id="NJs-Yk-BmE"/>
                         <segue destination="QwZ-nx-15i" kind="relationship" relationship="viewControllers" id="cLE-ak-fKo"/>
@@ -173,7 +174,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="100" y="312"/>
+            <point key="canvasLocation" x="-40" y="333"/>
         </scene>
         <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="nnU-8a-XBo">
@@ -316,7 +317,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchController.h"/>
             <relationships>
                 <relationship kind="outlet" name="resultTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchBarObj" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
             </relationships>
         </class>

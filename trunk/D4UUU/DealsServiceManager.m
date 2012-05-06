@@ -148,7 +148,7 @@ static DealsServiceManager *serviceManager =nil;
     else{
         for (NSDictionary *item in jsonArray){
             
-            NSLog(@"Item is %@",item);
+            //NSLog(@"Item is %@",item);
             
             deal=[[Deal alloc]init];
             

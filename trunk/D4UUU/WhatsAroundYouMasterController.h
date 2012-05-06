@@ -22,4 +22,6 @@
 @property (strong, nonatomic) WhatsAroundYouDetailController *detailViewController;
 @property (strong, nonatomic) NSMutableArray* deals;
 @property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
+-(void) updateLocationAndCategory;
+    
 @end

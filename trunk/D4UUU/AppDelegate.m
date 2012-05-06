@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DBManager.h"
+#import "WhatsAroundYouMasterController.h"
 
 @implementation AppDelegate
 
@@ -19,6 +20,14 @@
     // Override point for customization after application launch.
     [self createEditableCopyOfDatabaseIfNeeded];
     [self loadSelectedFromDatabase];
+    
+    UITabBarController* mainTabController = (UITabBarController*)self.window.rootViewController;
+    
+    //mainTabBarDelegate = [[TabBarDelegate alloc] init];
+    //mainTabController.delegate = mainTabBarDelegate;
+    mainTabController.delegate=self;
+    //self.window.rootViewController.tabBarController.delegate=self;
+
     return YES;
 }
 							
@@ -110,13 +119,56 @@ static int CBSelected (void *context, int count, char **values, char **columns)
         NSLog(@"MUtable category string %@", tempString);
 
     }
-    //NSLog(@"MUtable category string %@", tempString);
-    
+    //NSLog(@"MUtable category string %@", temp
     [DBManager sharedDBManager].categories=[[NSMutableString alloc]initWithString:tempString];
     
     
     
     return SQLITE_OK;
 }
+
+
+-(void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+
+     NSLog(@"Selected now %@", viewController);   
+        if ([viewController isKindOfClass:[UINavigationController class]]){
+            UINavigationController *navController=(UINavigationController*) viewController;
+            for (UIViewController *eachViewController in navController.viewControllers){ 
+                if ([eachViewController isKindOfClass:[WhatsAroundYouMasterController class]]){                    
+                    WhatsAroundYouMasterController* whatsAroundMasterController=(WhatsAroundYouMasterController*)eachViewController;
+                    NSLog(@"Selected now %@", whatsAroundMasterController);    
+        //[whatsAroundMasterController performSelector:@"updateLocationAndCategory"];
+                    [whatsAroundMasterController updateLocationAndCategory];
+                }
+            }
+        }
+            
+
+    
+    }
+    
+
+    
+    /*
+    NSLog(@"tabBarController %@", tabBarController.description);
+    //check to see if navbar "get" worked
+    if (tabBarController.viewControllers) {
+        
+        
+        //look for the nav controller in tab bar views 
+        for (UINavigationController *view in tabBarController.viewControllers) {
+            NSLog(@"navigationController %@", view.description);    
+            //when found, do the same thing to find the MasterViewController under the nav controller
+            if ([view isKindOfClass:[UINavigationController class]])
+                for (UIViewController *view2 in view.viewControllers) 
+                    if ([view2 isKindOfClass:[WhatsAroundYouMasterController class]])                    
+                        result = (WhatsAroundYouMasterController *) view2;
+            NSLog(@"result %@", result.description);   
+            result. 
+        }
+    }*/
+    
+    
+
 
 @end

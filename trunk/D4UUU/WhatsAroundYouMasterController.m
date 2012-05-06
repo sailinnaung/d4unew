@@ -37,7 +37,7 @@ DealsServiceManager *dealsManager=nil;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     self.navigationItem.title =@"Master";
     self.navigationItem.hidesBackButton = FALSE;
@@ -47,16 +47,23 @@ DealsServiceManager *dealsManager=nil;
      NSLog(@"View did load called  in Whats around you controller");
     */
      
-    dealsManager=[DealsServiceManager sharedManager];
-    locationManager=[[CLLocationManager alloc] init];
-    
-    locationManager.delegate=self;
-    [locationManager startUpdatingLocation];
+    [self updateLocationAndCategory];
 
     //self.deals=[NSMutableArray arrayWithArray:[dealsManager retrieveWhatsAroundWithLatitude:@"1.37" andLongitude:@"103.862454"]];
 
         
     NSLog(@"Last deal object is %@", self.deals.lastObject);
+    
+}
+
+-(void) updateLocationAndCategory{
+    
+    
+    dealsManager=[DealsServiceManager sharedManager];
+    locationManager=[[CLLocationManager alloc] init];
+    
+    locationManager.delegate=self;
+    [locationManager startUpdatingLocation];
     
 }
 
@@ -262,6 +269,7 @@ DealsServiceManager *dealsManager=nil;
 -(void)updateLocationWithLatitude :(NSString*) latitude andLongitude:(NSString*) longitude{
     
     NSLog(@"Updatttting with Locationg..... %@%@", latitude, longitude);
+    [self.deals removeAllObjects];
     self.deals=[NSMutableArray arrayWithArray:[dealsManager retrieveWhatsAroundWithLatitude:latitude andLongitude:longitude]];
     //self.deals=[NSMutableArray arrayWithArray:[dealsManager retrieveWhatsAroundWithLatitude:@"1.37" andLongitude:@"103.862454"]];
  
