@@ -30,8 +30,6 @@
 		DB5CB94C1554F94800D63FB0 /* PopularController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB92C1554F94500D63FB0 /* PopularController.m */; };
 		DB5CB94D1554F94800D63FB0 /* postdeal.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92D1554F94500D63FB0 /* postdeal.png */; };
 		DB5CB94E1554F94800D63FB0 /* postdeal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */; };
-		DB5CB94F1554F94800D63FB0 /* PostDealController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9301554F94500D63FB0 /* PostDealController.m */; };
-		DB5CB9501554F94800D63FB0 /* PostDealController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9311554F94500D63FB0 /* PostDealController.xib */; };
 		DB5CB9511554F94800D63FB0 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9321554F94600D63FB0 /* search.png */; };
 		DB5CB9521554F94800D63FB0 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9331554F94600D63FB0 /* search@2x.png */; };
 		DB5CB9581554F94800D63FB0 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB93B1554F94600D63FB0 /* settings.png */; };
@@ -46,6 +44,8 @@
 		DB5CB9611554F94800D63FB0 /* WhatsNewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9461554F94700D63FB0 /* WhatsNewController.xib */; };
 		DB5CB96B155515D200D63FB0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB969155515B900D63FB0 /* MapKit.framework */; };
 		DB5CB96C155515D200D63FB0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB967155515B200D63FB0 /* CoreLocation.framework */; };
+		DBCF180E15565C2A00E71680 /* PostDealController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCF180C15565C2A00E71680 /* PostDealController.m */; };
+		DBCF180F15565C2A00E71680 /* PostDealController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCF180D15565C2A00E71680 /* PostDealController.xib */; };
 		DBDF245015552E79001140CC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF244D15552E79001140CC /* DBManager.m */; };
 		DBDF245515552F89001140CC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF245415552F89001140CC /* libsqlite3.0.dylib */; };
 		DBDF245715552FEA001140CC /* CategoriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF245615552FEA001140CC /* CategoriesController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -87,9 +87,6 @@
 		DB5CB92C1554F94500D63FB0 /* PopularController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularController.m; sourceTree = "<group>"; };
 		DB5CB92D1554F94500D63FB0 /* postdeal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postdeal.png; sourceTree = "<group>"; };
 		DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "postdeal@2x.png"; sourceTree = "<group>"; };
-		DB5CB92F1554F94500D63FB0 /* PostDealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDealController.h; sourceTree = "<group>"; };
-		DB5CB9301554F94500D63FB0 /* PostDealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDealController.m; sourceTree = "<group>"; };
-		DB5CB9311554F94500D63FB0 /* PostDealController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDealController.xib; sourceTree = "<group>"; };
 		DB5CB9321554F94600D63FB0 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		DB5CB9331554F94600D63FB0 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
 		DB5CB93B1554F94600D63FB0 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -107,6 +104,9 @@
 		DB5CB9661554FDAB00D63FB0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DB5CB967155515B200D63FB0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DB5CB969155515B900D63FB0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DBCF180B15565C2A00E71680 /* PostDealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDealController.h; sourceTree = "<group>"; };
+		DBCF180C15565C2A00E71680 /* PostDealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDealController.m; sourceTree = "<group>"; };
+		DBCF180D15565C2A00E71680 /* PostDealController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDealController.xib; sourceTree = "<group>"; };
 		DBDF244C15552E78001140CC /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		DBDF244D15552E79001140CC /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		DBDF244E15552E79001140CC /* CategoriesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesController.h; sourceTree = "<group>"; };
@@ -175,10 +175,10 @@
 				DB5CB92C1554F94500D63FB0 /* PopularController.m */,
 				DB5CB92D1554F94500D63FB0 /* postdeal.png */,
 				DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */,
-				DB5CB92F1554F94500D63FB0 /* PostDealController.h */,
-				DB5CB9301554F94500D63FB0 /* PostDealController.m */,
-				DB5CB9311554F94500D63FB0 /* PostDealController.xib */,
 				DB5CB9321554F94600D63FB0 /* search.png */,
+				DBCF180B15565C2A00E71680 /* PostDealController.h */,
+				DBCF180C15565C2A00E71680 /* PostDealController.m */,
+				DBCF180D15565C2A00E71680 /* PostDealController.xib */,
 				DB5CB9331554F94600D63FB0 /* search@2x.png */,
 				DB5CB93B1554F94600D63FB0 /* settings.png */,
 				DB5CB93C1554F94600D63FB0 /* settings@2x.png */,
@@ -289,7 +289,6 @@
 				DB5CB94B1554F94800D63FB0 /* popular@2x.png in Resources */,
 				DB5CB94D1554F94800D63FB0 /* postdeal.png in Resources */,
 				DB5CB94E1554F94800D63FB0 /* postdeal@2x.png in Resources */,
-				DB5CB9501554F94800D63FB0 /* PostDealController.xib in Resources */,
 				DB5CB9511554F94800D63FB0 /* search.png in Resources */,
 				DB5CB9521554F94800D63FB0 /* search@2x.png in Resources */,
 				DB5CB9581554F94800D63FB0 /* settings.png in Resources */,
@@ -304,6 +303,7 @@
 				DB4D5E0D155542C5007B4CAF /* CategoriesController.xib in Resources */,
 				DB4D5E1C155544D7007B4CAF /* KategoryController.xib in Resources */,
 				DB4D5E29155555A9007B4CAF /* SearchController.xib in Resources */,
+				DBCF180F15565C2A00E71680 /* PostDealController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,13 +321,13 @@
 				DB5CB9231554F86500D63FB0 /* Deal.m in Sources */,
 				DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */,
 				DB5CB94C1554F94800D63FB0 /* PopularController.m in Sources */,
-				DB5CB94F1554F94800D63FB0 /* PostDealController.m in Sources */,
 				DB5CB95A1554F94800D63FB0 /* SettingsController.m in Sources */,
 				DB5CB9601554F94800D63FB0 /* WhatsNewController.m in Sources */,
 				DBDF245015552E79001140CC /* DBManager.m in Sources */,
 				DBDF245715552FEA001140CC /* CategoriesController.m in Sources */,
 				DB4D5E1B155544D7007B4CAF /* KategoryController.m in Sources */,
 				DB4D5E28155555A9007B4CAF /* SearchController.m in Sources */,
+				DBCF180E15565C2A00E71680 /* PostDealController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
