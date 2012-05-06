@@ -10,7 +10,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>{
+@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MFMailComposeViewControllerDelegate>{
     IBOutlet UITextField *txtTitle;
     IBOutlet UITextField *txtMerchant;
     IBOutlet UITextField *txtCategory;

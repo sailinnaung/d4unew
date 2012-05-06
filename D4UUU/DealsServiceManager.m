@@ -51,7 +51,7 @@ static DealsServiceManager *serviceManager =nil;
     
     
     DBManager* dbManager=[DBManager sharedDBManager];
-    NSString* categories=[dbManager categories];
+    NSString* categories=dbManager.categoriesSelected;
     //__block NSArray* returnArray=nil;
     NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@%@%@",SERVER_BASE_URL, SEARCH_GET_NEAREST_KEYWORD, SEARCH_LATITUDE_KEYWORD,latitude,SEARCH_LONGITUDE_KEYWORD,longitude, SEARCH_CATEGORY_KEYWORD,categories];
     
@@ -180,7 +180,7 @@ static DealsServiceManager *serviceManager =nil;
     
     
     DBManager* dbManager=[DBManager sharedDBManager];
-    NSString* categories=[dbManager categories];
+    NSString* categories=dbManager.categoriesSelected;
       
     NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@",SERVER_BASE_URL,SEARCH_TITLE_ACTION,CATEGORY_LIST,categories,SEARCH_TEXT_KEYWORD,searchText];
     NSLog(@"Calling url %@",urlString);

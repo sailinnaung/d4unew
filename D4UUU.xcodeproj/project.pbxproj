@@ -24,7 +24,7 @@
 		DB5CB91D1554F69D00D63FB0 /* WhatsAroundYouMasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */; };
 		DB5CB91E1554F69D00D63FB0 /* WhatsAroundYouMasterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */; };
 		DB5CB9231554F86500D63FB0 /* Deal.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9201554F86500D63FB0 /* Deal.m */; };
-		DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */; };
+		DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB5CB94A1554F94800D63FB0 /* popular.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9291554F94500D63FB0 /* popular.png */; };
 		DB5CB94B1554F94800D63FB0 /* popular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92A1554F94500D63FB0 /* popular@2x.png */; };
 		DB5CB94C1554F94800D63FB0 /* PopularController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB92C1554F94500D63FB0 /* PopularController.m */; };
@@ -49,7 +49,6 @@
 		DBCF1818155660A500E71680 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCF18161556609900E71680 /* MessageUI.framework */; };
 		DBDF245015552E79001140CC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF244D15552E79001140CC /* DBManager.m */; };
 		DBDF245515552F89001140CC /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDF245415552F89001140CC /* libsqlite3.0.dylib */; };
-		DBDF245715552FEA001140CC /* CategoriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDF245615552FEA001140CC /* CategoriesController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DBDF245E155537B9001140CC /* CategoryList.db in Resources */ = {isa = PBXBuildFile; fileRef = DBDF245D155537B9001140CC /* CategoryList.db */; };
 /* End PBXBuildFile section */
 
@@ -111,9 +110,7 @@
 		DBCF18161556609900E71680 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DBDF244C15552E78001140CC /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		DBDF244D15552E79001140CC /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
-		DBDF244E15552E79001140CC /* CategoriesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesController.h; sourceTree = "<group>"; };
 		DBDF245415552F89001140CC /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		DBDF245615552FEA001140CC /* CategoriesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesController.m; sourceTree = "<group>"; };
 		DBDF245D155537B9001140CC /* CategoryList.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = CategoryList.db; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,8 +184,6 @@
 				DB5CB93E1554F94600D63FB0 /* SettingsController.m */,
 				DBDF244C15552E78001140CC /* DBManager.h */,
 				DBDF244D15552E79001140CC /* DBManager.m */,
-				DBDF244E15552E79001140CC /* CategoriesController.h */,
-				DBDF245615552FEA001140CC /* CategoriesController.m */,
 				DB5CB93F1554F94600D63FB0 /* SettingsController.xib */,
 				DB5CB9401554F94700D63FB0 /* whatsaroundyou.png */,
 				DB4D5E0C155542C5007B4CAF /* CategoriesController.xib */,
@@ -328,7 +323,6 @@
 				DB5CB95A1554F94800D63FB0 /* SettingsController.m in Sources */,
 				DB5CB9601554F94800D63FB0 /* WhatsNewController.m in Sources */,
 				DBDF245015552E79001140CC /* DBManager.m in Sources */,
-				DBDF245715552FEA001140CC /* CategoriesController.m in Sources */,
 				DB4D5E1B155544D7007B4CAF /* KategoryController.m in Sources */,
 				DB4D5E28155555A9007B4CAF /* SearchController.m in Sources */,
 				DBCF181415565FD800E71680 /* PostDealController.m in Sources */,
