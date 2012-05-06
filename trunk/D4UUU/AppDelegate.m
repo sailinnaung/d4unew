@@ -90,19 +90,7 @@
 }
 
 
-- (void) loadSelectedFromDatabase {
-    DBManager* dbManager=[DBManager sharedDBManager];
-    if ([dbManager openDB] == true) {
-        
-        int iTemp = sqlite3_exec([dbManager database], "SELECT selected_category FROM SelectedCategory", CBSelected, self, NULL);
-        if (iTemp != SQLITE_OK) {
-            NSLog(@"Error executing SQL: %s", sqlite3_errmsg([dbManager database]));
-        }
-        [dbManager closeDB];
-    } else {
-        // alert failed to connect to database?
-    }
-}
+
 
 
 // CallBack method to load Available Selected into arrSelected
@@ -134,6 +122,19 @@ static int CBSelected (void *context, int count, char **values, char **columns)
     return SQLITE_OK;
 }
 
+- (void) loadSelectedFromDatabase {
+    DBManager* dbManager=[DBManager sharedDBManager];
+    if ([dbManager openDB] == true) {
+        
+        int iTemp = sqlite3_exec([dbManager database], "SELECT selected_category FROM SelectedCategory", CBSelected, self, NULL);
+        if (iTemp != SQLITE_OK) {
+            NSLog(@"Error executing SQL: %s", sqlite3_errmsg([dbManager database]));
+        }
+        [dbManager closeDB];
+    } else {
+        // alert failed to connect to database?
+    }
+}
 
 
 // CallBack method to load Available Categories into arrAvailable

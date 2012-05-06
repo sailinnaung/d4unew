@@ -12,6 +12,8 @@
 
 - (void) loadAvailableFromDatabase;
 - (void) loadSelectedFromDatabase;
+- (void) createEditableCopyOfDatabaseIfNeeded;
+
 @property (strong, nonatomic) UIWindow *window;
 
 @end
