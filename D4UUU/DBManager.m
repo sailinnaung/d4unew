@@ -16,6 +16,7 @@ static DBManager *dbManager = nil;
 @synthesize categoriesAvailable;
 @synthesize categoriesSelected;
 @synthesize arrAvailable;
+@synthesize arrLiked;
 
 + (DBManager *)sharedDBManager{
     if (dbManager==nil){

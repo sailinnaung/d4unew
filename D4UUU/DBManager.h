@@ -13,6 +13,7 @@
     NSMutableString* categoriesAvailable;
     NSMutableString* categoriesSelected;
     NSMutableArray *arrAvailable;
+    NSMutableArray *arrLiked;
 }
 
 @property sqlite3 *database;
@@ -25,5 +26,6 @@
 @property (strong, nonatomic) NSMutableString* categoriesSelected;
 @property (strong, nonatomic) NSMutableString* categoriesAvailable;
 @property (strong, nonatomic) NSMutableArray *arrAvailable;
+@property (strong, nonatomic) NSMutableArray *arrLiked;
 
 @end

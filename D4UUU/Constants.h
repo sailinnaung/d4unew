@@ -20,3 +20,4 @@
 
 
 #define DB_NAME @"CategoryList.db"
+#define SERVER_LIKE_URL @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post_liked.php"

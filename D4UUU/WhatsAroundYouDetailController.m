@@ -8,6 +8,8 @@
 
 #import "WhatsAroundYouDetailController.h"
 #import "Deal.h"
+#import "DBManager.h"
+#import "Constants.h"
 
 @interface WhatsAroundYouDetailController ()
 - (void)configureView;
@@ -51,10 +53,10 @@
     self.navigationItem.title =@"Detail";
     self.navigationController.navigationBar.backItem.title = @"Custom text";
     
+    
+    [self performLiked];
+    
 }
-
-
-
 
 - (void)viewDidUnload
 {
@@ -77,5 +79,38 @@
     }
     return self;
 }
-							
+
+
+// Chen Lim to post into local DB and post to server for a liked deal
+-(void) performLiked
+{
+    DBManager *dbManager = [DBManager sharedDBManager];
+    if ([dbManager openDB] == true) 
+    {
+        NSString *sSql = [NSString stringWithFormat:@"INSERT INTO Liked (liked_prmo_id) VALUES ('%@')", @"prmo20120000069"]; // HARDCODED prmo20120000069 here. TODO: Change to refer to current dealId
+        BOOL bSuccess = [dbManager executeSql:sSql];
+        if (bSuccess == true) 
+        {
+            // post to server to +1 like
+            NSString *post = @"action=liked&prmo_id=prmo20120000069";
+            NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+            
+            NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+            
+            NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+            [request setURL:[NSURL URLWithString:SERVER_LIKE_URL]];
+            [request setHTTPMethod:@"POST"];
+            [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+            [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+            [request setHTTPBody:postData];
+            
+            // sends to the server!
+            [[NSURLConnection alloc] initWithRequest:request delegate:nil];
+        }
+        else 
+        {
+            // alert user failed to update db?
+        }
+	}
+}
 @end
