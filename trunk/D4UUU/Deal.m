@@ -7,6 +7,7 @@
 //
 
 #import "Deal.h"
+#import "DBManager.h"
 
 @implementation Deal
 
@@ -22,6 +23,18 @@
     }
     
     return self;
+}
+
+-(BOOL) isLiked
+{
+    DBManager *dbManager = [DBManager sharedDBManager];
+    for (int i=0; i<dbManager.arrLiked.count; i++)
+    {
+        NSString *sTemp = [dbManager.arrLiked objectAtIndex:i];
+        if ([sTemp isEqualToString:self.dealId] == true)
+            return true;
+    }
+    return false;
 }
 
 @end

@@ -34,4 +34,6 @@
 
 -(id) initWithTitle:(NSString *)title andCategory: (NSString*) cat;
 
+-(BOOL) isLiked;
+
 @end
