@@ -60,6 +60,9 @@ static int CBSelected (void *context, int count, char **values, char **columns)
 {
     CategoriesController *self = (CategoriesController *)context;
 
+    NSString* tempString=[[[NSMutableString alloc] initWithString:@""]autorelease];
+
+    
     for (int i=0; i < count; i++)
     {
         const char *nameCString = values[i];
@@ -72,17 +75,19 @@ static int CBSelected (void *context, int count, char **values, char **columns)
             {                
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:j inSection:0];
                 [self.tblCountries selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+                tempString=[[tempString stringByAppendingString:sTemp] stringByAppendingString:@","];
+
             }
         }
     }
     
     //id object=[constructCategoryString:self.arrAvailable];
     
-    NSString* tempString=[[[NSMutableString alloc] initWithString:@""]autorelease];
-    if (self.arrAvailable){
+    /*NSString* tempString=[[[NSMutableString alloc] initWithString:@""]autorelease];
+    if (self.arrSelected){
         
         
-        for (NSString* eachCategory in self.arrAvailable){
+        for (NSString* eachCategory in self.arrSelected){
             
             tempString=[[tempString stringByAppendingString:eachCategory] stringByAppendingString:@","];
             
@@ -90,10 +95,12 @@ static int CBSelected (void *context, int count, char **values, char **columns)
         
         tempString=[tempString substringToIndex:[tempString length]-1];
     }
-    NSLog(@"MUtable category string %@", tempString);
-    
+    NSLog(@"Array Selected %@", tempString);
+    */
+    NSLog(@"Temp String before adding to categories %@", tempString);
     [DBManager sharedDBManager].categories=[[NSMutableString alloc]initWithString:tempString];
 
+    
     
     return SQLITE_OK;
 }
