@@ -140,7 +140,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="is_Featured" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FKw-vC-e8F">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Is Featured" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FKw-vC-e8F">
                                 <rect key="frame" x="15" y="145" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -225,7 +225,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ERb-E5-kY9">
-                                <rect key="frame" x="141" y="209" width="77" height="31"/>
+                                <rect key="frame" x="138" y="209" width="77" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -295,23 +295,31 @@
                                     <outlet property="delegate" destination="gsT-51-30v" id="z0H-JL-a29"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BfT-ql-H37">
-                                <rect key="frame" x="191" y="147" width="109" height="23"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hNg-hO-GwC">
+                                <rect key="frame" x="196" y="146" width="104" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Upload Picture">
+                                <state key="normal" title="Upload Image">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="imgSel" destination="gsT-51-30v" eventType="touchUpInside" id="Rao-8I-xLv"/>
+                                </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="lex-ZA-Ybm">
+                                <rect key="frame" x="166" y="196" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Post Deal" image="postdeal.png" id="YAn-g5-BWV"/>
                     <connections>
+                        <outlet property="spinningWheel" destination="lex-ZA-Ybm" id="rDa-ev-SH8"/>
                         <outlet property="switchIsFeatured" destination="aBm-yg-5TZ" id="ZXz-Vx-fmu"/>
                         <outlet property="txtCategory" destination="bpL-CM-Ony" id="jWo-Hr-1PJ"/>
                         <outlet property="txtDescription" destination="NW0-tS-xvt" id="m10-ak-aNf"/>
@@ -690,11 +698,13 @@
                 <relationship kind="action" name="emailDeal"/>
                 <relationship kind="action" name="endDateEditDidBegin:"/>
                 <relationship kind="action" name="getLocation"/>
+                <relationship kind="action" name="imgSel"/>
                 <relationship kind="action" name="presentCategoryPickerActionSheet"/>
                 <relationship kind="action" name="smsDeal"/>
                 <relationship kind="action" name="startDateEditDidBegin:"/>
                 <relationship kind="action" name="switchDidBegin:"/>
                 <relationship kind="outlet" name="locationManager" candidateClass="CLLocationManager"/>
+                <relationship kind="outlet" name="spinningWheel" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="switchIsFeatured" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="txtCategory" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>

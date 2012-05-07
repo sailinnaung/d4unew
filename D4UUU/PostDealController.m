@@ -14,7 +14,7 @@
 @end
 
 @implementation PostDealController 
-
+@synthesize imageData, sResponse, spinningWheel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,25 +80,99 @@
 }	
 
 
-- (IBAction) addDeal {    
-/*    NSString *urlString = [NSString stringWithFormat:@"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@&prmo_datetime_start=%@&prmo_datetime_end=%@&prmo_remarks=%@", */
- /*   NSString *urlString = [NSString stringWithFormat:@"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=0&prmo_description=%@&prmo_lat=%@&prmo_long=%@",                            [txtTitle.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           [txtMerchant.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           [txtCategory.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                       //    [(NSString*)switchIsFeatured.isOn stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           [txtDescription.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           [@"1" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           [@"0" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] ];//,
-                         //  [@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                           //[@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-                         //  [txtRemarks.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-  */ 
+- (IBAction) addDeal {
+    // Chen Lim : Start posting with Image Upload
+    NSString *urlString = @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    NSMutableData *body = [NSMutableData data];
+    
+    
+    NSString *boundary = [NSString stringWithString:@"---------------------------14737809831466499882746641449"];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+    [request addValue:contentType forHTTPHeaderField:@"Content-Type"];
+    
+    // file
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"Content-Disposition: attachment; name=\"prmo_image_main\"; filename=\"fromiPhoneApp.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Text parameter1
+    NSString *param1 = @"create";
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"action\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param1 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
 
-/*  escape($_POST["prmo_title"]), escape($_POST["prmo_merchant"]), escape($_POST["prmo_category"]), escape($_POST["prmo_is_featured"]), escape($_POST["prmo_description"]), escape($_POST["prmo_lat"]), escape($_POST["prmo_long"]), 0, escape($_POST["prmo_datetime_start"]), escape($_POST["prmo_datetime_end"]), 
-  */  
- //   NSString *myRequestString = @"action=create&prmo_title=a&prmo_merchant=b&prmo_category=c&prmo_is_featured=0&prmo_description=d&prmo_lat=1&prmo_long=2";
+    // Another text parameter
+    NSString *param2 = txtTitle.text;
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_title\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param2 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     
+    // Another text parameter
+    NSString *param3 = txtMerchant.text;
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_merchant\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param3 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     
+    // Another text parameter
+    NSString *param4 = txtCategory.text;
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_category\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param4 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Another text parameter
+    NSString *param5 = switchIsFeatured.on ? @"1" : @"0";
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_is_featured\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param5 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Another text parameter
+    NSString *param6 = txtDescription.text;
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param6 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Another text parameter
+    NSString *param7 = txtLocationLat.text;
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_lat\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param7 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Another text parameter
+    NSString *param8 = txtLocationLong.text;
+    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_long\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[param8 dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // close form
+    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    // set request body
+    [request setHTTPBody:body];
+    
+    //call the url Asynchronously
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [spinningWheel startAnimating];
+    
+    /*NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+
+    */
+    // Chen Lim : End posting with Image Upload
+    
+    /*
+    original codes by Vincent
     NSString *myRequestString = [NSString stringWithFormat: @"action=create&prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@",
     txtTitle.text,
     txtMerchant.text,
@@ -115,7 +189,7 @@
     [request setHTTPMethod: @"POST"];
     [request setHTTPBody: myRequestData];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-
+    
     NSError *error;
     NSURLResponse *response;
     NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error:&error];
@@ -129,7 +203,64 @@
     
     [alert show];
     }
+    */
+    
 
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	//NSLog(@"Did receive response");
+    // cast the response to NSHTTPURLResponse so we can look for 404 etc
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    if ([httpResponse statusCode] >= 400) 
+    {
+        [spinningWheel stopAnimating];
+        UIAlertView *alert;
+        alert = [[UIAlertView alloc] initWithTitle: @"Problem with Server-Side."
+                                           message: @"Deal Not Posted."
+                                          delegate: self cancelButtonTitle:
+                 @"Close" otherButtonTitles: nil];
+    }
+    else 
+    {
+        sResponse = [[NSMutableString alloc] initWithString:@""];
+    }
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)theData{
+    //NSLog(@"String sent from server %@",[[NSString alloc] initWithData:theData encoding: NSUTF8StringEncoding]);
+    NSString *sTemp = [[NSString alloc] initWithData:theData encoding:NSUTF8StringEncoding];
+    [sResponse appendString:sTemp];
+}
+- (void)connectionDidFail:(NSURLConnection *)connection {
+	//NSLog(@"Connection Failed");
+    [spinningWheel stopAnimating];
+    UIAlertView *alert;
+    alert = [[UIAlertView alloc] initWithTitle: @"Failed To Connect To Server"
+                                       message: @"Deal Not Posted."
+                                      delegate: self cancelButtonTitle:
+             @"Close" otherButtonTitles: nil];
+}
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+	//NSLog(@"Connection Did Finish Loading!");
+    [spinningWheel stopAnimating];
+    
+    NSRange range = [sResponse rangeOfString:@"Promotion Successfully Created"];
+    UIAlertView *alert;
+    if (range.location != NSNotFound)
+    {
+        alert = [[UIAlertView alloc] initWithTitle: @"Post Deal Result"
+                                           message: @"Deal Posted Sucessfully!"
+                                          delegate: self cancelButtonTitle:
+                 @"Close" otherButtonTitles: nil];
+    }
+    else
+    {
+        alert = [[UIAlertView alloc] initWithTitle: @"Post Deal Result"
+                                           message: @"Deal Not Posted."
+                                          delegate: self cancelButtonTitle:
+                 @"Close" otherButtonTitles: nil];
+    }
+    [alert show];
 }
 
 - (IBAction) emailDeal {
@@ -320,5 +451,43 @@
     
 }
 
+-(void)imgSel
+{
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentModalViewController:picker animated:YES];
+        //[picker release];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"errore accesso photo library" 
+                                                        message:@"il device non supporta la photo library" 
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"OK" 
+                                              otherButtonTitles:nil];
+        [alert show];
+        //[alert release];
+    }
+
+}
+
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *newImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+
+    imageData = UIImageJPEGRepresentation(newImage, 0.5);
+    
+    [picker dismissModalViewControllerAnimated:YES];
+}
 
 @end
