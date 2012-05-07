@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @class DetailController;
 
@@ -15,13 +16,13 @@
     
     NSMutableArray* deals;
     CLLocationManager *locationManager;
-   // UITableView *dealsTableView;
+    UITableView *dealsTableView;
     NSUInteger noUpdates;
 }
 
 @property (strong, nonatomic) DetailController *detailViewController;
 @property (strong, nonatomic) NSMutableArray* deals;
-//@property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
+@property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
 -(void) updateLocationAndCategory;
     
 @end

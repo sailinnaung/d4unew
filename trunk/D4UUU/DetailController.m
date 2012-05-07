@@ -48,19 +48,30 @@
         //self.dealId=dealItem.; //TODO location
         self.dealMerchantName.text=dealItem.merchantName;
         
-        
-        NSURL *url = [NSURL URLWithString:dealItem.imageUrl];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage *tempImage = [UIImage imageWithData:data];
+        if (dealItem.imageUrl.length ==0){
             
-        self.dealImage.image=tempImage;
+            UIImage* tempImage=[UIImage imageNamed:@"noImage.jpg"];
+            self.dealImage.image=tempImage;
+
+            
+        }
+        else{
+            
+            NSURL *url = [NSURL URLWithString:dealItem.imageUrl];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *tempImage = [UIImage imageWithData:data];
+            self.dealImage.image=tempImage;
+        }
+        
+            
+       
         
         
         
             
            /* CLLocation *location=[[CLLocation alloc]init];
             CLLocationCoordinate2D *location2d=[CLloca*/
-        CLLocation *location=[locationManager location];
+        /*CLLocation *location=[locationManager location];
             
         CLLocationCoordinate2D location2d=location.coordinate;
             
@@ -75,7 +86,7 @@
             self.dealLocation.text=currentLocation;
                 
             }];
-        
+        */
         
         
     }
@@ -91,7 +102,7 @@
     self.navigationItem.title =@"Detail";
     self.navigationController.navigationBar.backItem.title = @"Custom text";
     
-    geoCoder=[[CLGeocoder alloc] init];
+    //geoCoder=[[CLGeocoder alloc] init];
     
     
     //[self performLiked];
