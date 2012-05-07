@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D2001" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="QyS-yn-dg3">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pp-lI-k76" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="9uN-Bf-Fdb" customClass="WhatsAroundYouMasterController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hH5-te-pQa">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hH5-te-pQa">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DetailCell" id="yci-Xw-1LW">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WhatsAroundDetailCell" id="yci-Xw-1LW">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -23,6 +24,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="VRj-28-mIt" kind="push" identifier="WhatsAroundDetailIdentifer" id="P81-Z4-4ZX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -33,12 +37,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="iLA-cq-VZO"/>
                     <connections>
-                        <segue destination="VRj-28-mIt" kind="push" identifier="WhatsAroundDetailSegue" id="kdA-hD-Bp5"/>
+                        <outlet property="dealsTableView" destination="hH5-te-pQa" id="hwG-jP-UPu"/>
                     </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1" y="-1314"/>
         </scene>
+        <!--Navigation Controller - Around You-->
         <scene sceneID="UHF-aE-Ycx">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFH-fW-jpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -54,6 +59,7 @@
             </objects>
             <point key="canvasLocation" x="-639" y="-1314"/>
         </scene>
+        <!--Post Deal Controller - Post Deal-->
         <scene sceneID="TSd-ir-Qud">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYB-Zn-a3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,6 +327,7 @@
             </objects>
             <point key="canvasLocation" x="-639" y="339"/>
         </scene>
+        <!--Kategory Controller - Categories-->
         <scene sceneID="iA3-bH-21Q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fZ-2m-wRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -350,6 +357,7 @@
             </objects>
             <point key="canvasLocation" x="-630" y="1630"/>
         </scene>
+        <!--Navigation Controller - Search New-->
         <scene sceneID="ZZj-9a-QCi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94Y-gV-53P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,6 +373,7 @@
             </objects>
             <point key="canvasLocation" x="-1108" y="-465"/>
         </scene>
+        <!--Search Controller - Search-->
         <scene sceneID="0QC-3y-4I5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQc-o6-NOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -478,6 +487,7 @@
             </objects>
             <point key="canvasLocation" x="-426" y="-450"/>
         </scene>
+        <!--Detail Controller-->
         <scene sceneID="zpU-EA-dxk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNI-pN-ZKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -567,8 +577,9 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1296" y="-839"/>
+            <point key="canvasLocation" x="944" y="-539"/>
         </scene>
+        <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -591,6 +602,7 @@
             </objects>
             <point key="canvasLocation" x="-2156" y="53"/>
         </scene>
+        <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="ML1-Kg-lEf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoL-70-V7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -616,6 +628,7 @@
             </objects>
             <point key="canvasLocation" x="139" y="899"/>
         </scene>
+        <!--Navigation Controller - Browse-->
         <scene sceneID="Ygp-G0-K7g">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bH-SD-r8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -705,6 +718,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kdA-hD-Bp5"/>
+        <segue reference="P81-Z4-4ZX"/>
     </inferredMetricsTieBreakers>
 </document>

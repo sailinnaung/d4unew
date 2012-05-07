@@ -47,6 +47,8 @@
 		DB5CB9611554F94800D63FB0 /* WhatsNewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9461554F94700D63FB0 /* WhatsNewController.xib */; };
 		DB5CB96B155515D200D63FB0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB969155515B900D63FB0 /* MapKit.framework */; };
 		DB5CB96C155515D200D63FB0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB967155515B200D63FB0 /* CoreLocation.framework */; };
+		DBCE5E801557DCD70099A14F /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DBCE5E7F1557DCD70099A14F /* noImage.jpg */; };
+		DBCE5E841557E3910099A14F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE5E821557E3850099A14F /* QuartzCore.framework */; };
 		DBCF181415565FD800E71680 /* PostDealController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCF181215565FD800E71680 /* PostDealController.m */; };
 		DBCF181515565FD800E71680 /* PostDealController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCF181315565FD800E71680 /* PostDealController.xib */; };
 		DBCF1818155660A500E71680 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCF18161556609900E71680 /* MessageUI.framework */; };
@@ -83,7 +85,7 @@
 		DB5CB8F91554F5EE00D63FB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB5CB8FA1554F5EE00D63FB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DB5CB8FD1554F5EE00D63FB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		DB5CB9141554F69D00D63FB0 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DetailController.h; sourceTree = "<group>"; };
+		DB5CB9141554F69D00D63FB0 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailController.h; sourceTree = "<group>"; };
 		DB5CB9151554F69D00D63FB0 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
 		DB5CB9161554F69D00D63FB0 /* DetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailController.xib; sourceTree = "<group>"; };
 		DB5CB9171554F69D00D63FB0 /* WhatsAroundYouMasterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatsAroundYouMasterController.h; sourceTree = "<group>"; };
@@ -112,6 +114,8 @@
 		DB5CB9661554FDAB00D63FB0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DB5CB967155515B200D63FB0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DB5CB969155515B900D63FB0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DBCE5E7F1557DCD70099A14F /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noImage.jpg; sourceTree = "<group>"; };
+		DBCE5E821557E3850099A14F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DBCF181115565FD800E71680 /* PostDealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDealController.h; sourceTree = "<group>"; };
 		DBCF181215565FD800E71680 /* PostDealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDealController.m; sourceTree = "<group>"; };
 		DBCF181315565FD800E71680 /* PostDealController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDealController.xib; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				DB5CB8EB1554F5ED00D63FB0 /* UIKit.framework in Frameworks */,
 				DB5CB96B155515D200D63FB0 /* MapKit.framework in Frameworks */,
 				DBCF1818155660A500E71680 /* MessageUI.framework in Frameworks */,
+				DBCE5E841557E3910099A14F /* QuartzCore.framework in Frameworks */,
 				DB5CB96C155515D200D63FB0 /* CoreLocation.framework in Frameworks */,
 				DB5CB8ED1554F5ED00D63FB0 /* Foundation.framework in Frameworks */,
 				DB5CB8EF1554F5ED00D63FB0 /* CoreGraphics.framework in Frameworks */,
@@ -160,6 +165,7 @@
 		DB5CB8E91554F5ED00D63FB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBCE5E821557E3850099A14F /* QuartzCore.framework */,
 				DBDF245415552F89001140CC /* libsqlite3.0.dylib */,
 				DB5CB969155515B900D63FB0 /* MapKit.framework */,
 				DB5CB967155515B200D63FB0 /* CoreLocation.framework */,
@@ -186,6 +192,7 @@
 				DB5B4ED41556E58F00A1D34D /* SVProgressHUD.h */,
 				DB5B4ED51556E58F00A1D34D /* SVProgressHUD.m */,
 				DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */,
+				DBCE5E7F1557DCD70099A14F /* noImage.jpg */,
 				DB5CB9331554F94600D63FB0 /* search@2x.png */,
 				DB5B4EE61556E9C000A1D34D /* MBProgressHUD.h */,
 				DB5B4EE71556E9C000A1D34D /* MBProgressHUD.m */,
@@ -317,6 +324,7 @@
 				DB5B4EBF1556BD9000A1D34D /* settings.png in Resources */,
 				DB5B4EC11556BE5900A1D34D /* postdeal.png in Resources */,
 				DB5B4EEB155707DB00A1D34D /* Default.png in Resources */,
+				DBCE5E801557DCD70099A14F /* noImage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
