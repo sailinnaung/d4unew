@@ -15,13 +15,13 @@
     
     NSMutableArray* deals;
     CLLocationManager *locationManager;
-    UITableView *dealsTableView;
+   // UITableView *dealsTableView;
     NSUInteger noUpdates;
 }
 
 @property (strong, nonatomic) DetailController *detailViewController;
 @property (strong, nonatomic) NSMutableArray* deals;
-@property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
+//@property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
 -(void) updateLocationAndCategory;
     
 @end
