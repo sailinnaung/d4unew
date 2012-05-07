@@ -11,6 +11,7 @@
 #import "WhatsAroundYouDetailController.h"
 #import "DealsServiceManager.h"
 #import "Deal.h"
+#import "MBProgressHUD.h"
 
 
 
@@ -39,7 +40,7 @@ DealsServiceManager *dealsManager=nil;
 	// Do any additional setup after loading the view, typically from a nib.
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    self.navigationItem.title =@"Master";
+    self.navigationItem.title =@"Around you";
     self.navigationItem.hidesBackButton = FALSE;
     
     /*UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
@@ -57,15 +58,20 @@ DealsServiceManager *dealsManager=nil;
 }
 
 -(void) updateLocationAndCategory{
-    
-    
-    dealsManager=[DealsServiceManager sharedManager];
-    locationManager=[[CLLocationManager alloc] init];
-    
-    locationManager.delegate=self;
-    [locationManager startUpdatingLocation];
+   
+        
+        
+        dealsManager=[DealsServiceManager sharedManager];
+        locationManager=[[CLLocationManager alloc] init];
+        
+        locationManager.delegate=self;
+        [locationManager startUpdatingLocation];
+       
     
 }
+
+
+
 
 - (void)viewDidUnload
 {
@@ -295,9 +301,35 @@ DealsServiceManager *dealsManager=nil;
     //[[NSString stringWithFormat:@"%+.6f,%+.6f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude] isEqualToString:@"+0.000000,+0.000000"])
     
     
+    
     NSString *latitude=[NSString stringWithFormat:@"%+.6f", newLocation.coordinate.latitude];
     NSString *longitude=[NSString stringWithFormat:@"%+.6f", newLocation.coordinate.longitude];
-    [self updateLocationWithLatitude:latitude andLongitude:longitude];
+    
+    //(void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;
+
+    
+    //[SVProgressHUD showWithStatus:@"Please wait... Refreshing data" maskType:SVProgressHUDMaskTypeBlack];
+    
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.labelText = @"Please wait... Refreshing data";
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        
+        [self updateLocationWithLatitude:latitude andLongitude:longitude];
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
+    
+   
+
+    
+    //[SVProgressHUD dismissWithSuccess:@"Cool. Refresh done."];
     
     
     
