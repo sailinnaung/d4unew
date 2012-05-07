@@ -18,6 +18,7 @@
 @implementation WhatsAroundYouMasterController 
 
 @synthesize deals;
+@synthesize dealsTableView;
 DealsServiceManager *dealsManager=nil;
 
 
@@ -153,9 +154,29 @@ DealsServiceManager *dealsManager=nil;
     }];
      */
     
-    NSURL *url = [NSURL URLWithString:imageUrl];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [UIImage imageWithData:data];
+    UIImage *scaledImage=nil;
+    
+    if (imageUrl.length ==0){
+        
+        UIImage* tempImage=[UIImage imageNamed:@"noImage.jpg"];
+        //self.dealImage.image=tempImage;
+        scaledImage=[self scale:tempImage];
+        
+    }
+    else{
+        
+        
+        NSURL *url = [NSURL URLWithString:imageUrl];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        
+        scaledImage=[self scale:image];
+    }
+
+    
+   
+    
+        
     
     //cell.imageView.image= [imageView image];
     cell.textLabel.text = deal.dealTitle;
@@ -163,12 +184,14 @@ DealsServiceManager *dealsManager=nil;
     NSString* subtitle=[NSString stringWithString:deal.description];
     cell.detailTextLabel.text=subtitle;
     
-    [cell.imageView setBounds:CGRectMake(0, 0, 50, 50)];
-    [cell.imageView setClipsToBounds:NO];
-    [cell.imageView setFrame:CGRectMake(0, 0, 50, 50)];
-    [cell.imageView setContentMode:UIViewContentModeScaleAspectFill];
-
-    cell.imageView.image=image;
+    
+    [self borderAndSmoothImageView:cell.imageView];
+    
+   
+    
+      
+   
+    cell.imageView.image=scaledImage;
     NSLog(@"Cell image %@",cell.imageView.image.description );
     
      cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -223,18 +246,36 @@ DealsServiceManager *dealsManager=nil;
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-       
-    NSLog(@"inside WhatsAroundMasterController.didSelectRowAtIndexPath at %@",indexPath);
+    if(self.deals.count>0){
+        NSLog(@"inside WhatsAroundController.didSelectRowAtIndexPath at %@",indexPath);
+        
+        [self performSegueWithIdentifier:@"WhatsAroundDetailIdentifer" sender:self]; 
+        NSLog(@"Segue performed");
+        
+        
+    }else{
+        NSLog(@"inside WhatsAroundController.didSelectRowAtIndexPath No Deals");
+    }   
     
-    [self performSegueWithIdentifier:@"WhatsAroundDetailIdentifier" sender:self]; 
-    NSLog(@"Segue performed");
+}
+
+/*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (!self.detailViewController) {
+        self.detailViewController = [[DetailController alloc] initWithNibName:@"DetailController" bundle:nil];
+        //self.detail2ViewController.parameter=[[NSNumber numberWithInteger:indexPath.row]stringValue];
+        
+    }
     
    
     //NSArray *array=[NSArray arrayWithObject:deals];
     
-   /* NSLog(@"Detail view controller %@",self.detailViewController.description);
+    NSLog(@"Detail view controller %@",self.detailViewController.description);
     Deal* object = [deals objectAtIndex:indexPath.row];
      NSLog(@"Deal object %@", object.description);
     self.detailViewController.dealItem = object;
@@ -248,10 +289,10 @@ DealsServiceManager *dealsManager=nil;
     self.detailViewController.masterController = self; 
 
    // [self.view insertSubview:self.detailViewController.view belowSubview:self.view];
-   */
-    /*if (currentViewController != nil)
+   
+    if (currentViewController != nil)
         [currentViewController.view removeFromSuperview];
-    currentViewController = tab2ViewController; */
+    currentViewController = tab2ViewController; 
     
     //[self.view addSubview:self.detailViewController.view];
        
@@ -262,7 +303,7 @@ DealsServiceManager *dealsManager=nil;
     
     
         
-}
+}*/
 
 -(void) loadView{
     
@@ -341,13 +382,13 @@ DealsServiceManager *dealsManager=nil;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSLog(@"Invoking prepare for segue");
-    if([[segue identifier] isEqualToString:@"SearchDetailIdentifer"]){
+    if([[segue identifier] isEqualToString:@"WhatsAroundDetailIdentifer"]){
         
         NSLog(@"String from class %@", NSStringFromClass([[segue destinationViewController] class]));
         
         DetailController *passDeal = (DetailController *)[segue destinationViewController];
         
-        Deal* object = [deals objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        Deal* object = [deals objectAtIndex:self.dealsTableView.indexPathForSelectedRow.row];
         NSLog(@"Deal object %@", object.description);
         passDeal.dealItem = object;
         
@@ -355,6 +396,30 @@ DealsServiceManager *dealsManager=nil;
         
         NSLog(@"Done setting deal item");
     }
+}
+
+
+- (UIImage *)scale:(UIImage *)image
+{
+    CGSize size = (CGSize){.width = 75.0f, .height = 75.0f};
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
+
+-(void) borderAndSmoothImageView:(UIImageView*) tempImageView{
+
+    [tempImageView setBounds:CGRectMake(0, 0, 50, 50)];
+    [tempImageView setClipsToBounds:NO];
+    [tempImageView setFrame:CGRectMake(0, 0, 50, 50)];
+    [tempImageView setContentMode:UIViewContentModeScaleAspectFit];
+    tempImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    tempImageView.layer.borderWidth = 1.0;
+    tempImageView.layer.cornerRadius = 5.0;
+    tempImageView.layer.masksToBounds = YES;
+
 }
 
 
