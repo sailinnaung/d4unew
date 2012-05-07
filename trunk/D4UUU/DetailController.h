@@ -21,6 +21,9 @@
     UILabel *dealMerchantName;
     UIImageView *dealImage;
     
+    CLGeocoder *geoCoder;
+    CLLocationManager *locationManager;
+    
 }
 
 //@property (strong, nonatomic) IBOutlet UILabel* dealId;

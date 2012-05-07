@@ -40,21 +40,42 @@
     NSLog(@"Incoming deal in Detail controller item %@",dealItem.description);
     if (self.dealItem) {
         //self.detailDescriptionLabel.text = [self.detailItem description];
-        NSLog(@"Incoming deal in Detail controller is %@", dealItem.dealTitle);
-        
-   
-        //self.dealId.text=dealItem.dealId;
+        NSLog(@"Incoming deal image url in Detail controller is %@", dealItem.imageUrl);
+        NSLog(@"Incoming deal latitude in Detail controller is %@", dealItem.latitude);
         self.dealTitle.text=dealItem.dealTitle;
         self.dealCategory.text=dealItem.category;
-        //self.description.text=dealItem.description;
+        self.dealDescr.text=dealItem.description;
         //self.dealId=dealItem.; //TODO location
         self.dealMerchantName.text=dealItem.merchantName;
+        
         
         NSURL *url = [NSURL URLWithString:dealItem.imageUrl];
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage *tempImage = [UIImage imageWithData:data];
-        
+            
         self.dealImage.image=tempImage;
+        
+        
+        
+            
+           /* CLLocation *location=[[CLLocation alloc]init];
+            CLLocationCoordinate2D *location2d=[CLloca*/
+        CLLocation *location=[locationManager location];
+            
+        CLLocationCoordinate2D location2d=location.coordinate;
+            
+        location2d.latitude=[dealItem.latitude floatValue];
+        location2d.longitude=[dealItem.latitude floatValue];
+            
+        [geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            CLPlacemark *firsPlaceMark=[placemarks objectAtIndex:0];
+            NSString* currentLocation = [firsPlaceMark.locality stringByAppendingFormat:@", "];
+            currentLocation = [currentLocation stringByAppendingString:firsPlaceMark.country];
+                
+            self.dealLocation.text=currentLocation;
+                
+            }];
+        
         
         
     }
@@ -69,6 +90,8 @@
     
     self.navigationItem.title =@"Detail";
     self.navigationController.navigationBar.backItem.title = @"Custom text";
+    
+    geoCoder=[[CLGeocoder alloc] init];
     
     
     //[self performLiked];
