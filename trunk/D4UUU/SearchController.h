@@ -28,5 +28,6 @@
 @property (strong, nonatomic) DetailController *detailViewController;
 
 -(void)handleDealSearchbyText:(NSString *) SearchText;
+-(UIImage *)scale:(UIImage *)image;
 
 @end

@@ -14,7 +14,6 @@
 #import "MBProgressHUD.h"
 
 
-
 @implementation WhatsAroundYouMasterController 
 
 @synthesize deals;

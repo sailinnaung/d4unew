@@ -23,6 +23,9 @@
 @property (strong, nonatomic) DetailController *detailViewController;
 @property (strong, nonatomic) NSMutableArray* deals;
 @property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
+
 -(void) updateLocationAndCategory;
+-(void) borderAndSmoothImageView:(UIImageView*) tempImageView;
+- (UIImage *)scale:(UIImage *)image;
     
 @end

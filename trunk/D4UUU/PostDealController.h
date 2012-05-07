@@ -31,12 +31,14 @@
     
     DBManager* dbManager;
     UIActionSheet *actPickerSheet;
+
     
     // Start added by Chen Lim for image upload
     NSData *imageData; 
     NSMutableString *sResponse;
     IBOutlet UIActivityIndicatorView *spinningWheel;
     // End added by Chen Lim for image upload
+
 }
 
 
