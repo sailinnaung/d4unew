@@ -26,8 +26,8 @@
 		DB5CB8F71554F5EE00D63FB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB8F61554F5EE00D63FB0 /* main.m */; };
 		DB5CB8FB1554F5EE00D63FB0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB8FA1554F5EE00D63FB0 /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB5CB8FE1554F5EE00D63FB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB8FC1554F5EE00D63FB0 /* MainStoryboard.storyboard */; };
-		DB5CB91B1554F69D00D63FB0 /* WhatsAroundYouDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9151554F69D00D63FB0 /* WhatsAroundYouDetailController.m */; };
-		DB5CB91C1554F69D00D63FB0 /* WhatsAroundYouDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9161554F69D00D63FB0 /* WhatsAroundYouDetailController.xib */; };
+		DB5CB91B1554F69D00D63FB0 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9151554F69D00D63FB0 /* DetailController.m */; };
+		DB5CB91C1554F69D00D63FB0 /* DetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9161554F69D00D63FB0 /* DetailController.xib */; };
 		DB5CB91D1554F69D00D63FB0 /* WhatsAroundYouMasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */; };
 		DB5CB91E1554F69D00D63FB0 /* WhatsAroundYouMasterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */; };
 		DB5CB9231554F86500D63FB0 /* Deal.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9201554F86500D63FB0 /* Deal.m */; };
@@ -83,9 +83,9 @@
 		DB5CB8F91554F5EE00D63FB0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DB5CB8FA1554F5EE00D63FB0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DB5CB8FD1554F5EE00D63FB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		DB5CB9141554F69D00D63FB0 /* WhatsAroundYouDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatsAroundYouDetailController.h; sourceTree = "<group>"; };
-		DB5CB9151554F69D00D63FB0 /* WhatsAroundYouDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatsAroundYouDetailController.m; sourceTree = "<group>"; };
-		DB5CB9161554F69D00D63FB0 /* WhatsAroundYouDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhatsAroundYouDetailController.xib; sourceTree = "<group>"; };
+		DB5CB9141554F69D00D63FB0 /* DetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DetailController.h; sourceTree = "<group>"; };
+		DB5CB9151554F69D00D63FB0 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
+		DB5CB9161554F69D00D63FB0 /* DetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailController.xib; sourceTree = "<group>"; };
 		DB5CB9171554F69D00D63FB0 /* WhatsAroundYouMasterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatsAroundYouMasterController.h; sourceTree = "<group>"; };
 		DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatsAroundYouMasterController.m; sourceTree = "<group>"; };
 		DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhatsAroundYouMasterController.xib; sourceTree = "<group>"; };
@@ -213,9 +213,9 @@
 				DB5CB9201554F86500D63FB0 /* Deal.m */,
 				DB5CB9211554F86500D63FB0 /* DealsServiceManager.h */,
 				DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */,
-				DB5CB9141554F69D00D63FB0 /* WhatsAroundYouDetailController.h */,
-				DB5CB9151554F69D00D63FB0 /* WhatsAroundYouDetailController.m */,
-				DB5CB9161554F69D00D63FB0 /* WhatsAroundYouDetailController.xib */,
+				DB5CB9141554F69D00D63FB0 /* DetailController.h */,
+				DB5CB9151554F69D00D63FB0 /* DetailController.m */,
+				DB5CB9161554F69D00D63FB0 /* DetailController.xib */,
 				DB5CB9171554F69D00D63FB0 /* WhatsAroundYouMasterController.h */,
 				DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */,
 				DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */,
@@ -295,7 +295,7 @@
 			files = (
 				DB5CB8F51554F5ED00D63FB0 /* InfoPlist.strings in Resources */,
 				DB5CB8FE1554F5EE00D63FB0 /* MainStoryboard.storyboard in Resources */,
-				DB5CB91C1554F69D00D63FB0 /* WhatsAroundYouDetailController.xib in Resources */,
+				DB5CB91C1554F69D00D63FB0 /* DetailController.xib in Resources */,
 				DB5CB91E1554F69D00D63FB0 /* WhatsAroundYouMasterController.xib in Resources */,
 				DB5CB94A1554F94800D63FB0 /* popular.png in Resources */,
 				DB5CB94B1554F94800D63FB0 /* popular@2x.png in Resources */,
@@ -329,7 +329,7 @@
 			files = (
 				DB5CB8F71554F5EE00D63FB0 /* main.m in Sources */,
 				DB5CB8FB1554F5EE00D63FB0 /* AppDelegate.m in Sources */,
-				DB5CB91B1554F69D00D63FB0 /* WhatsAroundYouDetailController.m in Sources */,
+				DB5CB91B1554F69D00D63FB0 /* DetailController.m in Sources */,
 				DB5CB91D1554F69D00D63FB0 /* WhatsAroundYouMasterController.m in Sources */,
 				DB5CB9231554F86500D63FB0 /* Deal.m in Sources */,
 				DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */,
