@@ -40,6 +40,8 @@
 -(IBAction)likeDeal:(id)sender;
 -(IBAction)showActionSheet:(id)sender;
 
+-(void) performLiked;
+
 //@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end

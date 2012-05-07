@@ -37,6 +37,9 @@
     arrayCategory =dbManager.arrAvailable;
 	
     switchIsFeatured.on = NO;
+    txtLocationLong.enabled = NO;
+    txtLocationLat.enabled = NO;
+    
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -79,8 +82,64 @@
 	NSLog(@"%@ selected",[arrayCategory objectAtIndex:row]);
 }	
 
+- (BOOL) inputTextValidation
+{
+    NSString *errMessage = [[NSString alloc] init];
+    errMessage = [errMessage stringByAppendingString:@"Please key in "];
+    
+    if([txtTitle.text length]==0){
+        
+        errMessage = [errMessage stringByAppendingString:@"\n the promotion title name "];
+        NSLog(@"errMessage: %@",errMessage);
+    }
+    if([txtMerchant.text length]==0){
+        
+        errMessage = [errMessage stringByAppendingString:@"\n the Merchant name"];
+        NSLog(@"errMessage: %@",errMessage);
+    }
+    if([txtCategory.text length]==0){
+        
+        errMessage = [errMessage stringByAppendingString:@"\n the promotion category"];
+        NSLog(@"errMessage: %@",errMessage);
+    }
+    if([txtDescription.text length]==0){
+        
+        errMessage = [errMessage stringByAppendingString:@"\n the promotion description"];
+        NSLog(@"errMessage: %@",errMessage);
+    }
+    if(([txtLocationLat.text length]==0) || ([txtLocationLong.text length]==0)){
+        
+        errMessage = [errMessage stringByAppendingString:@"\n and Please click for location selector."];
+        NSLog(@"errMessage: %@",errMessage);
+    }
+    
+    NSLog(@"errMessage: %@",errMessage);
+    
+    if(([txtTitle.text length]==0) || 
+       ([txtMerchant.text length]==0) ||
+       ([txtCategory.text length]==0) ||
+       ([txtDescription.text length]==0) ||
+       ([txtLocationLat.text length]==0) ||
+       ([txtLocationLong.text length]==0)){
+        NSLog(@"inside Error Flag");
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Invalid Value!!"
+                              message: errMessage
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        [alert show];
+        
+        return NO;
+    }else{
+        return YES;
+    }
+
+}
 
 - (IBAction) addDeal {
+    if ([self inputTextValidation])
+    {
     // Chen Lim : Start posting with Image Upload
     NSString *urlString = @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -113,99 +172,97 @@
     [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_title\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[param2 dataUsingEncoding:NSUTF8StringEncoding]];
     [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Another text parameter
-    NSString *param3 = txtMerchant.text;
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_merchant\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[param3 dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Another text parameter
-    NSString *param4 = txtCategory.text;
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_category\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[param4 dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Another text parameter
-    NSString *param5 = switchIsFeatured.on ? @"1" : @"0";
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_is_featured\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[param5 dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Another text parameter
-    NSString *param6 = txtDescription.text;
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[param6 dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Another text parameter
-    NSString *param7 = txtLocationLat.text;
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_lat\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[param7 dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // Another text parameter
-    NSString *param8 = txtLocationLong.text;
-    [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_long\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[param8 dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // close form
-    [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    // set request body
-    [request setHTTPBody:body];
-    
-    //call the url Asynchronously
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    [spinningWheel startAnimating];
-    
-    /*NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
 
-    */
-    // Chen Lim : End posting with Image Upload
+        // Another text parameter
+        NSString *param3 = txtMerchant.text;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_merchant\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param3 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter
+        NSString *param4 = txtCategory.text;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_category\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param4 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter
+        NSString *param5 = switchIsFeatured.on ? @"1" : @"0";
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_is_featured\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param5 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter
+        NSString *param6 = txtDescription.text;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_description\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param6 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter
+        NSString *param7 = txtLocationLat.text;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_lat\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param7 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter
+        NSString *param8 = txtLocationLong.text;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_long\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param8 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // close form
+        [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // set request body
+        [request setHTTPBody:body];
+        
+        //call the url Asynchronously
+        [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        [spinningWheel startAnimating];   
     
-    /*
-    original codes by Vincent
-    NSString *myRequestString = [NSString stringWithFormat: @"action=create&prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@",
-    txtTitle.text,
-    txtMerchant.text,
-    txtCategory.text,
-    switchIsFeatured.on ? @"1" : @"0",
-    txtDescription.text,
-    txtLocationLat.text,
-    txtLocationLong.text];//,
-    //  [@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-    //[@"" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],
-    //  [txtRemarks.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];";
-    NSData *myRequestData = [NSData dataWithBytes: [myRequestString UTF8String] length: [myRequestString length]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?"]];
-    [request setHTTPMethod: @"POST"];
-    [request setHTTPBody: myRequestData];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-    
-    NSError *error;
-    NSURLResponse *response;
-    NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error:&error];
-  //  txtTitle.text = returnData.description;
-    
-    if(![returnData.description isEqualToString:@""]){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Post Deal Result"
-                          message: @"Deal Posted Sucessfully!"
-                          delegate: self cancelButtonTitle:
-                          @"Close" otherButtonTitles: nil];
-    
-    [alert show];
+        
+        NSString *myRequestString = [NSString stringWithFormat: @"action=create&prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@",
+                                     txtTitle.text,
+                                     txtMerchant.text,
+                                     txtCategory.text,
+                                     switchIsFeatured.on ? @"1" : @"0",
+                                     txtDescription.text,
+                                     txtLocationLat.text,
+                                     txtLocationLong.text];//,
+        
+        
+        NSData *myRequestData = [NSData dataWithBytes: [myRequestString UTF8String] length: [myRequestString length]];
+        request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?"]];
+        [request setHTTPMethod: @"POST"];
+        [request setHTTPBody: myRequestData];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+        
+        
+        
+        
+        NSError *error;
+        NSURLResponse *response;
+        NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error:&error];
+        //  txtTitle.text = returnData.description;
+        
+        if(![returnData.description isEqualToString:@""]){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Post Deal Result"
+                                                            message: @"Deal Posted Sucessfully!"
+                                                           delegate: self cancelButtonTitle:
+                                  @"Close" otherButtonTitles: nil];
+            
+            [alert show];
+        }
     }
-    */
-    
 
+   
+
+   
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -264,25 +321,29 @@
 }
 
 - (IBAction) emailDeal {
-	MFMailComposeViewController *emailViewController = 
-	[[MFMailComposeViewController alloc] init] ;
-    emailViewController. mailComposeDelegate = self;
-    
-    [emailViewController setSubject: @"Great Deal"] ;
-  //  NSString *msg = @"Don't Miss It!\n";
-   // *msg = msg + @"aaa";
-    NSString *msg = [NSString stringWithFormat:@"Great Deal!\n\nTitle: %@ \nMerchant: %@ \nCategory: %@ \nIs_Featured: %@ \nDescription: %@ \nLocation: %@, %@ \nStart: %@ \nEnd: %@ \nRemarks: %@", 
-                     txtTitle.text, 
-                     txtMerchant.text, 
-                     txtCategory.text, 
-                     switchIsFeatured.on ? @"YES" : @"NO", 
-                     txtDescription.text, 
-                     txtLocationLat.text, txtLocationLong.text, 
-                     txtStartDate.text, 
-                     txtEndDate.text, 
-                     txtRemarks.text];
-    [emailViewController setMessageBody: msg isHTML: NO] ;    
-    [self presentModalViewController: emailViewController animated: YES] ;    	
+    if([self inputTextValidation])
+    {
+        MFMailComposeViewController *emailViewController = 
+        [[MFMailComposeViewController alloc] init] ;
+        emailViewController. mailComposeDelegate = self;
+        
+        [emailViewController setSubject: @"Great Deal"] ;
+        //  NSString *msg = @"Don't Miss It!\n";
+        // *msg = msg + @"aaa";
+        NSString *msg = [NSString stringWithFormat:@"Great Deal!\n\nTitle: %@ \nMerchant: %@ \nCategory: %@ \nIs_Featured: %@ \nDescription: %@ \nLocation: %@, %@ \nStart: %@ \nEnd: %@ \nRemarks: %@", 
+                         txtTitle.text, 
+                         txtMerchant.text, 
+                         txtCategory.text, 
+                         switchIsFeatured.on ? @"YES" : @"NO", 
+                         txtDescription.text, 
+                         txtLocationLat.text, txtLocationLong.text, 
+                         txtStartDate.text, 
+                         txtEndDate.text, 
+                         txtRemarks.text];
+        [emailViewController setMessageBody: msg isHTML: NO] ;    
+        [self presentModalViewController: emailViewController animated: YES] ; 
+    }
+	   	
 }
 
 - (void)mailComposeController: ( MFMailComposeViewController*) controller 
@@ -291,8 +352,14 @@
     [controller dismissModalViewControllerAnimated:YES] ;
 }
 
-- (IBAction) smsDeal{
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:8"]];
+- (IBAction) smsDeal
+{
+    if([self inputTextValidation])
+    {
+        NSLog(@"inside smsDeal");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms:12345678"]];
+    }
+	
 }
 
 - (IBAction)switchDidBegin:(id)sender {
@@ -374,7 +441,7 @@
     NSLog(@"inside dismissActionSheet");
     
     /** If no selection has done, set the default category **/
-    if(txtCategory.text==nil){
+    if([txtCategory.text length]==0){
         txtCategory.text = [arrayCategory objectAtIndex:0];
     }
     
@@ -418,37 +485,106 @@
 
 - (IBAction)startDateEditDidBegin:(id)sender{
     [txtStartDate resignFirstResponder];
-    pick = [[UIDatePicker alloc] init];
-    [pick setFrame:CGRectMake(0,200,0,0)];
+    
+    actPickerSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                 delegate:nil
+                                        cancelButtonTitle:nil
+                                   destructiveButtonTitle:nil
+                                        otherButtonTitles:nil];
+    
+    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 200, 0.0, 0.0)];
+    
+    dPicker.datePickerMode = UIDatePickerModeDate;
+    dPicker.maximumDate=[NSDate date];  
+    
+    pick = dPicker;
+//    [pick setFrame:CGRectMake(0,200,0,0)];
     [pick addTarget:self action:@selector(getStartDateDone) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:pick];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"] ];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    
+    [actPickerSheet addSubview:pick];
+    [actPickerSheet addSubview:closeButton];
+    
+    [actPickerSheet showInView: self.view ];
+    [actPickerSheet setBounds:CGRectMake(0, 0, 320, 485)]; 
+
+    
 }
 
 
 - (IBAction)endDateEditDidBegin:(id)sender {
     [txtEndDate resignFirstResponder];
-    pick = [[UIDatePicker alloc] init];
-    [pick setFrame:CGRectMake(0,200,0,0)];
+    
+    actPickerSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                 delegate:nil
+                                        cancelButtonTitle:nil
+                                   destructiveButtonTitle:nil
+                                        otherButtonTitles:nil];
+    
+    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 200, 0.0, 0.0)];
+    
+    dPicker.datePickerMode = UIDatePickerModeDate;
+    dPicker.maximumDate=[NSDate date]; 
+    
+    pick = dPicker;
+//    [pick setFrame:CGRectMake(0,200,0,0)];
     [pick addTarget:self action:@selector(getEndDateDone) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:pick];
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"] ];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    
+    [actPickerSheet addSubview:pick];
+    [actPickerSheet addSubview:closeButton];
+    
+    [actPickerSheet showInView: self.view ];
+    [actPickerSheet setBounds:CGRectMake(0, 0, 320, 485)]; 
+    
 }
-
 
 
 -(void)getStartDateDone
 {
-    NSDate *choice = [pick date];
+    NSLog(@"inside getStartDateDone");
+    NSDate *choice;
+    
+    /** If no selection has done, set the default today's date **/
+    if([txtStartDate.text length]==0){
+        choice = [NSDate date];
+    }else{
+        choice = [pick date];
+    }
+        
     txtStartDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
-    [pick removeFromSuperview];
+    
+    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
     
 }
 
 -(void)getEndDateDone
 {
-    NSDate *choice = [pick date];
-    txtEndDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
-    [pick removeFromSuperview];
+    NSLog(@"inside getStartDateDone");
+    NSDate *choice;
     
+    /** If no selection has done, set the default today's date **/
+    if([txtEndDate.text length]==0){
+        choice = [NSDate date];
+    }else{
+        choice = [pick date];
+    }
+    
+    txtEndDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
+    
+    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 -(void)imgSel
