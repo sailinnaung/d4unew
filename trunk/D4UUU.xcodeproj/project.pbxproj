@@ -28,7 +28,6 @@
 		DB5CB8FE1554F5EE00D63FB0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB8FC1554F5EE00D63FB0 /* MainStoryboard.storyboard */; };
 		DB5CB91B1554F69D00D63FB0 /* DetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9151554F69D00D63FB0 /* DetailController.m */; };
 		DB5CB91C1554F69D00D63FB0 /* DetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9161554F69D00D63FB0 /* DetailController.xib */; };
-		DB5CB91D1554F69D00D63FB0 /* WhatsAroundYouMasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */; };
 		DB5CB91E1554F69D00D63FB0 /* WhatsAroundYouMasterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */; };
 		DB5CB9231554F86500D63FB0 /* Deal.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9201554F86500D63FB0 /* Deal.m */; };
 		DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -49,6 +48,7 @@
 		DB5CB96C155515D200D63FB0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB967155515B200D63FB0 /* CoreLocation.framework */; };
 		DBCE5E801557DCD70099A14F /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DBCE5E7F1557DCD70099A14F /* noImage.jpg */; };
 		DBCE5E841557E3910099A14F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE5E821557E3850099A14F /* QuartzCore.framework */; };
+		DBCE5E861557E79B0099A14F /* WhatsAroundYouMasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE5E851557E79B0099A14F /* WhatsAroundYouMasterController.m */; };
 		DBCF181415565FD800E71680 /* PostDealController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCF181215565FD800E71680 /* PostDealController.m */; };
 		DBCF181515565FD800E71680 /* PostDealController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCF181315565FD800E71680 /* PostDealController.xib */; };
 		DBCF1818155660A500E71680 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCF18161556609900E71680 /* MessageUI.framework */; };
@@ -89,7 +89,6 @@
 		DB5CB9151554F69D00D63FB0 /* DetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailController.m; sourceTree = "<group>"; };
 		DB5CB9161554F69D00D63FB0 /* DetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailController.xib; sourceTree = "<group>"; };
 		DB5CB9171554F69D00D63FB0 /* WhatsAroundYouMasterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatsAroundYouMasterController.h; sourceTree = "<group>"; };
-		DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatsAroundYouMasterController.m; sourceTree = "<group>"; };
 		DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WhatsAroundYouMasterController.xib; sourceTree = "<group>"; };
 		DB5CB91F1554F86500D63FB0 /* Deal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deal.h; sourceTree = "<group>"; };
 		DB5CB9201554F86500D63FB0 /* Deal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deal.m; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		DB5CB969155515B900D63FB0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DBCE5E7F1557DCD70099A14F /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noImage.jpg; sourceTree = "<group>"; };
 		DBCE5E821557E3850099A14F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DBCE5E851557E79B0099A14F /* WhatsAroundYouMasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatsAroundYouMasterController.m; sourceTree = "<group>"; };
 		DBCF181115565FD800E71680 /* PostDealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostDealController.h; sourceTree = "<group>"; };
 		DBCF181215565FD800E71680 /* PostDealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostDealController.m; sourceTree = "<group>"; };
 		DBCF181315565FD800E71680 /* PostDealController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostDealController.xib; sourceTree = "<group>"; };
@@ -220,11 +220,11 @@
 				DB5CB9201554F86500D63FB0 /* Deal.m */,
 				DB5CB9211554F86500D63FB0 /* DealsServiceManager.h */,
 				DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */,
+				DBCE5E851557E79B0099A14F /* WhatsAroundYouMasterController.m */,
 				DB5CB9141554F69D00D63FB0 /* DetailController.h */,
 				DB5CB9151554F69D00D63FB0 /* DetailController.m */,
 				DB5CB9161554F69D00D63FB0 /* DetailController.xib */,
 				DB5CB9171554F69D00D63FB0 /* WhatsAroundYouMasterController.h */,
-				DB5CB9181554F69D00D63FB0 /* WhatsAroundYouMasterController.m */,
 				DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */,
 				DB5CB8F91554F5EE00D63FB0 /* AppDelegate.h */,
 				DB5CB8FA1554F5EE00D63FB0 /* AppDelegate.m */,
@@ -338,7 +338,6 @@
 				DB5CB8F71554F5EE00D63FB0 /* main.m in Sources */,
 				DB5CB8FB1554F5EE00D63FB0 /* AppDelegate.m in Sources */,
 				DB5CB91B1554F69D00D63FB0 /* DetailController.m in Sources */,
-				DB5CB91D1554F69D00D63FB0 /* WhatsAroundYouMasterController.m in Sources */,
 				DB5CB9231554F86500D63FB0 /* Deal.m in Sources */,
 				DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */,
 				DB5CB94C1554F94800D63FB0 /* PopularController.m in Sources */,
@@ -350,6 +349,7 @@
 				DBCF181415565FD800E71680 /* PostDealController.m in Sources */,
 				DB5B4ED61556E59000A1D34D /* SVProgressHUD.m in Sources */,
 				DB5B4EE81556E9C000A1D34D /* MBProgressHUD.m in Sources */,
+				DBCE5E861557E79B0099A14F /* WhatsAroundYouMasterController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
