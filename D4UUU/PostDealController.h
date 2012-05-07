@@ -11,7 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, MKReverseGeocoderDelegate>{
+@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate,MKReverseGeocoderDelegate, MFMailComposeViewControllerDelegate>{
     IBOutlet UITextField *txtTitle;
     IBOutlet UITextField *txtMerchant;
     IBOutlet UITextField *txtCategory;
