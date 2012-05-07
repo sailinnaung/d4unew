@@ -132,6 +132,12 @@
 }
 
 
+-(IBAction)likeDeal:(id)sender{
+    
+    [self performLiked];
+    NSLog(@"Yahooo. I liked the deal");
+}
+
 // Chen Lim to post into local DB and post to server for a liked deal
 -(void) performLiked
 {
@@ -164,4 +170,89 @@
         }
 	}
 }
+
+
+- (IBAction)showActionSheet:(id)sender {
+	// Create the sheet without buttons
+	UIActionSheet *sheet = [[UIActionSheet alloc] 
+                            initWithTitle:@"Share your favourite deal"
+                            delegate:self
+                            cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel")
+                            destructiveButtonTitle:nil
+                            otherButtonTitles:nil];
+    
+    [sheet addButtonWithTitle:@"Tweet the awesome deal"];
+	[sheet addButtonWithTitle:@"Email to your friends"];
+	[sheet addButtonWithTitle:@"SMS that special someone"];
+    //[sheet addButtonWithTitle:@"Post to facebook"];
+    
+	//[sheet addButtonWithTitle:@"Cancel"];
+    
+    /*
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Chuck it"] ];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    
+    [sheet addSubview:closeButton];
+     */
+	//sheet.cancelButtonIndex = sheet.numberOfButtons-1;
+    //[sheet dismissWithClickedButtonIndex:3 animated:YES];
+    
+    [sheet showInView:[UIApplication sharedApplication].keyWindow];
+	//[sheet showFromRect:self.view.bounds inView:self.view animated:YES];
+	
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	//if (buttonIndex == actionSheet.cancelButtonIndex) { return; }
+	switch (buttonIndex) {
+		case 1:
+		{
+			NSLog(@"Item 1 Selected");
+			break;
+		}
+		case 2:
+		{
+			NSLog(@"Item Email Selected");
+           
+                MFMailComposeViewController *emailViewController = [[MFMailComposeViewController alloc] init] ;
+                emailViewController. mailComposeDelegate = self;
+                
+                [emailViewController setSubject: @"Great Deal"] ;
+                //  NSString *msg = @"Don't Miss It!\n";
+                // *msg = msg + @"aaa";
+                NSString *msg = [NSString stringWithFormat:@"Great Deal!\n\nTitle: %@ \nMerchant: %@ \nCategory: %@ \nDescription: %@ ", 
+                                 dealItem.dealTitle, 
+                                 dealItem.merchantName, 
+                                 dealItem.category, 
+                                  dealItem.description
+                                  ];
+                [emailViewController setMessageBody: msg isHTML: NO] ;    
+                [self presentModalViewController: emailViewController animated: YES] ;    	
+
+			break;
+		}
+		case 3:
+		{
+			NSLog(@"Item 3 Selected");
+			break;
+		}
+        case 4:
+		{
+			NSLog(@"Item 4 Selected");
+			break;
+		}
+	}
+}
+
+-(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    
+    NSLog(@"Mail sent");
+}
+
+
 @end
