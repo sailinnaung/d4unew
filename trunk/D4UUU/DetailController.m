@@ -135,7 +135,7 @@
 -(IBAction)likeDeal:(id)sender{
     
     [self performLiked];
-    NSLog(@"Yahooo. I liked the deal");
+    //NSLog(@"Yahooo. I liked the deal with ID %@", self.dealItem.dealId);
 }
 
 // Chen Lim to post into local DB and post to server for a liked deal
@@ -144,12 +144,13 @@
     DBManager *dbManager = [DBManager sharedDBManager];
     if ([dbManager openDB] == true) 
     {
-        NSString *sSql = [NSString stringWithFormat:@"INSERT INTO Liked (liked_prmo_id) VALUES ('%@')", @"prmo20120000069"]; // HARDCODED prmo20120000069 here. TODO: Change to refer to current dealId
+        NSString *sSql = [NSString stringWithFormat:@"INSERT INTO Liked (liked_prmo_id) VALUES ('%@')", self.dealItem.dealId]; // HARDCODED prmo20120000069 here. TODO: Change to refer to current dealId
         BOOL bSuccess = [dbManager executeSql:sSql];
         if (bSuccess == true) 
         {
             // post to server to +1 like
-            NSString *post = @"action=liked&prmo_id=prmo20120000069";
+            NSString *post = @"action=liked&prmo_id=";
+            post = [post stringByAppendingString:self.dealItem.dealId];
             NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
             
             NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
