@@ -18,7 +18,6 @@
 @implementation WhatsAroundYouMasterController 
 
 @synthesize deals;
-@synthesize dealsTableView;
 DealsServiceManager *dealsManager=nil;
 
 
@@ -229,7 +228,7 @@ DealsServiceManager *dealsManager=nil;
        
     NSLog(@"inside WhatsAroundMasterController.didSelectRowAtIndexPath at %@",indexPath);
     
-    [self performSegueWithIdentifier:@"WhatsAroundDetailSegue" sender:self]; 
+    [self performSegueWithIdentifier:@"WhatsAroundDetailIdentifier" sender:self]; 
     NSLog(@"Segue performed");
     
    
@@ -342,14 +341,14 @@ DealsServiceManager *dealsManager=nil;
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSLog(@"Invoking prepare for segue");
-    if([[segue identifier] isEqualToString:@"WhatsAroundDetailSegue"]){
+    if([[segue identifier] isEqualToString:@"SearchDetailIdentifer"]){
         
         NSLog(@"String from class %@", NSStringFromClass([[segue destinationViewController] class]));
         
         DetailController *passDeal = (DetailController *)[segue destinationViewController];
         
-        Deal* object = [deals objectAtIndex:self.dealsTableView.indexPathForSelectedRow.row];
-        NSLog(@"Deal object url %@", object.imageUrl);
+        Deal* object = [deals objectAtIndex:self.tableView.indexPathForSelectedRow.row];
+        NSLog(@"Deal object %@", object.description);
         passDeal.dealItem = object;
         
         //[self.navigationController pushViewController:passDeal animated:YES];
@@ -357,6 +356,7 @@ DealsServiceManager *dealsManager=nil;
         NSLog(@"Done setting deal item");
     }
 }
+
 
 
 @end
