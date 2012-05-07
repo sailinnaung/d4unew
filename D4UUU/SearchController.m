@@ -11,6 +11,7 @@
 #import "Constants.h"
 #import "Deal.h"
 #import "DetailController.h"
+#import "MBProgressHUD.h"
 
 
 @implementation SearchController
@@ -100,15 +101,33 @@
         NSLog(@"ImageUrl Before %@",imageUrl);
         [imageUrl stringByReplacingOccurrencesOfString:@"\\" withString:@""];
         
+        UIImage *scaledImage=nil;
+        
+        if (imageUrl.length ==0){
+            
+            UIImage* tempImage=[UIImage imageNamed:@"noImage.jpg"];
+            //self.dealImage.image=tempImage;
+            scaledImage=[self scale:tempImage];
+            
+        }
+        else{
+            
+            url = [NSURL URLWithString:imageUrl];
+            data = [NSData dataWithContentsOfURL:url];
+            image = [UIImage imageWithData:data];
+            scaledImage=[self scale:image];
+        }
+        
+
+        
+        
         NSLog(@"ImageUrl after %@",imageUrl);
         
-        url = [NSURL URLWithString:imageUrl];
-        data = [NSData dataWithContentsOfURL:url];
-        image = [UIImage imageWithData:data];
+       
         
         cell.textLabel.text = dealObj.dealTitle;
         cell.detailTextLabel.text=[NSString stringWithString:dealObj.description];
-        cell.imageView.image=image;
+        cell.imageView.image=scaledImage;
         NSLog(@"Cell image %@",cell.imageView.image.description );
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; 
         [searchBarObj setText:nil];
@@ -147,7 +166,24 @@
     NSLog(@"inside SearchController.handleDealSearchText");
     
     dealsManager=[DealsServiceManager sharedManager];
-    self.deals = [dealsManager retrieveSearchDeals:SearchText];    
+    
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.labelText = @"Please wait... Refreshing data";
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        
+        self.deals = [dealsManager retrieveSearchDeals:SearchText];    
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+
+    
+   
     
 }
 
@@ -207,4 +243,14 @@
     }
 }
 
+
+- (UIImage *)scale:(UIImage *)image
+{
+    CGSize size = (CGSize){.width = 75.0f, .height = 75.0f};
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return scaledImage;
+}
 @end

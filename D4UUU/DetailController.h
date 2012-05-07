@@ -21,8 +21,8 @@
     UILabel *dealMerchantName;
     UIImageView *dealImage;
     
-    CLGeocoder *geoCoder;
-    CLLocationManager *locationManager;
+    //CLGeocoder *geoCoder;
+    //CLLocationManager *locationManager;
     
 }
 
