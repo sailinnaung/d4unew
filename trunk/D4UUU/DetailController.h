@@ -13,22 +13,23 @@
 
 @interface DetailController : UIViewController{
     
-    IBOutlet UILabel * dealId;
+    //UILabel * dealId;
     UILabel *dealTitle;
-    UILabel *category;
-    UITextView *description;
-    UILabel *location;
-    UILabel *merchantName;
-    UIImageView *imageUrl;
+    UILabel *dealCategory;
+    UITextView *dealDescr;
+    UILabel *dealLocation;
+    UILabel *dealMerchantName;
+    UIImageView *dealImage;
+    
 }
 
-@property (strong, nonatomic) IBOutlet UILabel* dealId;
+//@property (strong, nonatomic) IBOutlet UILabel* dealId;
 @property (strong, nonatomic) IBOutlet UILabel* dealTitle;
-@property (strong, nonatomic) IBOutlet UILabel* category;
-@property (strong, nonatomic) IBOutlet UITextView* description;
-@property (strong, nonatomic) IBOutlet UILabel* location;
-@property (strong, nonatomic) IBOutlet UILabel* merchantName;
-@property (weak, nonatomic) IBOutlet UIImageView* image;
+@property (strong, nonatomic) IBOutlet UILabel* dealCategory;
+@property (strong, nonatomic) IBOutlet UITextView* dealDescr;
+@property (strong, nonatomic) IBOutlet UILabel* dealLocation;
+@property (strong, nonatomic) IBOutlet UILabel* dealMerchantName;
+@property (strong, nonatomic) IBOutlet UIImageView* dealImage;
 
 @property (strong, nonatomic) Deal* dealItem;
 @property (strong, nonatomic) WhatsAroundYouMasterController* masterController;

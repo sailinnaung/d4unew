@@ -10,11 +10,12 @@
 #import "DealsServiceManager.h"
 #import "Constants.h"
 #import "Deal.h"
+#import "DetailController.h"
 
 
 @implementation SearchController
 
-@synthesize searchBarObj, searchDisplayController, deals,resultTableView;
+@synthesize searchBarObj, searchDisplayController, deals,resultTableView, detailViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -122,6 +123,11 @@
         [searchBarObj resignFirstResponder];
         [searchBarObj setShowsCancelButton:FALSE animated:NO];
         NSLog(@"inside SearchController.didSelectRowAtIndexPath at %@",indexPath);
+                
+        [self performSegueWithIdentifier:@"SearchDetailIdentifer" sender:self]; 
+        NSLog(@"Segue performed");
+        
+        
     }else{
          NSLog(@"inside SearchController.didSelectRowAtIndexPath No Deals");
     }   
@@ -180,6 +186,25 @@
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
 
     [searchBar setShowsCancelButton:TRUE animated:YES];
+}
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"Invoking prepare for segue");
+    if([[segue identifier] isEqualToString:@"SearchDetailIdentifer"]){
+        
+        NSLog(@"String from class %@", NSStringFromClass([[segue destinationViewController] class]));
+        
+        DetailController *passDeal = (DetailController *)[segue destinationViewController];
+        
+        Deal* object = [deals objectAtIndex:self.resultTableView.indexPathForSelectedRow.row];
+        NSLog(@"Deal object %@", object.description);
+        passDeal.dealItem = object;
+        
+        //[self.navigationController pushViewController:passDeal animated:YES];
+            
+        NSLog(@"Done setting deal item");
+    }
 }
 
 @end

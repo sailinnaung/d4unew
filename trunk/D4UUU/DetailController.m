@@ -17,7 +17,7 @@
 
 @implementation DetailController
 
-@synthesize dealId, dealTitle, category, description, location, merchantName, image;
+@synthesize dealTitle, dealCategory, dealDescr, dealLocation, dealMerchantName, dealImage;
 @synthesize dealItem;
 @synthesize masterController;
 //@synthesize detailDescriptionLabel = _detailDescriptionLabel;
@@ -37,24 +37,24 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-    NSLog(@"Incoming deal item %@",dealItem.description);
+    NSLog(@"Incoming deal in Detail controller item %@",dealItem.description);
     if (self.dealItem) {
         //self.detailDescriptionLabel.text = [self.detailItem description];
-        NSLog(@"Incoming deal is %@", dealItem.dealTitle);
+        NSLog(@"Incoming deal in Detail controller is %@", dealItem.dealTitle);
         
    
-        self.dealId.text=dealItem.dealId;
+        //self.dealId.text=dealItem.dealId;
         self.dealTitle.text=dealItem.dealTitle;
-        self.category.text=dealItem.category;
-        self.description.text=dealItem.description;
+        self.dealCategory.text=dealItem.category;
+        //self.description.text=dealItem.description;
         //self.dealId=dealItem.; //TODO location
-        self.merchantName.text=dealItem.merchantName;
+        self.dealMerchantName.text=dealItem.merchantName;
         
         NSURL *url = [NSURL URLWithString:dealItem.imageUrl];
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage *tempImage = [UIImage imageWithData:data];
         
-        self.image.image=tempImage;
+        self.dealImage.image=tempImage;
         
         
     }
@@ -71,7 +71,7 @@
     self.navigationController.navigationBar.backItem.title = @"Custom text";
     
     
-    [self performLiked];
+    //[self performLiked];
     
 }
 
