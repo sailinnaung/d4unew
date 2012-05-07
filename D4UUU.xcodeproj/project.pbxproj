@@ -12,6 +12,13 @@
 		DB4D5E1C155544D7007B4CAF /* KategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4D5E1A155544D7007B4CAF /* KategoryController.xib */; };
 		DB4D5E28155555A9007B4CAF /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D5E26155555A9007B4CAF /* SearchController.m */; };
 		DB4D5E29155555A9007B4CAF /* SearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4D5E27155555A9007B4CAF /* SearchController.xib */; };
+		DB5B4EBB1556BCAF00A1D34D /* whatsaroundyou.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5B4EBA1556BCAF00A1D34D /* whatsaroundyou.png */; };
+		DB5B4EBD1556BCDC00A1D34D /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5B4EBC1556BCDC00A1D34D /* search.png */; };
+		DB5B4EBF1556BD9000A1D34D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5B4EBE1556BD9000A1D34D /* settings.png */; };
+		DB5B4EC11556BE5900A1D34D /* postdeal.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5B4EC01556BE5900A1D34D /* postdeal.png */; };
+		DB5B4ED61556E59000A1D34D /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5B4ED51556E58F00A1D34D /* SVProgressHUD.m */; };
+		DB5B4EE81556E9C000A1D34D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5B4EE71556E9C000A1D34D /* MBProgressHUD.m */; };
+		DB5B4EEB155707DB00A1D34D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5B4EEA155707DB00A1D34D /* Default.png */; };
 		DB5CB8EB1554F5ED00D63FB0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB8EA1554F5ED00D63FB0 /* UIKit.framework */; };
 		DB5CB8ED1554F5ED00D63FB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB8EC1554F5ED00D63FB0 /* Foundation.framework */; };
 		DB5CB8EF1554F5ED00D63FB0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB8EE1554F5ED00D63FB0 /* CoreGraphics.framework */; };
@@ -28,15 +35,11 @@
 		DB5CB94A1554F94800D63FB0 /* popular.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9291554F94500D63FB0 /* popular.png */; };
 		DB5CB94B1554F94800D63FB0 /* popular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92A1554F94500D63FB0 /* popular@2x.png */; };
 		DB5CB94C1554F94800D63FB0 /* PopularController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB92C1554F94500D63FB0 /* PopularController.m */; };
-		DB5CB94D1554F94800D63FB0 /* postdeal.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92D1554F94500D63FB0 /* postdeal.png */; };
 		DB5CB94E1554F94800D63FB0 /* postdeal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */; };
-		DB5CB9511554F94800D63FB0 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9321554F94600D63FB0 /* search.png */; };
 		DB5CB9521554F94800D63FB0 /* search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9331554F94600D63FB0 /* search@2x.png */; };
-		DB5CB9581554F94800D63FB0 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB93B1554F94600D63FB0 /* settings.png */; };
 		DB5CB9591554F94800D63FB0 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB93C1554F94600D63FB0 /* settings@2x.png */; };
 		DB5CB95A1554F94800D63FB0 /* SettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB93E1554F94600D63FB0 /* SettingsController.m */; };
 		DB5CB95B1554F94800D63FB0 /* SettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB93F1554F94600D63FB0 /* SettingsController.xib */; };
-		DB5CB95C1554F94800D63FB0 /* whatsaroundyou.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9401554F94700D63FB0 /* whatsaroundyou.png */; };
 		DB5CB95D1554F94800D63FB0 /* whatsaroundyou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9411554F94700D63FB0 /* whatsaroundyou@2x.png */; };
 		DB5CB95E1554F94800D63FB0 /* whatsnew.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9421554F94700D63FB0 /* whatsnew.png */; };
 		DB5CB95F1554F94800D63FB0 /* whatsnew@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9431554F94700D63FB0 /* whatsnew@2x.png */; };
@@ -60,6 +63,15 @@
 		DB4D5E25155555A8007B4CAF /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchController.h; sourceTree = "<group>"; };
 		DB4D5E26155555A9007B4CAF /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
 		DB4D5E27155555A9007B4CAF /* SearchController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchController.xib; sourceTree = "<group>"; };
+		DB5B4EBA1556BCAF00A1D34D /* whatsaroundyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whatsaroundyou.png; sourceTree = "<group>"; };
+		DB5B4EBC1556BCDC00A1D34D /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		DB5B4EBE1556BD9000A1D34D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		DB5B4EC01556BE5900A1D34D /* postdeal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postdeal.png; sourceTree = "<group>"; };
+		DB5B4ED41556E58F00A1D34D /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		DB5B4ED51556E58F00A1D34D /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		DB5B4EE61556E9C000A1D34D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DB5B4EE71556E9C000A1D34D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		DB5B4EEA155707DB00A1D34D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DB5CB8E61554F5ED00D63FB0 /* D4UUU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = D4UUU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5CB8EA1554F5ED00D63FB0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DB5CB8EC1554F5ED00D63FB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -85,16 +97,12 @@
 		DB5CB92A1554F94500D63FB0 /* popular@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popular@2x.png"; sourceTree = "<group>"; };
 		DB5CB92B1554F94500D63FB0 /* PopularController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopularController.h; sourceTree = "<group>"; };
 		DB5CB92C1554F94500D63FB0 /* PopularController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopularController.m; sourceTree = "<group>"; };
-		DB5CB92D1554F94500D63FB0 /* postdeal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = postdeal.png; sourceTree = "<group>"; };
 		DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "postdeal@2x.png"; sourceTree = "<group>"; };
-		DB5CB9321554F94600D63FB0 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		DB5CB9331554F94600D63FB0 /* search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search@2x.png"; sourceTree = "<group>"; };
-		DB5CB93B1554F94600D63FB0 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		DB5CB93C1554F94600D63FB0 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		DB5CB93D1554F94600D63FB0 /* SettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsController.h; sourceTree = "<group>"; };
 		DB5CB93E1554F94600D63FB0 /* SettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsController.m; sourceTree = "<group>"; };
 		DB5CB93F1554F94600D63FB0 /* SettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsController.xib; sourceTree = "<group>"; };
-		DB5CB9401554F94700D63FB0 /* whatsaroundyou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whatsaroundyou.png; sourceTree = "<group>"; };
 		DB5CB9411554F94700D63FB0 /* whatsaroundyou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whatsaroundyou@2x.png"; sourceTree = "<group>"; };
 		DB5CB9421554F94700D63FB0 /* whatsnew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whatsnew.png; sourceTree = "<group>"; };
 		DB5CB9431554F94700D63FB0 /* whatsnew@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whatsnew@2x.png"; sourceTree = "<group>"; };
@@ -168,26 +176,31 @@
 			children = (
 				DB4D5E25155555A8007B4CAF /* SearchController.h */,
 				DB4D5E26155555A9007B4CAF /* SearchController.m */,
+				DB5B4EEA155707DB00A1D34D /* Default.png */,
 				DB4D5E27155555A9007B4CAF /* SearchController.xib */,
 				DB5CB9661554FDAB00D63FB0 /* Constants.h */,
 				DB5CB9291554F94500D63FB0 /* popular.png */,
 				DB5CB92A1554F94500D63FB0 /* popular@2x.png */,
 				DB5CB92B1554F94500D63FB0 /* PopularController.h */,
 				DB5CB92C1554F94500D63FB0 /* PopularController.m */,
-				DB5CB92D1554F94500D63FB0 /* postdeal.png */,
+				DB5B4ED41556E58F00A1D34D /* SVProgressHUD.h */,
+				DB5B4ED51556E58F00A1D34D /* SVProgressHUD.m */,
 				DB5CB92E1554F94500D63FB0 /* postdeal@2x.png */,
-				DB5CB9321554F94600D63FB0 /* search.png */,
 				DB5CB9331554F94600D63FB0 /* search@2x.png */,
-				DB5CB93B1554F94600D63FB0 /* settings.png */,
+				DB5B4EE61556E9C000A1D34D /* MBProgressHUD.h */,
+				DB5B4EE71556E9C000A1D34D /* MBProgressHUD.m */,
+				DB5B4EBA1556BCAF00A1D34D /* whatsaroundyou.png */,
 				DB5CB93C1554F94600D63FB0 /* settings@2x.png */,
+				DB5B4EC01556BE5900A1D34D /* postdeal.png */,
 				DB5CB93D1554F94600D63FB0 /* SettingsController.h */,
 				DB5CB93E1554F94600D63FB0 /* SettingsController.m */,
 				DBDF244C15552E78001140CC /* DBManager.h */,
+				DB5B4EBE1556BD9000A1D34D /* settings.png */,
 				DBDF244D15552E79001140CC /* DBManager.m */,
 				DB5CB93F1554F94600D63FB0 /* SettingsController.xib */,
-				DB5CB9401554F94700D63FB0 /* whatsaroundyou.png */,
 				DB4D5E0C155542C5007B4CAF /* CategoriesController.xib */,
 				DB5CB9411554F94700D63FB0 /* whatsaroundyou@2x.png */,
+				DB5B4EBC1556BCDC00A1D34D /* search.png */,
 				DBCF181115565FD800E71680 /* PostDealController.h */,
 				DBCF181215565FD800E71680 /* PostDealController.m */,
 				DBCF181315565FD800E71680 /* PostDealController.xib */,
@@ -286,14 +299,10 @@
 				DB5CB91E1554F69D00D63FB0 /* WhatsAroundYouMasterController.xib in Resources */,
 				DB5CB94A1554F94800D63FB0 /* popular.png in Resources */,
 				DB5CB94B1554F94800D63FB0 /* popular@2x.png in Resources */,
-				DB5CB94D1554F94800D63FB0 /* postdeal.png in Resources */,
 				DB5CB94E1554F94800D63FB0 /* postdeal@2x.png in Resources */,
-				DB5CB9511554F94800D63FB0 /* search.png in Resources */,
 				DB5CB9521554F94800D63FB0 /* search@2x.png in Resources */,
-				DB5CB9581554F94800D63FB0 /* settings.png in Resources */,
 				DB5CB9591554F94800D63FB0 /* settings@2x.png in Resources */,
 				DB5CB95B1554F94800D63FB0 /* SettingsController.xib in Resources */,
-				DB5CB95C1554F94800D63FB0 /* whatsaroundyou.png in Resources */,
 				DB5CB95D1554F94800D63FB0 /* whatsaroundyou@2x.png in Resources */,
 				DB5CB95E1554F94800D63FB0 /* whatsnew.png in Resources */,
 				DB5CB95F1554F94800D63FB0 /* whatsnew@2x.png in Resources */,
@@ -303,6 +312,11 @@
 				DB4D5E1C155544D7007B4CAF /* KategoryController.xib in Resources */,
 				DB4D5E29155555A9007B4CAF /* SearchController.xib in Resources */,
 				DBCF181515565FD800E71680 /* PostDealController.xib in Resources */,
+				DB5B4EBB1556BCAF00A1D34D /* whatsaroundyou.png in Resources */,
+				DB5B4EBD1556BCDC00A1D34D /* search.png in Resources */,
+				DB5B4EBF1556BD9000A1D34D /* settings.png in Resources */,
+				DB5B4EC11556BE5900A1D34D /* postdeal.png in Resources */,
+				DB5B4EEB155707DB00A1D34D /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +340,8 @@
 				DB4D5E1B155544D7007B4CAF /* KategoryController.m in Sources */,
 				DB4D5E28155555A9007B4CAF /* SearchController.m in Sources */,
 				DBCF181415565FD800E71680 /* PostDealController.m in Sources */,
+				DB5B4ED61556E59000A1D34D /* SVProgressHUD.m in Sources */,
+				DB5B4EE81556E9C000A1D34D /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
