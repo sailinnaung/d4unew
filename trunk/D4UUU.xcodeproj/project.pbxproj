@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB0591BA1557EDA600EC9F0B /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0591B91557EDA600EC9F0B /* like.png */; };
+		DB0591BD1557EF1900EC9F0B /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0591BC1557EF1900EC9F0B /* share.png */; };
 		DB4D5E0D155542C5007B4CAF /* CategoriesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4D5E0C155542C5007B4CAF /* CategoriesController.xib */; };
 		DB4D5E1B155544D7007B4CAF /* KategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D5E19155544D6007B4CAF /* KategoryController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB4D5E1C155544D7007B4CAF /* KategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4D5E1A155544D7007B4CAF /* KategoryController.xib */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB0591B91557EDA600EC9F0B /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
+		DB0591BC1557EF1900EC9F0B /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		DB4D5E0C155542C5007B4CAF /* CategoriesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesController.xib; sourceTree = "<group>"; };
 		DB4D5E18155544D6007B4CAF /* KategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KategoryController.h; sourceTree = "<group>"; };
 		DB4D5E19155544D6007B4CAF /* KategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KategoryController.m; sourceTree = "<group>"; };
@@ -214,9 +218,11 @@
 				DB5CB9421554F94700D63FB0 /* whatsnew.png */,
 				DB5CB9431554F94700D63FB0 /* whatsnew@2x.png */,
 				DB5CB9441554F94700D63FB0 /* WhatsNewController.h */,
+				DB0591B91557EDA600EC9F0B /* like.png */,
 				DB5CB9451554F94700D63FB0 /* WhatsNewController.m */,
 				DB5CB9461554F94700D63FB0 /* WhatsNewController.xib */,
 				DB5CB91F1554F86500D63FB0 /* Deal.h */,
+				DB0591BC1557EF1900EC9F0B /* share.png */,
 				DB5CB9201554F86500D63FB0 /* Deal.m */,
 				DB5CB9211554F86500D63FB0 /* DealsServiceManager.h */,
 				DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */,
@@ -325,6 +331,8 @@
 				DB5B4EC11556BE5900A1D34D /* postdeal.png in Resources */,
 				DB5B4EEB155707DB00A1D34D /* Default.png in Resources */,
 				DBCE5E801557DCD70099A14F /* noImage.jpg in Resources */,
+				DB0591BA1557EDA600EC9F0B /* like.png in Resources */,
+				DB0591BD1557EF1900EC9F0B /* share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

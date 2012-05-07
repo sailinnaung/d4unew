@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "WhatsAroundYouMasterController.h"
+#import <MessageUI/MFMailComposeViewController.h>
 
 @class Deal;
 
-@interface DetailController : UIViewController{
+@interface DetailController : UIViewController<UIActionSheetDelegate, MFMailComposeViewControllerDelegate>{
     
     //UILabel * dealId;
     UILabel *dealTitle;
@@ -36,6 +37,8 @@
 
 @property (strong, nonatomic) Deal* dealItem;
 @property (strong, nonatomic) WhatsAroundYouMasterController* masterController;
+-(IBAction)likeDeal:(id)sender;
+-(IBAction)showActionSheet:(id)sender;
 
 //@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
