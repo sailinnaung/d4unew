@@ -226,17 +226,16 @@ DealsServiceManager *dealsManager=nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+       
+    NSLog(@"inside WhatsAroundMasterController.didSelectRowAtIndexPath at %@",indexPath);
     
-    if (!self.detailViewController) {
-        self.detailViewController = [[DetailController alloc] initWithNibName:@"DetailController" bundle:nil];
-        //self.detail2ViewController.parameter=[[NSNumber numberWithInteger:indexPath.row]stringValue];
-        
-    }
+    [self performSegueWithIdentifier:@"WhatsAroundDetailSegue" sender:self]; 
+    NSLog(@"Segue performed");
     
    
     //NSArray *array=[NSArray arrayWithObject:deals];
     
-    NSLog(@"Detail view controller %@",self.detailViewController.description);
+   /* NSLog(@"Detail view controller %@",self.detailViewController.description);
     Deal* object = [deals objectAtIndex:indexPath.row];
      NSLog(@"Deal object %@", object.description);
     self.detailViewController.dealItem = object;
@@ -250,14 +249,14 @@ DealsServiceManager *dealsManager=nil;
     self.detailViewController.masterController = self; 
 
    // [self.view insertSubview:self.detailViewController.view belowSubview:self.view];
-   
+   */
     /*if (currentViewController != nil)
         [currentViewController.view removeFromSuperview];
     currentViewController = tab2ViewController; */
     
     //[self.view addSubview:self.detailViewController.view];
        
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
+   // [self.navigationController pushViewController:self.detailViewController animated:YES];
     
     //[self.navigationController.tabBarController setSelectedViewController:self.detailViewController];
    // [self.navigationController presentModalViewController:self.detailViewController animated:YES];
@@ -338,5 +337,26 @@ DealsServiceManager *dealsManager=nil;
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"Could not locate location %@", error);
 }
+
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSLog(@"Invoking prepare for segue");
+    if([[segue identifier] isEqualToString:@"WhatsAroundDetailSegue"]){
+        
+        NSLog(@"String from class %@", NSStringFromClass([[segue destinationViewController] class]));
+        
+        DetailController *passDeal = (DetailController *)[segue destinationViewController];
+        
+        Deal* object = [deals objectAtIndex:self.dealsTableView.indexPathForSelectedRow.row];
+        NSLog(@"Deal object url %@", object.imageUrl);
+        passDeal.dealItem = object;
+        
+        //[self.navigationController pushViewController:passDeal animated:YES];
+        
+        NSLog(@"Done setting deal item");
+    }
+}
+
 
 @end

@@ -24,9 +24,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="PEG-nY-1jt" kind="push" id="baZ-dZ-QNb"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -36,24 +33,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="iLA-cq-VZO"/>
+                    <connections>
+                        <segue destination="VRj-28-mIt" kind="push" identifier="WhatsAroundDetailSegue" id="kdA-hD-Bp5"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1" y="-1314"/>
-        </scene>
-        <!--Detail Controller-->
-        <scene sceneID="bih-GB-D0T">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="saA-JC-IMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="PEG-nY-1jt" customClass="DetailController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qxu-TM-lKt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="lEB-EZ-Ns8"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="444" y="-1314"/>
         </scene>
         <!--Navigation Controller - Around You-->
         <scene sceneID="UHF-aE-Ycx">
@@ -575,7 +560,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="252" y="-455"/>
+            <point key="canvasLocation" x="1296" y="-839"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -650,70 +635,12 @@
         <image name="settings.png" width="24" height="24"/>
         <image name="whatsaroundyou.png" width="27" height="27"/>
     </resources>
-    <classes>
-        <class className="CLLocationManager" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CLLocationManager.h"/>
-        </class>
-        <class className="DetailController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dealCategory" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dealDescr" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="dealId" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dealImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="dealLocation" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dealMerchantName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="dealTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="KategoryController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/KategoryController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="uiTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="PostDealController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostDealController.h"/>
-            <relationships>
-                <relationship kind="action" name="addDeal"/>
-                <relationship kind="action" name="emailDeal"/>
-                <relationship kind="action" name="endDateEditDidBegin:"/>
-                <relationship kind="action" name="getLocation"/>
-                <relationship kind="action" name="smsDeal"/>
-                <relationship kind="action" name="startDateEditDidBegin:"/>
-                <relationship kind="action" name="switchDidBegin:"/>
-                <relationship kind="outlet" name="locationManager" candidateClass="CLLocationManager"/>
-                <relationship kind="outlet" name="pvCategory" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="switchIsFeatured" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="txtCategory" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtEndDate" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtLocationLat" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtLocationLong" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtMerchant" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtRemarks" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtStartDate" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtTitle" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SearchController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="resultTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="searchBarObj" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
-            </relationships>
-        </class>
-        <class className="WhatsAroundYouMasterController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WhatsAroundYouMasterController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dealsTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="kdA-hD-Bp5"/>
+    </inferredMetricsTieBreakers>
 </document>
