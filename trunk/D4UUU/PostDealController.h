@@ -10,6 +10,7 @@
 #import <MessageUI/MFMailComposeViewController.h>
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "DBManager.h"
 
 @interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate,MKReverseGeocoderDelegate, MFMailComposeViewControllerDelegate>{
     IBOutlet UITextField *txtTitle;
@@ -21,13 +22,15 @@
     IBOutlet UITextField *txtStartDate;
     IBOutlet UITextField *txtEndDate;
     IBOutlet UITextField *txtRemarks;
-    IBOutlet UIPickerView *pvCategory;
+//    IBOutlet UIPickerView *pvCategory;
     IBOutlet UISwitch *switchIsFeatured;
     IBOutlet CLLocationManager *locationManager;
     
     NSMutableArray *arrayCategory;
     UIDatePicker *pick;
-
+    
+    DBManager* dbManager;
+    UIActionSheet *actPickerSheet;
 }
 
 
@@ -40,5 +43,6 @@
 - (IBAction) smsDeal;
 - (IBAction) getLocation;
 
+- (IBAction) presentCategoryPickerActionSheet;
 
 @end

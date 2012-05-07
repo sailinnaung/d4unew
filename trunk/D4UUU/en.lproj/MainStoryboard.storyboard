@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D2001" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
-        <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="QyS-yn-dg3">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pp-lI-k76" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -40,7 +39,6 @@
             </objects>
             <point key="canvasLocation" x="1" y="-1314"/>
         </scene>
-        <!--Navigation Controller - Around You-->
         <scene sceneID="UHF-aE-Ycx">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFH-fW-jpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -56,7 +54,6 @@
             </objects>
             <point key="canvasLocation" x="-639" y="-1314"/>
         </scene>
-        <!--Post Deal Controller - Post Deal-->
         <scene sceneID="TSd-ir-Qud">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYB-Zn-a3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,77 +114,77 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hp8-or-flr">
-                                <rect key="frame" x="36" y="55" width="42" height="21"/>
+                                <rect key="frame" x="15" y="53" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Merchant" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="VS4-mm-msj">
-                                <rect key="frame" x="36" y="88" width="73" height="21"/>
+                                <rect key="frame" x="15" y="86" width="73" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9r0-D9-d67">
-                                <rect key="frame" x="36" y="118" width="70" height="21"/>
+                                <rect key="frame" x="15" y="116" width="70" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="is_Featured" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FKw-vC-e8F">
-                                <rect key="frame" x="36" y="147" width="90" height="21"/>
+                                <rect key="frame" x="15" y="145" width="90" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="S7n-I1-2pN">
-                                <rect key="frame" x="36" y="180" width="87" height="21"/>
+                                <rect key="frame" x="15" y="178" width="87" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="psG-gX-aDn">
-                                <rect key="frame" x="35" y="215" width="68" height="21"/>
+                                <rect key="frame" x="14" y="213" width="68" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date Start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ctG-kq-2Fx">
-                                <rect key="frame" x="36" y="251" width="77" height="21"/>
+                                <rect key="frame" x="15" y="249" width="77" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Date End" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="HZM-L2-fRh">
-                                <rect key="frame" x="38" y="287" width="71" height="21"/>
+                                <rect key="frame" x="17" y="285" width="71" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Remarks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cZA-pD-Mfn">
-                                <rect key="frame" x="37" y="320" width="69" height="21"/>
+                                <rect key="frame" x="16" y="318" width="69" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="aBm-yg-5TZ">
-                                <rect key="frame" x="144" y="147" width="79" height="27"/>
+                                <rect key="frame" x="111" y="145" width="79" height="27"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <connections>
                                     <action selector="switchDidBegin:" destination="gsT-51-30v" eventType="editingDidEnd" id="S3K-AZ-nBm"/>
                                 </connections>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="3iU-HW-fDY">
-                                <rect key="frame" x="136" y="50" width="150" height="31"/>
+                                <rect key="frame" x="111" y="49" width="189" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -196,7 +193,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="TcK-eO-1rv">
-                                <rect key="frame" x="136" y="82" width="150" height="31"/>
+                                <rect key="frame" x="111" y="81" width="189" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -212,16 +209,17 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bpL-CM-Ony">
-                                <rect key="frame" x="136" y="118" width="150" height="31"/>
+                                <rect key="frame" x="112" y="112" width="188" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="presentCategoryPickerActionSheet" destination="gsT-51-30v" eventType="editingDidBegin" id="dDs-cS-2KZ"/>
                                     <outlet property="delegate" destination="gsT-51-30v" id="wOc-e8-h00"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ERb-E5-kY9">
-                                <rect key="frame" x="135" y="209" width="150" height="31"/>
+                                <rect key="frame" x="141" y="209" width="77" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -230,7 +228,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="pdB-ko-MDA">
-                                <rect key="frame" x="136" y="243" width="149" height="31"/>
+                                <rect key="frame" x="110" y="244" width="190" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -240,7 +238,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="TFZ-pw-KIO">
-                                <rect key="frame" x="136" y="279" width="150" height="31"/>
+                                <rect key="frame" x="110" y="280" width="190" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -250,7 +248,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="yGo-wZ-5gl">
-                                <rect key="frame" x="136" y="315" width="150" height="31"/>
+                                <rect key="frame" x="110" y="316" width="190" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -259,7 +257,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="NW0-tS-xvt">
-                                <rect key="frame" x="135" y="176" width="151" height="31"/>
+                                <rect key="frame" x="110" y="174" width="190" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -268,7 +266,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mz3-Oq-4Y4">
-                                <rect key="frame" x="289" y="210" width="28" height="31"/>
+                                <rect key="frame" x="110" y="209" width="28" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="location.jpg">
@@ -282,25 +280,26 @@
                                     <action selector="getLocation" destination="gsT-51-30v" eventType="touchUpInside" id="LLU-Uo-fqo"/>
                                 </connections>
                             </button>
-                            <pickerView contentMode="scaleToFill" id="Zwg-gV-Tua">
-                                <rect key="frame" x="294" y="243" width="82" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="V8r-jx-SXC">
+                                <rect key="frame" x="223" y="208" width="77" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="gsT-51-30v" id="sQO-hM-DLg"/>
-                                    <outlet property="delegate" destination="gsT-51-30v" id="lFn-Ch-9mV"/>
+                                    <outlet property="delegate" destination="gsT-51-30v" id="z0H-JL-a29"/>
                                 </connections>
-                            </pickerView>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Post Deal" image="postdeal.png" id="YAn-g5-BWV"/>
                     <connections>
-                        <outlet property="pvCategory" destination="Zwg-gV-Tua" id="OVb-s9-Ogo"/>
                         <outlet property="switchIsFeatured" destination="aBm-yg-5TZ" id="ZXz-Vx-fmu"/>
                         <outlet property="txtCategory" destination="bpL-CM-Ony" id="jWo-Hr-1PJ"/>
                         <outlet property="txtDescription" destination="NW0-tS-xvt" id="m10-ak-aNf"/>
                         <outlet property="txtEndDate" destination="TFZ-pw-KIO" id="NdD-zg-ZyO"/>
-                        <outlet property="txtLocation" destination="ERb-E5-kY9" id="RMV-fd-lac"/>
+                        <outlet property="txtLocationLat" destination="ERb-E5-kY9" id="fIS-50-UVZ"/>
+                        <outlet property="txtLocationLong" destination="V8r-jx-SXC" id="vuU-Wo-Siu"/>
                         <outlet property="txtMerchant" destination="TcK-eO-1rv" id="CkQ-mZ-b9z"/>
                         <outlet property="txtRemarks" destination="yGo-wZ-5gl" id="RHQ-rF-D8S"/>
                         <outlet property="txtStartDate" destination="pdB-ko-MDA" id="bgV-Qr-ZYW"/>
@@ -310,7 +309,6 @@
             </objects>
             <point key="canvasLocation" x="-639" y="339"/>
         </scene>
-        <!--Kategory Controller - Categories-->
         <scene sceneID="iA3-bH-21Q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fZ-2m-wRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -340,7 +338,6 @@
             </objects>
             <point key="canvasLocation" x="-630" y="1630"/>
         </scene>
-        <!--Navigation Controller - Search New-->
         <scene sceneID="ZZj-9a-QCi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94Y-gV-53P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -356,7 +353,6 @@
             </objects>
             <point key="canvasLocation" x="-1108" y="-465"/>
         </scene>
-        <!--Search Controller - Search-->
         <scene sceneID="0QC-3y-4I5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQc-o6-NOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -470,7 +466,6 @@
             </objects>
             <point key="canvasLocation" x="-426" y="-450"/>
         </scene>
-        <!--Detail Controller-->
         <scene sceneID="zpU-EA-dxk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNI-pN-ZKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -507,7 +502,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <accessibility key="accessibilityConfiguration">
-                                    <bool key="isElement" value="NO"/>
+                                    <integer key="isElement" value="0"/>
                                 </accessibility>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exer</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -562,7 +557,6 @@
             </objects>
             <point key="canvasLocation" x="1296" y="-839"/>
         </scene>
-        <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -585,7 +579,6 @@
             </objects>
             <point key="canvasLocation" x="-2156" y="53"/>
         </scene>
-        <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="ML1-Kg-lEf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoL-70-V7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -611,7 +604,6 @@
             </objects>
             <point key="canvasLocation" x="139" y="899"/>
         </scene>
-        <!--Navigation Controller - Browse-->
         <scene sceneID="Ygp-G0-K7g">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bH-SD-r8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -629,12 +621,72 @@
         </scene>
     </scenes>
     <resources>
-        <image name="location.jpg" width="16" height="16"/>
+        <image name="location.jpg" width="39" height="38"/>
         <image name="postdeal.png" width="12" height="24"/>
         <image name="search.png" width="24" height="24"/>
         <image name="settings.png" width="24" height="24"/>
         <image name="whatsaroundyou.png" width="27" height="27"/>
     </resources>
+    <classes>
+        <class className="CLLocationManager" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CLLocationManager.h"/>
+        </class>
+        <class className="DetailController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealCategory" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealDescr" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="dealImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="dealLocation" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealMerchantName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="dealTitle" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="KategoryController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/KategoryController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="uiTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="PostDealController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PostDealController.h"/>
+            <relationships>
+                <relationship kind="action" name="addDeal"/>
+                <relationship kind="action" name="emailDeal"/>
+                <relationship kind="action" name="endDateEditDidBegin:"/>
+                <relationship kind="action" name="getLocation"/>
+                <relationship kind="action" name="presentCategoryPickerActionSheet"/>
+                <relationship kind="action" name="smsDeal"/>
+                <relationship kind="action" name="startDateEditDidBegin:"/>
+                <relationship kind="action" name="switchDidBegin:"/>
+                <relationship kind="outlet" name="locationManager" candidateClass="CLLocationManager"/>
+                <relationship kind="outlet" name="switchIsFeatured" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="txtCategory" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtDescription" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtEndDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtLocationLat" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtLocationLong" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtMerchant" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtRemarks" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtStartDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtTitle" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SearchController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="resultTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="searchBarObj" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="searchDisplayController" candidateClass="UISearchDisplayController"/>
+            </relationships>
+        </class>
+        <class className="WhatsAroundYouMasterController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WhatsAroundYouMasterController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dealsTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

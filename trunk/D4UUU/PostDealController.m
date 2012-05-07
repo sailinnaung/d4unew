@@ -7,7 +7,7 @@
 //
 
 #import "PostDealController.h"
-
+#import "DBManager.h"
 
 @interface PostDealController ()
 
@@ -30,12 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [pvCategory setHidden:YES];
-    arrayCategory =[[NSMutableArray alloc] init];
-	[arrayCategory addObject:@"Food"];
-	[arrayCategory addObject:@"Fashion"];
-	[arrayCategory addObject:@"Entertainment"];
-	[arrayCategory addObject:@"Lifestyle"];
+//    [pvCategory setHidden:YES];
+    
+    /** Getting available categories from SQLite DB **/
+    dbManager = [DBManager sharedDBManager];
+    arrayCategory =dbManager.arrAvailable;
+	
     switchIsFeatured.on = NO;
 }
 
@@ -75,9 +75,10 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 { 
     txtCategory.text = [arrayCategory objectAtIndex:row];
-    [pickerView setHidden:YES];
+//    [pickerView setHidden:YES];
 	NSLog(@"%@ selected",[arrayCategory objectAtIndex:row]);
 }	
+
 
 - (IBAction) addDeal {    
 /*    NSString *urlString = [NSString stringWithFormat:@"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@&prmo_datetime_start=%@&prmo_datetime_end=%@&prmo_remarks=%@", */
@@ -171,23 +172,82 @@
     }
 }
 
-- (BOOL) textFieldShouldBeginEditing:(UITextView *)textView
+-(IBAction)presentCategoryPickerActionSheet
 {
-    if (textView.text == txtCategory.text) {
-        for (UIView *subview in [self.view subviews]) {
-            if ([subview class] == [UITextField class]) {
-                [subview resignFirstResponder];
-            }
-        }
-        [txtCategory resignFirstResponder];
-        txtCategory.inputView = pvCategory;
-        [pvCategory setHidden:NO];
-        [pvCategory setFrame:CGRectMake(0,200,0,0)];
-        return NO;
+    [txtCategory resignFirstResponder];
+    [txtDescription resignFirstResponder];
+    [txtEndDate resignFirstResponder];
+    [txtLocationLat resignFirstResponder];
+    [txtLocationLong resignFirstResponder];
+    [txtMerchant resignFirstResponder];
+    [txtRemarks resignFirstResponder];
+    [txtStartDate resignFirstResponder];
+    [txtTitle resignFirstResponder];
+    
+    actPickerSheet = [[UIActionSheet alloc] initWithTitle:nil 
+                                                 delegate:nil
+                                        cancelButtonTitle:nil
+                                   destructiveButtonTitle:nil
+                                        otherButtonTitles:nil];
+    
+    [actPickerSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    
+    CGRect pickerFrame = CGRectMake(0, 0, 0, 0);
+    
+    UIPickerView *pvCategory=[[UIPickerView alloc] initWithFrame:pickerFrame];
+    pvCategory.delegate = self;
+    pvCategory.dataSource = self;
+    pvCategory.showsSelectionIndicator=YES;
+    
+    UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"] ];
+    closeButton.momentary = YES; 
+    closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
+    closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
+    closeButton.tintColor = [UIColor blackColor];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    
+    [actPickerSheet addSubview:pvCategory];
+    [actPickerSheet addSubview:closeButton];
+    
+    [actPickerSheet showInView: self.view ];
+    [actPickerSheet setBounds:CGRectMake(0, 0, 320, 485)];  
+    
+    txtCategory.inputView = pvCategory;
+}
+
+//- (BOOL) textFieldShouldBeginEditing:(UITextView *)textView
+//{
+//    if (textView.text == txtCategory.text) {
+//        for (UIView *subview in [self.view subviews]) {
+//            if ([subview class] == [UITextField class]) {
+//                [subview resignFirstResponder];
+//            }
+//        }
+//        
+//        if(textView isEqual:[tx]
+//        [txtCategory resignFirstResponder];
+//        
+//        
+//        
+//
+//        return NO;
+//    }
+//    else {
+//        return YES;
+//    }    
+//}
+
+
+
+- (void)dismissActionSheet:(id)sender{
+    NSLog(@"inside dismissActionSheet");
+    
+    /** If no selection has done, set the default category **/
+    if(txtCategory.text==nil){
+        txtCategory.text = [arrayCategory objectAtIndex:0];
     }
-    else {
-        return YES;
-    }    
+    
+    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
@@ -197,6 +257,7 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
 
+    [textField resignFirstResponder];
     return YES;
 }
 - (IBAction) getLocation{
@@ -220,6 +281,10 @@
     
 }
 
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
+    NSLog(@"Inside PostDealController.didFailWithError for geocoder");
+}
+
 - (IBAction)startDateEditDidBegin:(id)sender{
     [txtStartDate resignFirstResponder];
     pick = [[UIDatePicker alloc] init];
@@ -227,6 +292,7 @@
     [pick addTarget:self action:@selector(getStartDateDone) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:pick];
 }
+
 
 - (IBAction)endDateEditDidBegin:(id)sender {
     [txtEndDate resignFirstResponder];
