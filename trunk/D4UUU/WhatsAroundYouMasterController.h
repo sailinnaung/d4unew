@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@class WhatsAroundYouDetailController;
+@class DetailController;
 
 @interface WhatsAroundYouMasterController : UITableViewController <UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     
@@ -19,7 +19,7 @@
     NSUInteger noUpdates;
 }
 
-@property (strong, nonatomic) WhatsAroundYouDetailController *detailViewController;
+@property (strong, nonatomic) DetailController *detailViewController;
 @property (strong, nonatomic) NSMutableArray* deals;
 @property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
 -(void) updateLocationAndCategory;

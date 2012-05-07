@@ -6,17 +6,18 @@
 //  Copyright (c) 2012 tech@arunma.com. All rights reserved.
 //
 
-#import "WhatsAroundYouDetailController.h"
+#import "DetailController.h"
 #import "Deal.h"
 #import "DBManager.h"
 #import "Constants.h"
 
-@interface WhatsAroundYouDetailController ()
+@interface DetailController ()
 - (void)configureView;
 @end
 
-@implementation WhatsAroundYouDetailController
+@implementation DetailController
 
+@synthesize dealId, dealTitle, category, description, location, merchantName, image;
 @synthesize dealItem;
 @synthesize masterController;
 //@synthesize detailDescriptionLabel = _detailDescriptionLabel;
@@ -40,6 +41,22 @@
     if (self.dealItem) {
         //self.detailDescriptionLabel.text = [self.detailItem description];
         NSLog(@"Incoming deal is %@", dealItem.dealTitle);
+        
+   
+        self.dealId.text=dealItem.dealId;
+        self.dealTitle.text=dealItem.dealTitle;
+        self.category.text=dealItem.category;
+        self.description.text=dealItem.description;
+        //self.dealId=dealItem.; //TODO location
+        self.merchantName.text=dealItem.merchantName;
+        
+        NSURL *url = [NSURL URLWithString:dealItem.imageUrl];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *tempImage = [UIImage imageWithData:data];
+        
+        self.image.image=tempImage;
+        
+        
     }
 }
 

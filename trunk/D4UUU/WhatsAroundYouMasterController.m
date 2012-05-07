@@ -8,7 +8,7 @@
 
 #import "WhatsAroundYouMasterController.h"
 
-#import "WhatsAroundYouDetailController.h"
+#import "DetailController.h"
 #import "DealsServiceManager.h"
 #import "Deal.h"
 #import "MBProgressHUD.h"
@@ -228,7 +228,7 @@ DealsServiceManager *dealsManager=nil;
 {
     
     if (!self.detailViewController) {
-        self.detailViewController = [[WhatsAroundYouDetailController alloc] initWithNibName:@"WhatsAroundYouDetailController" bundle:nil];
+        self.detailViewController = [[DetailController alloc] initWithNibName:@"DetailController" bundle:nil];
         //self.detail2ViewController.parameter=[[NSNumber numberWithInteger:indexPath.row]stringValue];
         
     }

@@ -173,7 +173,7 @@
 
 - (BOOL) textFieldShouldBeginEditing:(UITextView *)textView
 {
-    if (textView == txtCategory) {
+    if (textView.text == txtCategory.text) {
         for (UIView *subview in [self.view subviews]) {
             if ([subview class] == [UITextField class]) {
                 [subview resignFirstResponder];
@@ -253,4 +253,6 @@
     [pick removeFromSuperview];
     
 }
+
+
 @end
