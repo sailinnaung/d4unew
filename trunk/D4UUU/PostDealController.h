@@ -12,7 +12,7 @@
 #import <MapKit/MapKit.h>
 #import "DBManager.h"
 
-@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate,MKReverseGeocoderDelegate, MFMailComposeViewControllerDelegate>{
+@interface PostDealController : UIViewController <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate,MKReverseGeocoderDelegate, MFMailComposeViewControllerDelegate, UIImagePickerControllerDelegate>{
     IBOutlet UITextField *txtTitle;
     IBOutlet UITextField *txtMerchant;
     IBOutlet UITextField *txtCategory;
@@ -31,6 +31,12 @@
     
     DBManager* dbManager;
     UIActionSheet *actPickerSheet;
+    
+    // Start added by Chen Lim for image upload
+    NSData *imageData; 
+    NSMutableString *sResponse;
+    IBOutlet UIActivityIndicatorView *spinningWheel;
+    // End added by Chen Lim for image upload
 }
 
 
@@ -44,5 +50,12 @@
 - (IBAction) getLocation;
 
 - (IBAction) presentCategoryPickerActionSheet;
+
+// Sart added by Chen Lim for image upload
+- (IBAction) imgSel;
+@property (nonatomic, retain) NSData *imageData;
+@property (nonatomic, retain) NSMutableString *sResponse;
+@property (nonatomic, retain) UIActivityIndicatorView *spinningWheel;
+// End added by Chen Lim for image upload
 
 @end
