@@ -8,7 +8,7 @@
 
 #define SERVER_BASE_URL @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_json.php?action="
 
-#define DEFAULT_SEARCH_RESULT_STRING @"Search by promoton title or name"
+#define DEFAULT_SEARCH_RESULT_STRING @"Search by promotion title or name"
 #define SEARCH_TITLE_ACTION @"get_by_title"
 #define SEARCH_TEXT_KEYWORD @"&prmo_title="
 
