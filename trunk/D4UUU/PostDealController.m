@@ -2,7 +2,7 @@
 //  PostDealController.m
 //  Deals4U
 //
-//  Created by Arun Manivannan on 29/4/12.
+//  Created by Vincent Choo on 29/4/12.
 //  Copyright (c) 2012 tech@arunma.com. All rights reserved.
 //
 
@@ -38,6 +38,8 @@
     switchIsFeatured.on = NO;
     txtLocationLong.enabled = NO;
     txtLocationLat.enabled = NO;
+    
+    dateFormat=@"yyyy-MM-dd HH:mm";
      
     
 }
@@ -464,30 +466,69 @@
     
     txtCategory.inputView = pvCategory;
 }
+/*
+- (BOOL) textFieldShouldBeginEditing:(UITextView *)textView
+{
+    if (textView == txtCategory) {
+        for (UIView *subview in [self.view subviews]) {
+            if ([subview class] == [UITextField class] && textView != txtCategory) {
+                [subview resignFirstResponder];
+            }
+        
+        
+    }   
+    return YES;
+}
+*/
 
-//- (BOOL) textFieldShouldBeginEditing:(UITextView *)textView
-//{
-//    if (textView.text == txtCategory.text) {
-//        for (UIView *subview in [self.view subviews]) {
-//            if ([subview class] == [UITextField class]) {
-//                [subview resignFirstResponder];
-//            }
-//        }
-//        
-//        if(textView isEqual:[tx]
-//        [txtCategory resignFirstResponder];
-//        
-//        
-//        
-//
-//        return NO;
-//    }
-//    else {
-//        return YES;
-//    }    
-//}
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self animateTextField:textField up:YES];
+}
 
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    [self animateTextField:textField up:NO];
+}
+
+
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up
+{
+    int animatedDistance;
+    int moveUpValue = textField.frame.origin.y+ textField.frame.size.height;
+    UIInterfaceOrientation orientation =
+    [[UIApplication sharedApplication] statusBarOrientation];
+    if (orientation == UIInterfaceOrientationPortrait ||
+        orientation == UIInterfaceOrientationPortraitUpsideDown)
+    {
+        
+        animatedDistance = 216-(460-moveUpValue-5);
+    }
+    else
+    {
+        animatedDistance = 162-(320-moveUpValue-5);
+    }
+    
+    if(animatedDistance>0)
+    {
+        const int movementDistance = animatedDistance;
+        const float movementDuration = 0.3f; 
+        int movement = (up ? -movementDistance : movementDistance);
+        [UIView beginAnimations: nil context: nil];
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        [UIView setAnimationDuration: movementDuration];
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement);       
+        [UIView commitAnimations];
+    }
+}
 
 - (void)dismissActionSheet:(id)sender{
     NSLog(@"inside dismissActionSheet");
@@ -500,16 +541,7 @@
     [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField{
-    
-    [textField resignFirstResponder];
-}
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-
-    [textField resignFirstResponder];
-    return YES;
-}
 - (IBAction) getLocation{
     
     locationManager = [[CLLocationManager alloc] init];
@@ -550,7 +582,6 @@
     dPicker.maximumDate=[NSDate date];  
     
     pick = dPicker;
-//    [pick setFrame:CGRectMake(0,200,0,0)];
     [pick addTarget:self action:@selector(getStartDateDone) forControlEvents:UIControlEventValueChanged];
     
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"] ];
@@ -560,13 +591,20 @@
     closeButton.tintColor = [UIColor blackColor];
     [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
     
+    NSString *dateText=((UITextField *)sender).text;
+    if([dateText length] >0){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [dateFormatter setDateFormat:dateFormat];
+        NSDate *date = [dateFormatter dateFromString:dateText];
+        pick.date = date;
+    }
+    
     [actPickerSheet addSubview:pick];
     [actPickerSheet addSubview:closeButton];
     
     [actPickerSheet showInView: self.view ];
     [actPickerSheet setBounds:CGRectMake(0, 0, 320, 485)]; 
-
-    
 }
 
 
@@ -593,6 +631,14 @@
     closeButton.tintColor = [UIColor blackColor];
     [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
     
+    NSString *dateText=((UITextField *)sender).text;
+    if([dateText length] >0){
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [dateFormatter setDateFormat:dateFormat];
+        NSDate *date = [dateFormatter dateFromString:dateText];
+        pick.date = date;
+    }
     [actPickerSheet addSubview:pick];
     [actPickerSheet addSubview:closeButton];
     
@@ -614,9 +660,8 @@
     }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:dateFormat];
     txtStartDate.text = [dateFormatter stringFromDate:choice];    
-  //  txtStartDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
     
  //   [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
     
@@ -636,9 +681,8 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [dateFormatter setDateFormat:dateFormat];
     txtEndDate.text = [dateFormatter stringFromDate:choice];
-  //  txtEndDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
     
 //    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
