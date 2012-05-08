@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [pvCategory setHidden:YES];
     
     /** Getting available categories from SQLite DB **/
     dbManager = [DBManager sharedDBManager];
@@ -39,6 +38,7 @@
     switchIsFeatured.on = NO;
     txtLocationLong.enabled = NO;
     txtLocationLat.enabled = NO;
+     
     
 }
 
@@ -214,6 +214,58 @@
         [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_long\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[param8 dataUsingEncoding:NSUTF8StringEncoding]];
         [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+        // Another text parameter - start date
+        NSString *startText=txtStartDate.text;
+        NSUInteger len = [startText length];
+        NSString *start_date=[startText substringToIndex:(len-6)];
+        NSString *start_hh=[startText substringWithRange:NSMakeRange((len-5), 2)];
+        NSString *start_mm=[startText substringFromIndex:(len-2)];
+        NSString *param9 = start_date;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_datetime_start\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param9 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        NSString *param10 = start_hh;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_datetime_start_hh\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param10 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        NSString *param11 = start_mm;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_datetime_start_mm\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param11 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter - end date
+        NSString *endText=txtEndDate.text;
+        NSUInteger end_len = [endText length];
+        NSString *end_date=[endText substringToIndex:(end_len-6)];
+        NSString *end_hh=[endText substringWithRange:NSMakeRange((end_len-5), 2)];
+        NSString *end_mm=[endText substringFromIndex:(end_len-2)];
+        NSString *param12 = end_date;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_datetime_end\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param12 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        NSString *param13 = end_hh;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_datetime_end_hh\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param13 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        NSString *param14 = end_mm;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_datetime_end_mm\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param14 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        // Another text parameter
+        NSString *param15 = txtRemarks.text;
+        [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"prmo_remarks\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[param15 dataUsingEncoding:NSUTF8StringEncoding]];
+        [body appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        
         
         // close form
         [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -224,17 +276,19 @@
         //call the url Asynchronously
         [[NSURLConnection alloc] initWithRequest:request delegate:self];
         [spinningWheel startAnimating];   
-    
+  /*
         
-        NSString *myRequestString = [NSString stringWithFormat: @"action=create&prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@",
+        NSString *myRequestString = [NSString stringWithFormat: @"action=create&prmo_title=%@&prmo_merchant=%@&prmo_category=%@&prmo_is_featured=%@&prmo_description=%@&prmo_lat=%@&prmo_long=%@&prmo_datetime_start=%@&prmo_datetime_start_hh=%@&prmo_datetime_start_mm=%@",
                                      txtTitle.text,
                                      txtMerchant.text,
                                      txtCategory.text,
                                      switchIsFeatured.on ? @"1" : @"0",
                                      txtDescription.text,
                                      txtLocationLat.text,
-                                     txtLocationLong.text];//,
-        
+                                     txtLocationLong.text,
+                                     dateDate,
+                                     start_hh,
+                                     start_mm];//,    
         
         NSData *myRequestData = [NSData dataWithBytes: [myRequestString UTF8String] length: [myRequestString length]];
         request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: @"http://www.ambracetech.com/projects/sch_iphone/_backend/prmo_group/prmo_post.php?"]];
@@ -248,16 +302,15 @@
         NSError *error;
         NSURLResponse *response;
         NSData *returnData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error:&error];
-        //  txtTitle.text = returnData.description;
-        
-        if(![returnData.description isEqualToString:@""]){
+     */   
+        /*if(![returnData.description isEqualToString:@""]){
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Post Deal Result"
                                                             message: @"Deal Posted Sucessfully!"
                                                            delegate: self cancelButtonTitle:
                                   @"Close" otherButtonTitles: nil];
             
             [alert show];
-        }
+        }*/
     }
 
    
@@ -328,8 +381,7 @@
         emailViewController. mailComposeDelegate = self;
         
         [emailViewController setSubject: @"Great Deal"] ;
-        //  NSString *msg = @"Don't Miss It!\n";
-        // *msg = msg + @"aaa";
+
         NSString *msg = [NSString stringWithFormat:@"Great Deal!\n\nTitle: %@ \nMerchant: %@ \nCategory: %@ \nIs_Featured: %@ \nDescription: %@ \nLocation: %@, %@ \nStart: %@ \nEnd: %@ \nRemarks: %@", 
                          txtTitle.text, 
                          txtMerchant.text, 
@@ -492,9 +544,9 @@
                                    destructiveButtonTitle:nil
                                         otherButtonTitles:nil];
     
-    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 40, 0.0, 0.0)];
     
-    dPicker.datePickerMode = UIDatePickerModeDate;
+    dPicker.datePickerMode = UIDatePickerModeDateAndTime;
     dPicker.maximumDate=[NSDate date];  
     
     pick = dPicker;
@@ -506,7 +558,7 @@
     closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
     closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
     closeButton.tintColor = [UIColor blackColor];
-    [closeButton addTarget:self action:@selector(getStartDateDone:) forControlEvents:UIControlEventValueChanged];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
     
     [actPickerSheet addSubview:pick];
     [actPickerSheet addSubview:closeButton];
@@ -527,21 +579,19 @@
                                    destructiveButtonTitle:nil
                                         otherButtonTitles:nil];
     
-    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 40, 0.0, 0.0)];
     
-    dPicker.datePickerMode = UIDatePickerModeDate;
-    dPicker.maximumDate=[NSDate date]; 
+    dPicker.datePickerMode = UIDatePickerModeDateAndTime;
+ //   dPicker.maximumDate=[NSDate date]; 
     
     pick = dPicker;
-//    [pick setFrame:CGRectMake(0,200,0,0)];
-    [pick addTarget:self action:@selector(getEndDateDone) forControlEvents:UIControlEventValueChanged];
-    
+    [pick addTarget:self action:@selector(getEndDateDone) forControlEvents:UIControlEventValueChanged ];
     UISegmentedControl *closeButton = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObject:@"Done"] ];
     closeButton.momentary = YES; 
     closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
     closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
     closeButton.tintColor = [UIColor blackColor];
-    [closeButton addTarget:self action:@selector(getEndDateDone:) forControlEvents:UIControlEventValueChanged];
+    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
     
     [actPickerSheet addSubview:pick];
     [actPickerSheet addSubview:closeButton];
@@ -551,8 +601,7 @@
     
 }
 
-
--(void)getStartDateDone:(id)sender
+-(void)getStartDateDone
 {
     NSLog(@"inside getStartDateDone");
     NSDate *choice;
@@ -563,14 +612,17 @@
     }else{
         choice = [pick date];
     }
-        
-    txtStartDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    txtStartDate.text = [dateFormatter stringFromDate:choice];    
+  //  txtStartDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
     
-    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
+ //   [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
     
 }
 
--(void)getEndDateDone:(id)sender
+-(void)getEndDateDone
 {
     NSLog(@"inside getStartDateDone");
     NSDate *choice;
@@ -582,9 +634,13 @@
         choice = [pick date];
     }
     
-    txtEndDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    txtEndDate.text = [dateFormatter stringFromDate:choice];
+  //  txtEndDate.text = [[NSString alloc] initWithFormat:@"%@", choice];
     
-    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
+//    [actPickerSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 -(void)imgSel
