@@ -2,7 +2,7 @@
 //  PostDealController.h
 //  Deals4U
 //
-//  Created by Arun Manivannan on 29/4/12.
+//  Created by Vincent Choo on 29/4/12.
 //  Copyright (c) 2012 tech@arunma.com. All rights reserved.
 //
 
@@ -22,7 +22,6 @@
     IBOutlet UITextField *txtStartDate;
     IBOutlet UITextField *txtEndDate;
     IBOutlet UITextField *txtRemarks;
-//    IBOutlet UIPickerView *pvCategory;
     IBOutlet UISwitch *switchIsFeatured;
     IBOutlet CLLocationManager *locationManager;
     
@@ -32,6 +31,7 @@
     DBManager* dbManager;
     UIActionSheet *actPickerSheet;
 
+    NSString *dateFormat;
     
     // Start added by Chen Lim for image upload
     NSData *imageData; 
