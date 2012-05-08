@@ -492,7 +492,7 @@
                                    destructiveButtonTitle:nil
                                         otherButtonTitles:nil];
     
-    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 200, 0.0, 0.0)];
+    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     dPicker.datePickerMode = UIDatePickerModeDate;
     dPicker.maximumDate=[NSDate date];  
@@ -506,7 +506,7 @@
     closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
     closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
     closeButton.tintColor = [UIColor blackColor];
-    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    [closeButton addTarget:self action:@selector(getStartDateDone:) forControlEvents:UIControlEventValueChanged];
     
     [actPickerSheet addSubview:pick];
     [actPickerSheet addSubview:closeButton];
@@ -527,7 +527,7 @@
                                    destructiveButtonTitle:nil
                                         otherButtonTitles:nil];
     
-    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0.0, 200, 0.0, 0.0)];
+    UIDatePicker *dPicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     dPicker.datePickerMode = UIDatePickerModeDate;
     dPicker.maximumDate=[NSDate date]; 
@@ -541,7 +541,7 @@
     closeButton.frame = CGRectMake(260, 7.0f, 50.0f, 30.0f);
     closeButton.segmentedControlStyle = UISegmentedControlStyleBar;
     closeButton.tintColor = [UIColor blackColor];
-    [closeButton addTarget:self action:@selector(dismissActionSheet:) forControlEvents:UIControlEventValueChanged];
+    [closeButton addTarget:self action:@selector(getEndDateDone:) forControlEvents:UIControlEventValueChanged];
     
     [actPickerSheet addSubview:pick];
     [actPickerSheet addSubview:closeButton];
@@ -552,7 +552,7 @@
 }
 
 
--(void)getStartDateDone
+-(void)getStartDateDone:(id)sender
 {
     NSLog(@"inside getStartDateDone");
     NSDate *choice;
@@ -570,7 +570,7 @@
     
 }
 
--(void)getEndDateDone
+-(void)getEndDateDone:(id)sender
 {
     NSLog(@"inside getStartDateDone");
     NSDate *choice;
