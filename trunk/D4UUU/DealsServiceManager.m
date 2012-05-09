@@ -162,7 +162,7 @@ static DealsServiceManager *serviceManager =nil;
     Deal* deal=nil;
     
     NSError* e; 
-    NSArray* jsonArray= [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&e];
+    NSArray* jsonArray= [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&e] ;
     
     if (!jsonArray){
         NSLog(@"Error.  The result is not an array");

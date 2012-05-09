@@ -61,11 +61,19 @@ DealsServiceManager *likedDealsManager=nil;
     likedDealsManager=[DealsServiceManager sharedManager];
     
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //hud.labelText = @"Working";
+    
            
-    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
     hud.labelText = @"Please wait... Refreshing data";
     
+    [self updateData];  
+    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    /*
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
         
         
@@ -75,7 +83,7 @@ DealsServiceManager *likedDealsManager=nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
-    });
+    });*/
    
     
 }

@@ -37,7 +37,7 @@
 		DB5CB91C1554F69D00D63FB0 /* DetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9161554F69D00D63FB0 /* DetailController.xib */; };
 		DB5CB91E1554F69D00D63FB0 /* WhatsAroundYouMasterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9191554F69D00D63FB0 /* WhatsAroundYouMasterController.xib */; };
 		DB5CB9231554F86500D63FB0 /* Deal.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9201554F86500D63FB0 /* Deal.m */; };
-		DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		DB5CB9241554F86500D63FB0 /* DealsServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */; };
 		DB5CB94A1554F94800D63FB0 /* popular.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9291554F94500D63FB0 /* popular.png */; };
 		DB5CB94B1554F94800D63FB0 /* popular@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB92A1554F94500D63FB0 /* popular@2x.png */; };
 		DB5CB94C1554F94800D63FB0 /* PopularController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5CB92C1554F94500D63FB0 /* PopularController.m */; };
@@ -53,6 +53,8 @@
 		DB5CB9611554F94800D63FB0 /* WhatsNewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5CB9461554F94700D63FB0 /* WhatsNewController.xib */; };
 		DB5CB96B155515D200D63FB0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB969155515B900D63FB0 /* MapKit.framework */; };
 		DB5CB96C155515D200D63FB0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5CB967155515B200D63FB0 /* CoreLocation.framework */; };
+		DB99A819155A96B600EADF96 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = DB99A818155A96B600EADF96 /* Splash.png */; };
+		DB99A81B155A96CB00EADF96 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = DB99A81A155A96CB00EADF96 /* Splash.png */; };
 		DBCE5E801557DCD70099A14F /* noImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DBCE5E7F1557DCD70099A14F /* noImage.jpg */; };
 		DBCE5E841557E3910099A14F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBCE5E821557E3850099A14F /* QuartzCore.framework */; };
 		DBCE5E861557E79B0099A14F /* WhatsAroundYouMasterController.m in Sources */ = {isa = PBXBuildFile; fileRef = DBCE5E851557E79B0099A14F /* WhatsAroundYouMasterController.m */; };
@@ -128,6 +130,8 @@
 		DB5CB9661554FDAB00D63FB0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DB5CB967155515B200D63FB0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DB5CB969155515B900D63FB0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DB99A818155A96B600EADF96 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
+		DB99A81A155A96CB00EADF96 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		DBCE5E7F1557DCD70099A14F /* noImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noImage.jpg; sourceTree = "<group>"; };
 		DBCE5E821557E3850099A14F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DBCE5E851557E79B0099A14F /* WhatsAroundYouMasterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatsAroundYouMasterController.m; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 		DB5CB8DB1554F5ED00D63FB0 = {
 			isa = PBXGroup;
 			children = (
+				DB99A81A155A96CB00EADF96 /* Splash.png */,
 				DB5CB8F01554F5ED00D63FB0 /* D4UUU */,
 				DB5CB8E91554F5ED00D63FB0 /* Frameworks */,
 				DB5CB8E71554F5ED00D63FB0 /* Products */,
@@ -213,6 +218,7 @@
 				DB5CB9331554F94600D63FB0 /* search@2x.png */,
 				DB5B4EE61556E9C000A1D34D /* MBProgressHUD.h */,
 				DB5B4EE71556E9C000A1D34D /* MBProgressHUD.m */,
+				DB99A818155A96B600EADF96 /* Splash.png */,
 				DB5B4EBA1556BCAF00A1D34D /* whatsaroundyou.png */,
 				DB5CB93C1554F94600D63FB0 /* settings@2x.png */,
 				DB5B4EC01556BE5900A1D34D /* postdeal.png */,
@@ -354,6 +360,8 @@
 				DB1ECE3C155A75D7004A7FC8 /* likecolor.png in Resources */,
 				DB1ECE3E155A7750004A7FC8 /* share.jpg in Resources */,
 				DB1ECE43155A82F6004A7FC8 /* uploadphoto.png in Resources */,
+				DB99A819155A96B600EADF96 /* Splash.png in Resources */,
+				DB99A81B155A96CB00EADF96 /* Splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
