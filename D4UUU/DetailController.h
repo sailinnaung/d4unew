@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "WhatsAroundYouMasterController.h"
 #import <MessageUI/MFMailComposeViewController.h>
+#import <MessageUI/MFMessageComposeViewController.h>
+#import <AddressBookUI/ABPeoplePickerNavigationController.h>
+#import <AddressBook/AddressBook.h>
 
 @class Deal;
 
-@interface DetailController : UIViewController<UIActionSheetDelegate, MFMailComposeViewControllerDelegate>{
+@interface DetailController : UIViewController<UIActionSheetDelegate, MFMailComposeViewControllerDelegate,ABPeoplePickerNavigationControllerDelegate,MFMessageComposeViewControllerDelegate>{
     
     //UILabel * dealId;
     UILabel *dealTitle;
@@ -23,6 +26,8 @@
     UIImageView *dealImage;
     
     UIButton *likeButton;
+    
+    NSMutableArray *phoneNumbers;
     
     //CLGeocoder *geoCoder;
     //CLLocationManager *locationManager;
@@ -37,6 +42,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* dealMerchantName;
 @property (strong, nonatomic) IBOutlet UIImageView* dealImage;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
+@property (strong, nonatomic) NSMutableArray* phoneNumbers;
 
 @property (strong, nonatomic) Deal* dealItem;
 @property (strong, nonatomic) WhatsAroundYouMasterController* masterController;
@@ -44,6 +50,8 @@
 -(IBAction)showActionSheet:(id)sender;
 
 -(void) performLiked;
+-(void) setLikeButtonDisabled;
+-(void) sendInAppSMS;
 
 //@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 

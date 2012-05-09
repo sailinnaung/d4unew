@@ -52,6 +52,7 @@
 - (IBAction) getLocation;
 
 - (IBAction) presentCategoryPickerActionSheet;
+- (void) animateTextField: (UITextField*) textField up: (BOOL) up;
 
 // Sart added by Chen Lim for image upload
 - (IBAction) imgSel;
