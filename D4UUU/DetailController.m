@@ -234,8 +234,8 @@
             
             [twitter addImage:tempImage];
             
-            NSString *tweetText=[[[NSString alloc] initWithString:@"Tweeting from my first AppStore candidate :-)"] stringByAppendingString:dealItem.description];
-            //NSString *tweetText=[[[[NSString alloc] initWithString:dealItem.dealTitle] stringByAppendingString:@"-"] stringByAppendingString:dealItem.debugDescription];
+           
+            NSString *tweetText=[[[[NSString alloc] initWithString:dealItem.dealTitle] stringByAppendingString:@"-"] stringByAppendingString:dealItem.debugDescription];
             [twitter setInitialText:tweetText];
             
             // Show the controller
