@@ -29,5 +29,6 @@
 
 -(void)handleDealSearchbyText:(NSString *) SearchText;
 -(UIImage *)scale:(UIImage *)image;
+-(void) borderAndSmoothImageView:(UIImageView*) tempImageView;
 
 @end

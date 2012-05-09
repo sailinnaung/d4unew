@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11D2001" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
+        <deployment defaultVersion="1280" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
-        <!--Whats Around You Master Controller - Root View Controller-->
         <scene sceneID="QyS-yn-dg3">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pp-lI-k76" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,7 +42,6 @@
             </objects>
             <point key="canvasLocation" x="1" y="-1314"/>
         </scene>
-        <!--Navigation Controller - Around You-->
         <scene sceneID="UHF-aE-Ycx">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFH-fW-jpn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -59,7 +57,6 @@
             </objects>
             <point key="canvasLocation" x="-639" y="-1314"/>
         </scene>
-        <!--Post Deal Controller - Post Deal-->
         <scene sceneID="TSd-ir-Qud">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYB-Zn-a3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,7 +332,6 @@
             </objects>
             <point key="canvasLocation" x="-639" y="339"/>
         </scene>
-        <!--Kategory Controller - Categories-->
         <scene sceneID="iA3-bH-21Q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fZ-2m-wRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -365,7 +361,6 @@
             </objects>
             <point key="canvasLocation" x="-630" y="1630"/>
         </scene>
-        <!--Navigation Controller - Search New-->
         <scene sceneID="ZZj-9a-QCi">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="94Y-gV-53P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,7 +376,6 @@
             </objects>
             <point key="canvasLocation" x="-1108" y="-465"/>
         </scene>
-        <!--Search Controller - Search-->
         <scene sceneID="0QC-3y-4I5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wQc-o6-NOV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,7 +489,6 @@
             </objects>
             <point key="canvasLocation" x="-426" y="-450"/>
         </scene>
-        <!--Detail Controller-->
         <scene sceneID="zpU-EA-dxk">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BNI-pN-ZKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -508,7 +501,7 @@
                                 <rect key="frame" x="32" y="75" width="268" height="167"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" highlighted="YES" id="LtJ-iy-9dj">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="LtJ-iy-9dj">
                                 <rect key="frame" x="203" y="46" width="104" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
@@ -570,7 +563,7 @@
                                 <color key="textColor" red="0.0" green="0.54509806630000002" blue="0.37254902719999999" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="o3V-RD-7by">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="o3V-RD-7by">
                                 <rect key="frame" x="16" y="250" width="108" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="15"/>
@@ -594,7 +587,6 @@
             </objects>
             <point key="canvasLocation" x="944" y="-539"/>
         </scene>
-        <!--Tab Bar Controller-->
         <scene sceneID="15">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -617,7 +609,6 @@
             </objects>
             <point key="canvasLocation" x="-2156" y="53"/>
         </scene>
-        <!--Liked Controller - Root View Controller-->
         <scene sceneID="ML1-Kg-lEf">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoL-70-V7U" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -699,7 +690,6 @@
             </objects>
             <point key="canvasLocation" x="223" y="1015"/>
         </scene>
-        <!--Navigation Controller - Top Liked-->
         <scene sceneID="Ygp-G0-K7g">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bH-SD-r8B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -723,7 +713,7 @@
         <image name="search.png" width="24" height="24"/>
         <image name="settings.png" width="24" height="24"/>
         <image name="share.jpg" width="400" height="400"/>
-        <image name="uploadphoto.png" width="16" height="16"/>
+        <image name="uploadphoto.png" width="22" height="25"/>
         <image name="whatsaroundyou.png" width="27" height="27"/>
     </resources>
     <classes>
@@ -794,7 +784,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/WhatsAroundYouMasterController.h"/>
             <relationships>
                 <relationship kind="outlet" name="dealsTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="spinningWheel" candidateClass="UIActivityIndicatorView"/>
             </relationships>
         </class>
     </classes>
