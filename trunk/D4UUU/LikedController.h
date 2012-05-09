@@ -25,5 +25,6 @@
 -(void) updateCategory;
 -(void) borderAndSmoothImageView:(UIImageView*) tempImageView;
 - (UIImage *)scale:(UIImage *)image;
+-(void) updateData;
 
 @end

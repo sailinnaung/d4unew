@@ -11,6 +11,7 @@
 #import "DBManager.h"
 #import "Constants.h"
 #import <Twitter/Twitter.h>
+#import <AddressBookUI/ABPeoplePickerNavigationController.h>
 
 @interface DetailController ()
 - (void)configureView;
@@ -23,6 +24,7 @@
 @synthesize dealItem;
 @synthesize masterController;
 @synthesize likeButton;
+@synthesize phoneNumbers;
 
 #pragma mark - Managing the detail item
 
@@ -110,6 +112,8 @@
     
     
     //[self performLiked];
+    
+    phoneNumbers = [[NSMutableArray alloc] init];
     
 }
 
@@ -287,12 +291,74 @@
 		}
 		case 3:
 		{
-			NSLog(@"Item 3 Selected");
+			NSLog(@"SMS people picker Selected");
+            
+            ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+            picker.peoplePickerDelegate = self;
+            // Display only a person's phone, email, and birthdate
+            NSArray *displayedItems = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonPhoneProperty]];
+            picker.peoplePickerDelegate = self;
+            
+            picker.displayedProperties = displayedItems;
+            // Show the picker 
+            [self presentModalViewController:picker animated:YES];
+            
+            [self sendInAppSMS];
+            
 			break;
 		}
        
 	}
 }
+
+-(void) sendInAppSMS
+{
+    NSLog(@"inside sendInAppSMS");
+	MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+	if([MFMessageComposeViewController canSendText])
+	{
+		controller.body = [[NSString alloc] initWithFormat:@"Please check this deal\n %@\n %@\n %@",dealItem.dealTitle,dealItem.description, dealItem.dealId];
+		controller.recipients = [NSArray arrayWithObjects:phoneNumbers, nil];
+		controller.messageComposeDelegate = self;
+		[self presentModalViewController:controller animated:YES];
+	}
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    NSLog(@"inside didFinishWithResult");
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    NSLog(@"inside peoplePickerNavigationController. shouldContinueAfterSelectingPerson");  
+    
+    return YES;    
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    NSLog(@"inside peoplePickerNavigationController. shouldContinueAfterSelectingPerson2");
+    ABMutableMultiValueRef multi = ABRecordCopyValue(person, property);
+    CFStringRef phone = ABMultiValueCopyValueAtIndex(multi, identifier);
+    NSString* phoneStr = (__bridge NSString *)phone;
+    NSLog(@"phone %@", phoneStr);
+//    CFRelease(phone);
+    
+    [phoneNumbers addObject:phoneStr];
+    
+    NSLog(@"phoneNumbers count: %d",phoneNumbers.count);
+//    ABPeoplePickerNavigationController *peoplePicker = (ABPeoplePickerNavigationController *)personViewController.navigationController;
+//    [peoplePicker dismissModalViewControllerAnimated:YES];
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+    return NO;
+    
+}
+
+-(void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    NSLog(@"Dismiss the contacts UI.");
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 
 -(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
     

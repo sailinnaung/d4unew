@@ -63,7 +63,7 @@
     else{
         rows = 1;
     }
-        
+    
     return rows;
 }
 
@@ -85,14 +85,13 @@
         
     }
     
-    if(self.deals == nil){
-        NSLog(@"Deal is nil");
+    if(deals.count<1){
+        NSLog(@"Deal count is %d",deals.count);
         cell.textLabel.text = DEFAULT_SEARCH_RESULT_STRING;
         NSLog(@"cell text label is %@",cell.textLabel.text);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         NSLog(@"cell selection style: %@",cell.selectionStyle);
         cell.accessoryType = UITableViewCellAccessoryNone;
-        
 
     }else{
         
@@ -159,7 +158,7 @@
 {
     NSLog(@"inside SearchController.shouldReloadTableForSearchString");
     [self handleDealSearchbyText:searchString];
-    
+    [self.resultTableView reloadData];
     return YES;
 }
 
@@ -183,25 +182,24 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
-
     
-   
-    
+    [self.resultTableView reloadData];
 }
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSLog(@"inside SearchController.searchBarSearchButtonClicked");
     [self handleDealSearchbyText:[searchBar text]];
-        
+    [self.resultTableView reloadData];    
     [searchBar resignFirstResponder];
     [searchBarObj setShowsCancelButton:FALSE animated:NO];
-    [self.resultTableView reloadData];
+    
     [searchBarObj setText:nil];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     NSLog(@"inside SearchController.searchBarCancelButtonClicked");
+    [self.resultTableView reloadData];
     [searchBar resignFirstResponder];
     [searchBar setShowsCancelButton:FALSE animated:NO];
     [searchBar setText:nil];
@@ -209,6 +207,7 @@
 
 -(void)searchDisplayController:(UISearchDisplayController *)controller didLoadSearchResultsTableView:(UITableView *)tableView{
     NSLog(@"inside SearchController.didLoadSearchResultTableView");
+    [self.resultTableView reloadData];
     [searchBarObj resignFirstResponder];
     [searchBarObj setShowsCancelButton:FALSE animated:NO];
     [searchBarObj setText:nil];
@@ -216,14 +215,16 @@
 
 -(void)searchDisplayControllerDidBeginSearch:(UISearchDisplayController *)controller{
     NSLog(@"inside SearchController.searchDisplayControllerDidBeginSearch");
+    [self.resultTableView reloadData];
     [searchBarObj resignFirstResponder];
     [searchBarObj setShowsCancelButton:FALSE animated:NO];
     [searchBarObj setText:nil];
 }
 
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-
+    [self.resultTableView reloadData];
     [searchBar setShowsCancelButton:TRUE animated:YES];
+    
 }
 
 
