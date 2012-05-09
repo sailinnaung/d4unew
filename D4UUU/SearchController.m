@@ -119,7 +119,7 @@
         }
         
 
-        
+         [self borderAndSmoothImageView:cell.imageView];
         
         NSLog(@"ImageUrl after %@",imageUrl);
         
@@ -131,6 +131,8 @@
         NSLog(@"Cell image %@",cell.imageView.image.description );
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; 
         [searchBarObj setText:nil];
+        
+        
     }
             
     return cell;    
@@ -253,4 +255,20 @@
     UIGraphicsEndImageContext();
     return scaledImage;
 }
+
+
+
+-(void) borderAndSmoothImageView:(UIImageView*) tempImageView{
+    
+    [tempImageView setBounds:CGRectMake(0, 0, 50, 50)];
+    [tempImageView setClipsToBounds:NO];
+    [tempImageView setFrame:CGRectMake(0, 0, 50, 50)];
+    [tempImageView setContentMode:UIViewContentModeScaleAspectFit];
+    tempImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    tempImageView.layer.borderWidth = 1.0;
+    tempImageView.layer.cornerRadius = 5.0;
+    tempImageView.layer.masksToBounds = YES;
+    
+}
+
 @end
