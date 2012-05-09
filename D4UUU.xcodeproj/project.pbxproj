@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		DB0591BA1557EDA600EC9F0B /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0591B91557EDA600EC9F0B /* like.png */; };
-		DB0591BD1557EF1900EC9F0B /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DB0591BC1557EF1900EC9F0B /* share.png */; };
+		DB1ECE38155A6C3D004A7FC8 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB1ECE35155A6C22004A7FC8 /* Twitter.framework */; };
+		DB1ECE3A155A741D004A7FC8 /* location.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB1ECE39155A741D004A7FC8 /* location.jpg */; };
+		DB1ECE3C155A75D7004A7FC8 /* likecolor.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1ECE3B155A75D7004A7FC8 /* likecolor.png */; };
+		DB1ECE3E155A7750004A7FC8 /* share.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DB1ECE3D155A7750004A7FC8 /* share.jpg */; };
+		DB1ECE41155A7AFC004A7FC8 /* LikedController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1ECE40155A7AFC004A7FC8 /* LikedController.m */; };
+		DB1ECE43155A82F6004A7FC8 /* uploadphoto.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1ECE42155A82F6004A7FC8 /* uploadphoto.png */; };
 		DB4D5E0D155542C5007B4CAF /* CategoriesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4D5E0C155542C5007B4CAF /* CategoriesController.xib */; };
 		DB4D5E1B155544D7007B4CAF /* KategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4D5E19155544D6007B4CAF /* KategoryController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DB4D5E1C155544D7007B4CAF /* KategoryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4D5E1A155544D7007B4CAF /* KategoryController.xib */; };
@@ -61,7 +66,13 @@
 
 /* Begin PBXFileReference section */
 		DB0591B91557EDA600EC9F0B /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
-		DB0591BC1557EF1900EC9F0B /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		DB1ECE35155A6C22004A7FC8 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		DB1ECE39155A741D004A7FC8 /* location.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = location.jpg; sourceTree = "<group>"; };
+		DB1ECE3B155A75D7004A7FC8 /* likecolor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = likecolor.png; sourceTree = "<group>"; };
+		DB1ECE3D155A7750004A7FC8 /* share.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = share.jpg; sourceTree = "<group>"; };
+		DB1ECE3F155A7AFB004A7FC8 /* LikedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikedController.h; sourceTree = "<group>"; };
+		DB1ECE40155A7AFC004A7FC8 /* LikedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikedController.m; sourceTree = "<group>"; };
+		DB1ECE42155A82F6004A7FC8 /* uploadphoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uploadphoto.png; sourceTree = "<group>"; };
 		DB4D5E0C155542C5007B4CAF /* CategoriesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesController.xib; sourceTree = "<group>"; };
 		DB4D5E18155544D6007B4CAF /* KategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KategoryController.h; sourceTree = "<group>"; };
 		DB4D5E19155544D6007B4CAF /* KategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KategoryController.m; sourceTree = "<group>"; };
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBDF245515552F89001140CC /* libsqlite3.0.dylib in Frameworks */,
+				DB1ECE38155A6C3D004A7FC8 /* Twitter.framework in Frameworks */,
 				DB5CB8EB1554F5ED00D63FB0 /* UIKit.framework in Frameworks */,
 				DB5CB96B155515D200D63FB0 /* MapKit.framework in Frameworks */,
 				DBCF1818155660A500E71680 /* MessageUI.framework in Frameworks */,
@@ -173,6 +185,7 @@
 				DBDF245415552F89001140CC /* libsqlite3.0.dylib */,
 				DB5CB969155515B900D63FB0 /* MapKit.framework */,
 				DB5CB967155515B200D63FB0 /* CoreLocation.framework */,
+				DB1ECE35155A6C22004A7FC8 /* Twitter.framework */,
 				DBCF18161556609900E71680 /* MessageUI.framework */,
 				DB5CB8EA1554F5ED00D63FB0 /* UIKit.framework */,
 				DB5CB8EC1554F5ED00D63FB0 /* Foundation.framework */,
@@ -216,13 +229,16 @@
 				DBCF181215565FD800E71680 /* PostDealController.m */,
 				DBCF181315565FD800E71680 /* PostDealController.xib */,
 				DB5CB9421554F94700D63FB0 /* whatsnew.png */,
+				DB1ECE39155A741D004A7FC8 /* location.jpg */,
+				DB1ECE3B155A75D7004A7FC8 /* likecolor.png */,
 				DB5CB9431554F94700D63FB0 /* whatsnew@2x.png */,
 				DB5CB9441554F94700D63FB0 /* WhatsNewController.h */,
 				DB0591B91557EDA600EC9F0B /* like.png */,
 				DB5CB9451554F94700D63FB0 /* WhatsNewController.m */,
+				DB1ECE3D155A7750004A7FC8 /* share.jpg */,
+				DB1ECE42155A82F6004A7FC8 /* uploadphoto.png */,
 				DB5CB9461554F94700D63FB0 /* WhatsNewController.xib */,
 				DB5CB91F1554F86500D63FB0 /* Deal.h */,
-				DB0591BC1557EF1900EC9F0B /* share.png */,
 				DB5CB9201554F86500D63FB0 /* Deal.m */,
 				DB5CB9211554F86500D63FB0 /* DealsServiceManager.h */,
 				DB5CB9221554F86500D63FB0 /* DealsServiceManager.m */,
@@ -239,6 +255,8 @@
 				DB4D5E18155544D6007B4CAF /* KategoryController.h */,
 				DB4D5E19155544D6007B4CAF /* KategoryController.m */,
 				DB4D5E1A155544D7007B4CAF /* KategoryController.xib */,
+				DB1ECE3F155A7AFB004A7FC8 /* LikedController.h */,
+				DB1ECE40155A7AFC004A7FC8 /* LikedController.m */,
 			);
 			path = D4UUU;
 			sourceTree = "<group>";
@@ -332,7 +350,10 @@
 				DB5B4EEB155707DB00A1D34D /* Default.png in Resources */,
 				DBCE5E801557DCD70099A14F /* noImage.jpg in Resources */,
 				DB0591BA1557EDA600EC9F0B /* like.png in Resources */,
-				DB0591BD1557EF1900EC9F0B /* share.png in Resources */,
+				DB1ECE3A155A741D004A7FC8 /* location.jpg in Resources */,
+				DB1ECE3C155A75D7004A7FC8 /* likecolor.png in Resources */,
+				DB1ECE3E155A7750004A7FC8 /* share.jpg in Resources */,
+				DB1ECE43155A82F6004A7FC8 /* uploadphoto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +379,7 @@
 				DB5B4ED61556E59000A1D34D /* SVProgressHUD.m in Sources */,
 				DB5B4EE81556E9C000A1D34D /* MBProgressHUD.m in Sources */,
 				DBCE5E861557E79B0099A14F /* WhatsAroundYouMasterController.m in Sources */,
+				DB1ECE41155A7AFC004A7FC8 /* LikedController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
