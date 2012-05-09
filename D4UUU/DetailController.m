@@ -10,9 +10,11 @@
 #import "Deal.h"
 #import "DBManager.h"
 #import "Constants.h"
+#import <Twitter/Twitter.h>
 
 @interface DetailController ()
 - (void)configureView;
+-(void) checkIfLiked;
 @end
 
 @implementation DetailController
@@ -20,7 +22,7 @@
 @synthesize dealTitle, dealCategory, dealDescr, dealLocation, dealMerchantName, dealImage;
 @synthesize dealItem;
 @synthesize masterController;
-//@synthesize detailDescriptionLabel = _detailDescriptionLabel;
+@synthesize likeButton;
 
 #pragma mark - Managing the detail item
 
@@ -49,6 +51,7 @@
         self.dealMerchantName.text=dealItem.merchantName;
         
         if (dealItem.imageUrl.length ==0){
+            
             
             UIImage* tempImage=[UIImage imageNamed:@"noImage.jpg"];
             self.dealImage.image=tempImage;
@@ -99,8 +102,9 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
     
-    self.navigationItem.title =@"Detail";
-    self.navigationController.navigationBar.backItem.title = @"Custom text";
+    self.navigationItem.title =self.dealItem.dealTitle;
+    
+    [self checkIfLiked];
     
     //geoCoder=[[CLGeocoder alloc] init];
     
@@ -134,6 +138,7 @@
 
 -(IBAction)likeDeal:(id)sender{
     
+    NSLog(@"Like is called now");
     [self performLiked];
     //NSLog(@"Yahooo. I liked the deal with ID %@", self.dealItem.dealId);
 }
@@ -169,6 +174,9 @@
         {
             // alert user failed to update db?
         }
+        
+        NSLog(@"Like performed");
+        [self setLikeButtonDisabled];
 	}
 }
 
@@ -213,7 +221,45 @@
 	switch (buttonIndex) {
 		case 1:
 		{
-			NSLog(@"Item 1 Selected");
+			
+            
+            // Create the view controller
+            TWTweetComposeViewController *twitter = [[TWTweetComposeViewController alloc] init];
+            
+            
+            NSURL *url = [NSURL URLWithString:dealItem.imageUrl];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            UIImage *tempImage = [UIImage imageWithData:data];
+            
+            
+            [twitter addImage:tempImage];
+            
+            NSString *tweetText=[[[NSString alloc] initWithString:@"Tweeting from my first AppStore candidate :-)"] stringByAppendingString:dealItem.description];
+            //NSString *tweetText=[[[[NSString alloc] initWithString:dealItem.dealTitle] stringByAppendingString:@"-"] stringByAppendingString:dealItem.debugDescription];
+            [twitter setInitialText:tweetText];
+            
+            // Show the controller
+            [self presentModalViewController:twitter animated:YES];
+            
+            // Called when the tweet dialog has been closed
+            twitter.completionHandler = ^(TWTweetComposeViewControllerResult result) 
+            {
+                NSString *title = @"Tweet Status";
+                NSString *msg; 
+                
+                if (result == TWTweetComposeViewControllerResultCancelled)
+                    msg = @"Tweet compostion was canceled.";
+                else if (result == TWTweetComposeViewControllerResultDone)
+                    msg = @"Tweet composition completed.";
+                
+                // Show alert to see how things went...
+                UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+                [alertView show];
+                
+                // Dismiss the controller
+                [self dismissModalViewControllerAnimated:YES];
+            };
+            
 			break;
 		}
 		case 2:
@@ -234,6 +280,8 @@
                                   ];
                 [emailViewController setMessageBody: msg isHTML: NO] ;    
                 [self presentModalViewController: emailViewController animated: YES] ;    	
+                
+                //[sheet showInView:[UIApplication sharedApplication].keyWindow];
 
 			break;
 		}
@@ -242,17 +290,31 @@
 			NSLog(@"Item 3 Selected");
 			break;
 		}
-        case 4:
-		{
-			NSLog(@"Item 4 Selected");
-			break;
-		}
+       
 	}
 }
 
 -(void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
     
-    NSLog(@"Mail sent");
+    [self dismissModalViewControllerAnimated:YES];
+   
+}
+
+-(void) checkIfLiked{
+    
+    if (dealItem.isLiked){
+        
+        [self setLikeButtonDisabled];
+        
+    }
+    
+}
+
+-(void) setLikeButtonDisabled{
+    
+    UIImage *btnImage = [UIImage imageNamed:@"like.png"];
+    [likeButton setImage:btnImage forState:UIControlStateNormal];
+    [likeButton setEnabled:NO];
 }
 
 

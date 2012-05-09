@@ -693,7 +693,15 @@
     {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+           
+            picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
+        else{
+            picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        }
+        
+
         [self presentModalViewController:picker animated:YES];
         //[picker release];
     }

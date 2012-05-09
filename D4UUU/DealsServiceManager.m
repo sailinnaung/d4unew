@@ -135,6 +135,27 @@ static DealsServiceManager *serviceManager =nil;
 }
 
 
+-(NSArray*) retrieveAllLiked {
+    
+    NSString *urlString=[NSString stringWithFormat:@"%@%@",SERVER_BASE_URL, @"get_by_top_likes&number=5"];
+    
+    NSLog(@"Calling url %@",urlString);
+    
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    
+    NSURLResponse *response;
+    NSError* error;
+    
+    NSData* result=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    return [self convertResponseToDeals:result];
+}
+
+
+
+
 -(NSArray*)  convertResponseToDeals:(NSData*) jsonData{
     
     NSMutableArray *array=[NSMutableArray array];
