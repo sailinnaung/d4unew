@@ -10,6 +10,7 @@
 #import "DBManager.h"
 #import "Constants.h"
 #import "WhatsAroundYouMasterController.h"
+#import "LikedController.h"
 
 @implementation AppDelegate
 
@@ -198,6 +199,14 @@ static int CBAvailable (void *context, int count, char **values, char **columns)
         //[whatsAroundMasterController performSelector:@"updateLocationAndCategory"];
                     [whatsAroundMasterController updateLocationAndCategory];
                 }
+                
+                else if ([eachViewController isKindOfClass:[LikedController class]]){                    
+                    LikedController* likedController=(LikedController*)eachViewController;
+                    NSLog(@"Selected now %@", likedController);    
+                    //[whatsAroundMasterController performSelector:@"updateLocationAndCategory"];
+                    [likedController updateCategory];
+                }
+                
             }
         }
             

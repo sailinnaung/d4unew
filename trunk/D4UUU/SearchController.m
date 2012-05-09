@@ -86,7 +86,7 @@
     }
     
     if(self.deals == nil){
-        NSLog(@"Deal is nill");
+        NSLog(@"Deal is nil");
         cell.textLabel.text = DEFAULT_SEARCH_RESULT_STRING;
         NSLog(@"cell text label is %@",cell.textLabel.text);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

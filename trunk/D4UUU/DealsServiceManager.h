@@ -20,6 +20,8 @@
 
 -(NSArray*) retrieveAll ;
 
+-(NSArray*) retrieveAllLiked ;
+
 +(DealsServiceManager*) sharedManager;
 
 -(NSMutableArray*) retrieveSearchDeals: (NSString *)searchText; 

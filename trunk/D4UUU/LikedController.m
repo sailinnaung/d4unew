@@ -1,4 +1,14 @@
 //
+//  LikedController.m
+//  D4UUU
+//
+//  Created by Arun Manivannan on 9/5/12.
+//  Copyright (c) 2012 tech@arunma.com. All rights reserved.
+//
+
+#import "LikedController.h"
+
+//
 //  MasterViewController.m
 //  DummyMasterView
 //
@@ -6,19 +16,17 @@
 //  Copyright (c) 2012 tech@arunma.com. All rights reserved.
 //
 
-#import "WhatsAroundYouMasterController.h"
-
 #import "DetailController.h"
 #import "DealsServiceManager.h"
 #import "Deal.h"
 #import "MBProgressHUD.h"
 
 
-@implementation WhatsAroundYouMasterController 
+@implementation LikedController 
 
 @synthesize deals;
 @synthesize dealsTableView;
-DealsServiceManager *dealsManager=nil;
+DealsServiceManager *likedDealsManager=nil;
 
 
 @synthesize detailViewController = _detailViewController;
@@ -27,38 +35,63 @@ DealsServiceManager *dealsManager=nil;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Around you", @"Around you");
-        self.tabBarItem.image = [UIImage imageNamed:@"whatsaroundyou"];
+        self.title = NSLocalizedString(@"Top Liked", @"Top Liked");
+        self.tabBarItem.image = [UIImage imageNamed:@"aroundyou"];
     }
     return self;
 }
-							
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	    self.navigationItem.title =@"Around you";
+    self.navigationItem.title =@"Top Liked";
     self.navigationItem.hidesBackButton = FALSE;
-  
-     
-    [self updateLocationAndCategory];
-        
+       
+    [self updateCategory];
+    
+       
     NSLog(@"Last deal object is %@", self.deals.lastObject);
     
 }
 
--(void) updateLocationAndCategory{
+-(void) updateCategory{
+    
+    
+    
+    likedDealsManager=[DealsServiceManager sharedManager];
+    
+    
+           
+    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.labelText = @"Please wait... Refreshing data";
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        
+        
+        [self updateData];        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
    
-        
-        
-        dealsManager=[DealsServiceManager sharedManager];
-        locationManager=[[CLLocationManager alloc] init];
-        
-        locationManager.delegate=self;
-        [locationManager startUpdatingLocation];
-       
     
 }
 
+
+-(void) updateData{
+    NSLog(@"Updatttting with Categories..... ");
+    [self.deals removeAllObjects];
+    
+    self.deals=[NSMutableArray arrayWithArray:[likedDealsManager retrieveAllLiked]];
+    
+    NSLog(@"Deals %@",self.deals.description);
+    
+    [self.tableView reloadData];
+
+}
 
 
 
@@ -72,6 +105,7 @@ DealsServiceManager *dealsManager=nil;
 {
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -87,7 +121,7 @@ DealsServiceManager *dealsManager=nil;
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      
+       
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -95,19 +129,24 @@ DealsServiceManager *dealsManager=nil;
         //cell = [[UITableViewCell alloc] initWithFrame:CGRectZero];
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
+        
     }
     
     Deal *deal = [deals objectAtIndex:indexPath.row];
+    
+    
+  
+    NSMutableString* imageUrl=[NSMutableString stringWithString:deal.imageUrl];
    
     
-    NSMutableString* imageUrl=[NSMutableString stringWithString:deal.imageUrl];
+    NSLog(@"ImageUrl after %@",imageUrl);
+    
+       
     UIImage *scaledImage=nil;
     
     if (imageUrl.length ==0){
         
         UIImage* tempImage=[UIImage imageNamed:@"noImage.jpg"];
-        //self.dealImage.image=tempImage;
         scaledImage=[self scale:tempImage];
         
     }
@@ -120,6 +159,13 @@ DealsServiceManager *dealsManager=nil;
         
         scaledImage=[self scale:image];
     }
+    
+    
+    
+    
+    
+    
+    //cell.imageView.image= [imageView image];
     cell.textLabel.text = deal.dealTitle;
     //Should ideally be merchant name
     NSString* subtitle=[NSString stringWithString:deal.description];
@@ -128,17 +174,31 @@ DealsServiceManager *dealsManager=nil;
     
     [self borderAndSmoothImageView:cell.imageView];
     
-   
     
-      
-   
+    
+    
+    
     cell.imageView.image=scaledImage;
     NSLog(@"Cell image %@",cell.imageView.image.description );
     
-     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-      
-    return cell;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
+    /*
      
+     UIColor *bgColor = [UIColor greenColor];
+     cell.textLabel.backgroundColor = bgColor;
+     
+     cell.detailTextLabel.backgroundColor = bgColor;
+     
+     
+     
+     cell.backgroundView = [[UIView alloc] init];
+     cell.backgroundView.backgroundColor = bgColor;
+     */
+    //cell.imageView.image = [UIImage imageNamed:@"whatsaroundyou.png"];
+    
+    return cell;
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -178,14 +238,11 @@ DealsServiceManager *dealsManager=nil;
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.deals.count>0){
-        NSLog(@"inside WhatsAroundController.didSelectRowAtIndexPath at %@",indexPath);
-        
-        [self performSegueWithIdentifier:@"WhatsAroundDetailIdentifer" sender:self]; 
-        NSLog(@"Segue performed");
+        [self performSegueWithIdentifier:@"LikedDetailIdentifer" sender:self];
         
         
     }else{
-        NSLog(@"inside WhatsAroundController.didSelectRowAtIndexPath No Deals");
+        NSLog(@"inside LikedController.didSelectRowAtIndexPath No Deals");
     }   
     
 }
@@ -197,67 +254,11 @@ DealsServiceManager *dealsManager=nil;
     [self.tableView setRowHeight:81];
 }
 
--(void)updateLocationWithLatitude :(NSString*) latitude andLongitude:(NSString*) longitude{
-    
-    NSLog(@"Updatttting with Locationg..... %@%@", latitude, longitude);
-    [self.deals removeAllObjects];
-    self.deals=[NSMutableArray arrayWithArray:[dealsManager retrieveWhatsAroundWithLatitude:latitude andLongitude:longitude]];
-    //self.deals=[NSMutableArray arrayWithArray:[dealsManager retrieveWhatsAroundWithLatitude:@"1.37" andLongitude:@"103.862454"]];
- 
-    NSLog(@"Deals %@",self.deals.description);
-    
-    [self.tableView reloadData];
-        
-}
-
--(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
-    
-    
-    NSLog(@"New location%@",newLocation);
-   
-    
-    noUpdates++;
-  
-    [locationManager stopUpdatingLocation];
-       
-    NSString *latitude=[NSString stringWithFormat:@"%+.6f", newLocation.coordinate.latitude];
-    NSString *longitude=[NSString stringWithFormat:@"%+.6f", newLocation.coordinate.longitude];
-    
-   
-    MBProgressHUD* hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
-    hud.labelText = @"Please wait... Refreshing data";
-    
-    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        
-        
-        [self updateLocationWithLatitude:latitude andLongitude:longitude];
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
-    });
-    
-    
-   
-
-    
-    //[SVProgressHUD dismissWithSuccess:@"Cool. Refresh done."];
-    
-    
-    
-}
-
--(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"Could not locate location %@", error);
-}
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     NSLog(@"Invoking prepare for segue");
-    if([[segue identifier] isEqualToString:@"WhatsAroundDetailIdentifer"]){
+    if([[segue identifier] isEqualToString:@"LikedDetailIdentifer"]){
         
         NSLog(@"String from class %@", NSStringFromClass([[segue destinationViewController] class]));
         
@@ -285,7 +286,7 @@ DealsServiceManager *dealsManager=nil;
 }
 
 -(void) borderAndSmoothImageView:(UIImageView*) tempImageView{
-
+    
     [tempImageView setBounds:CGRectMake(0, 0, 50, 50)];
     [tempImageView setClipsToBounds:NO];
     [tempImageView setFrame:CGRectMake(0, 0, 50, 50)];
@@ -294,7 +295,7 @@ DealsServiceManager *dealsManager=nil;
     tempImageView.layer.borderWidth = 1.0;
     tempImageView.layer.cornerRadius = 5.0;
     tempImageView.layer.masksToBounds = YES;
-
+    
 }
 
 

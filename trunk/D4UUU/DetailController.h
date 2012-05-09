@@ -22,6 +22,8 @@
     UILabel *dealMerchantName;
     UIImageView *dealImage;
     
+    UIButton *likeButton;
+    
     //CLGeocoder *geoCoder;
     //CLLocationManager *locationManager;
     
@@ -34,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UILabel* dealLocation;
 @property (strong, nonatomic) IBOutlet UILabel* dealMerchantName;
 @property (strong, nonatomic) IBOutlet UIImageView* dealImage;
+@property (strong, nonatomic) IBOutlet UIButton *likeButton;
 
 @property (strong, nonatomic) Deal* dealItem;
 @property (strong, nonatomic) WhatsAroundYouMasterController* masterController;

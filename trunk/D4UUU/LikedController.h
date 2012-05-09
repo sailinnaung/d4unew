@@ -1,8 +1,8 @@
 //
-//  MasterViewController.h
-//  DummyMasterView
+//  LikedController.h
+//  D4UUU
 //
-//  Created by Arun Manivannan on 29/4/12.
+//  Created by Arun Manivannan on 9/5/12.
 //  Copyright (c) 2012 tech@arunma.com. All rights reserved.
 //
 
@@ -12,21 +12,18 @@
 
 @class DetailController;
 
-@interface WhatsAroundYouMasterController : UITableViewController <UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
+@interface LikedController : UITableViewController <UITableViewDataSource,UITableViewDelegate,CLLocationManagerDelegate>{
     
     NSMutableArray* deals;
-    CLLocationManager *locationManager;
     UITableView *dealsTableView;
-    NSUInteger noUpdates;
-
 }
 
 @property (strong, nonatomic) DetailController *detailViewController;
 @property (strong, nonatomic) NSMutableArray* deals;
 @property (strong, nonatomic) IBOutlet UITableView* dealsTableView;
 
--(void) updateLocationAndCategory;
+-(void) updateCategory;
 -(void) borderAndSmoothImageView:(UIImageView*) tempImageView;
 - (UIImage *)scale:(UIImage *)image;
-    
+
 @end
